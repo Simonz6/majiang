@@ -10990,6 +10990,9266 @@ void UIMainWindows::KongDisplay()
     }
 }
 
+void UIMainWindows::checkDisplay()
+{
+    if(dapaiWanjia == 0){
+        QPixmap statusSouthCheck(":/image/guo.png");
+        statusSouthCheck.scaled(ui->statusSouthCheck->size(), Qt::IgnoreAspectRatio);
+        ui->statusSouthCheck->setScaledContents(true);
+        ui->statusSouthCheck->setPixmap(statusSouthCheck);
+    }else if(dapaiWanjia == 1){
+        QPixmap statusEastCheck(":/image/guo.png");
+        statusEastCheck.scaled(ui->statusEastCheck->size(), Qt::IgnoreAspectRatio);
+        ui->statusEastCheck->setScaledContents(true);
+        ui->statusEastCheck->setPixmap(statusEastCheck);
+    }else if(dapaiWanjia == 2){
+        QPixmap statusNorthCheck(":/image/guo.png");
+        statusNorthCheck.scaled(ui->statusNorthCheck->size(), Qt::IgnoreAspectRatio);
+        ui->statusNorthCheck->setScaledContents(true);
+        ui->statusNorthCheck->setPixmap(statusNorthCheck);
+    }else if(dapaiWanjia == 3){
+        QPixmap statusWestCheck(":/image/guo.png");
+        statusWestCheck.scaled(ui->statusWestCheck->size(), Qt::IgnoreAspectRatio);
+        ui->statusWestCheck->setScaledContents(true);
+        ui->statusWestCheck->setPixmap(statusWestCheck);
+    }
+}
+
+void UIMainWindows::winDisplay()
+{
+    if(isSouthWin == true){
+        QPixmap statusSouthWin(":/image/hu.png");
+        statusSouthWin.scaled(ui->statusSouthWin->size(), Qt::IgnoreAspectRatio);
+        ui->statusSouthWin->setScaledContents(true);
+        ui->statusSouthWin->setPixmap(statusSouthWin);
+
+        QPixmap statusSouthCheck(":/image/guo.png");
+        statusSouthCheck.scaled(ui->statusSouthCheck->size(), Qt::IgnoreAspectRatio);
+        ui->statusSouthCheck->setScaledContents(true);
+        ui->statusSouthCheck->setPixmap(statusSouthCheck);
+    }else if(isEastWin == true){
+        QPixmap statusEastWin(":/image/hu.png");
+        statusEastWin.scaled(ui->statusEastWin->size(), Qt::IgnoreAspectRatio);
+        ui->statusEastWin->setScaledContents(true);
+        ui->statusEastWin->setPixmap(statusEastWin);
+
+        QPixmap statusEastCheck(":/image/guo.png");
+        statusEastCheck.scaled(ui->statusEastCheck->size(), Qt::IgnoreAspectRatio);
+        ui->statusEastCheck->setScaledContents(true);
+        ui->statusEastCheck->setPixmap(statusEastCheck);
+    }else if(isNorthWin == true){
+        QPixmap statusNorthWin(":/image/hu.png");
+        statusNorthWin.scaled(ui->statusNorthWin->size(), Qt::IgnoreAspectRatio);
+        ui->statusNorthWin->setScaledContents(true);
+        ui->statusNorthWin->setPixmap(statusNorthWin);
+
+        QPixmap statusNorthCheck(":/image/guo.png");
+        statusNorthCheck.scaled(ui->statusNorthCheck->size(), Qt::IgnoreAspectRatio);
+        ui->statusNorthCheck->setScaledContents(true);
+        ui->statusNorthCheck->setPixmap(statusNorthCheck);
+    }else if(isWestWin == true){
+        QPixmap statusWestWin(":/image/hu.png");
+        statusWestWin.scaled(ui->statusWestWin->size(), Qt::IgnoreAspectRatio);
+        ui->statusWestWin->setScaledContents(true);
+        ui->statusWestWin->setPixmap(statusWestWin);
+
+        QPixmap statusWestCheck(":/image/guo.png");
+        statusWestCheck.scaled(ui->statusWestCheck->size(), Qt::IgnoreAspectRatio);
+        ui->statusWestCheck->setScaledContents(true);
+        ui->statusWestCheck->setPixmap(statusWestCheck);
+    }
+}
+
+void UIMainWindows::readyDisplay()
+{
+    if(isSouthReady == true){
+        //清空之前的内容
+        ui->statusSouthReadyNum1->clear();
+        ui->statusSouthReadyNum2->clear();
+        ui->statusSouthReadyNum3->clear();
+        ui->statusSouthReadyNum4->clear();
+        ui->statusSouthReadyNum5->clear();
+        ui->statusSouthReadyNum6->clear();
+        ui->statusSouthReadyNum7->clear();
+        ui->statusSouthReadyNum8->clear();
+        ui->statusSouthReadyNum9->clear();
+        ui->statusSouthReadyNum10->clear();
+
+        ui->statusSouthReadyPai1->clear();
+        ui->statusSouthReadyPai2->clear();
+        ui->statusSouthReadyPai3->clear();
+        ui->statusSouthReadyPai4->clear();
+        ui->statusSouthReadyPai5->clear();
+        ui->statusSouthReadyPai6->clear();
+        ui->statusSouthReadyPai7->clear();
+        ui->statusSouthReadyPai8->clear();
+        ui->statusSouthReadyPai9->clear();
+        ui->statusSouthReadyPai10->clear();
+
+        //听牌标志显示
+        QPixmap statusSouthReady(":/image/ting.png");
+        statusSouthReady.scaled(ui->statusSouthReady->size(), Qt::IgnoreAspectRatio);
+        ui->statusSouthReady->setScaledContents(true);
+        ui->statusSouthReady->setPixmap(statusSouthReady);
+
+        int cnt = 0;
+        for(auto i: southReadyHash){
+            if(cnt == 0){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusSouthReadyPai1(":/image/" + paiResultStr + ".png");
+                statusSouthReadyPai1.scaled(ui->statusSouthReadyPai1->size(), Qt::IgnoreAspectRatio);
+                ui->statusSouthReadyPai1->setScaledContents(true);
+                ui->statusSouthReadyPai1->setPixmap(statusSouthReadyPai1);
+                //个数显示
+                ui->statusSouthReadyNum1->setText(paiCntStr);
+            }else if(cnt == 1){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusSouthReadyPai1(":/image/" + paiResultStr + ".png");
+                statusSouthReadyPai1.scaled(ui->statusSouthReadyPai1->size(), Qt::IgnoreAspectRatio);
+                ui->statusSouthReadyPai1->setScaledContents(true);
+                ui->statusSouthReadyPai1->setPixmap(statusSouthReadyPai1);
+                //个数显示
+                ui->statusSouthReadyNum1->setText(paiCntStr);
+            }else if(cnt == 1){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusSouthReadyPai2(":/image/" + paiResultStr + ".png");
+                statusSouthReadyPai2.scaled(ui->statusSouthReadyPai2->size(), Qt::IgnoreAspectRatio);
+                ui->statusSouthReadyPai2->setScaledContents(true);
+                ui->statusSouthReadyPai2->setPixmap(statusSouthReadyPai2);
+                //个数显示
+                ui->statusSouthReadyNum2->setText(paiCntStr);
+            }else if(cnt == 2){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusSouthReadyPai3(":/image/" + paiResultStr + ".png");
+                statusSouthReadyPai3.scaled(ui->statusSouthReadyPai3->size(), Qt::IgnoreAspectRatio);
+                ui->statusSouthReadyPai3->setScaledContents(true);
+                ui->statusSouthReadyPai3->setPixmap(statusSouthReadyPai3);
+                //个数显示
+                ui->statusSouthReadyNum3->setText(paiCntStr);
+            }else if(cnt == 3){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusSouthReadyPai4(":/image/" + paiResultStr + ".png");
+                statusSouthReadyPai4.scaled(ui->statusSouthReadyPai4->size(), Qt::IgnoreAspectRatio);
+                ui->statusSouthReadyPai4->setScaledContents(true);
+                ui->statusSouthReadyPai4->setPixmap(statusSouthReadyPai4);
+                //个数显示
+                ui->statusSouthReadyNum4->setText(paiCntStr);
+            }else if(cnt == 4){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusSouthReadyPai5(":/image/" + paiResultStr + ".png");
+                statusSouthReadyPai5.scaled(ui->statusSouthReadyPai5->size(), Qt::IgnoreAspectRatio);
+                ui->statusSouthReadyPai5->setScaledContents(true);
+                ui->statusSouthReadyPai5->setPixmap(statusSouthReadyPai5);
+                //个数显示
+                ui->statusSouthReadyNum5->setText(paiCntStr);
+            }else if(cnt == 5){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusSouthReadyPai6(":/image/" + paiResultStr + ".png");
+                statusSouthReadyPai6.scaled(ui->statusSouthReadyPai6->size(), Qt::IgnoreAspectRatio);
+                ui->statusSouthReadyPai6->setScaledContents(true);
+                ui->statusSouthReadyPai6->setPixmap(statusSouthReadyPai6);
+                //个数显示
+                ui->statusSouthReadyNum6->setText(paiCntStr);
+            }else if(cnt == 6){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusSouthReadyPai7(":/image/" + paiResultStr + ".png");
+                statusSouthReadyPai7.scaled(ui->statusSouthReadyPai7->size(), Qt::IgnoreAspectRatio);
+                ui->statusSouthReadyPai7->setScaledContents(true);
+                ui->statusSouthReadyPai7->setPixmap(statusSouthReadyPai7);
+                //个数显示
+                ui->statusSouthReadyNum7->setText(paiCntStr);
+            }else if(cnt == 7){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusSouthReadyPai8(":/image/" + paiResultStr + ".png");
+                statusSouthReadyPai8.scaled(ui->statusSouthReadyPai8->size(), Qt::IgnoreAspectRatio);
+                ui->statusSouthReadyPai8->setScaledContents(true);
+                ui->statusSouthReadyPai8->setPixmap(statusSouthReadyPai8);
+                //个数显示
+                ui->statusSouthReadyNum8->setText(paiCntStr);
+            }else if(cnt == 8){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusSouthReadyPai9(":/image/" + paiResultStr + ".png");
+                statusSouthReadyPai9.scaled(ui->statusSouthReadyPai9->size(), Qt::IgnoreAspectRatio);
+                ui->statusSouthReadyPai9->setScaledContents(true);
+                ui->statusSouthReadyPai9->setPixmap(statusSouthReadyPai9);
+                //个数显示
+                ui->statusSouthReadyNum9->setText(paiCntStr);
+            }else if(cnt == 9){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusSouthReadyPai10(":/image/" + paiResultStr + ".png");
+                statusSouthReadyPai10.scaled(ui->statusSouthReadyPai10->size(), Qt::IgnoreAspectRatio);
+                ui->statusSouthReadyPai10->setScaledContents(true);
+                ui->statusSouthReadyPai10->setPixmap(statusSouthReadyPai10);
+                //个数显示
+                ui->statusSouthReadyNum10->setText(paiCntStr);
+            }
+            cnt++;
+        }
+
+    }
+    if(isEastReady == true){
+        //清空之前的内容
+        ui->statusEastReadyNum1->clear();
+        ui->statusEastReadyNum2->clear();
+        ui->statusEastReadyNum3->clear();
+        ui->statusEastReadyNum4->clear();
+        ui->statusEastReadyNum5->clear();
+        ui->statusEastReadyNum6->clear();
+        ui->statusEastReadyNum7->clear();
+        ui->statusEastReadyNum8->clear();
+        ui->statusEastReadyNum9->clear();
+        ui->statusEastReadyNum10->clear();
+
+        ui->statusEastReadyPai1->clear();
+        ui->statusEastReadyPai2->clear();
+        ui->statusEastReadyPai3->clear();
+        ui->statusEastReadyPai4->clear();
+        ui->statusEastReadyPai5->clear();
+        ui->statusEastReadyPai6->clear();
+        ui->statusEastReadyPai7->clear();
+        ui->statusEastReadyPai8->clear();
+        ui->statusEastReadyPai9->clear();
+        ui->statusEastReadyPai10->clear();
+
+        //听牌标志显示
+        QPixmap statusEastReady(":/image/ting.png");
+        statusEastReady.scaled(ui->statusEastReady->size(), Qt::IgnoreAspectRatio);
+        ui->statusEastReady->setScaledContents(true);
+        ui->statusEastReady->setPixmap(statusEastReady);
+
+        int cnt = 0;
+        for(auto i: eastReadyHash){
+            if(cnt == 0){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusEastReadyPai1(":/image/r" + paiResultStr + ".png");
+                statusEastReadyPai1.scaled(ui->statusEastReadyPai1->size(), Qt::IgnoreAspectRatio);
+                ui->statusEastReadyPai1->setScaledContents(true);
+                ui->statusEastReadyPai1->setPixmap(statusEastReadyPai1);
+                //个数显示
+                ui->statusEastReadyNum1->setText(paiCntStr);
+            }else if(cnt == 1){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusEastReadyPai2(":/image/r" + paiResultStr + ".png");
+                statusEastReadyPai2.scaled(ui->statusEastReadyPai2->size(), Qt::IgnoreAspectRatio);
+                ui->statusEastReadyPai2->setScaledContents(true);
+                ui->statusEastReadyPai2->setPixmap(statusEastReadyPai2);
+                //个数显示
+                ui->statusEastReadyNum2->setText(paiCntStr);
+            }else if(cnt == 2){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusEastReadyPai3(":/image/r" + paiResultStr + ".png");
+                statusEastReadyPai3.scaled(ui->statusEastReadyPai3->size(), Qt::IgnoreAspectRatio);
+                ui->statusEastReadyPai3->setScaledContents(true);
+                ui->statusEastReadyPai3->setPixmap(statusEastReadyPai3);
+                //个数显示
+                ui->statusEastReadyNum3->setText(paiCntStr);
+            }else if(cnt == 3){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusEastReadyPai4(":/image/r" + paiResultStr + ".png");
+                statusEastReadyPai4.scaled(ui->statusEastReadyPai4->size(), Qt::IgnoreAspectRatio);
+                ui->statusEastReadyPai4->setScaledContents(true);
+                ui->statusEastReadyPai4->setPixmap(statusEastReadyPai4);
+                //个数显示
+                ui->statusEastReadyNum4->setText(paiCntStr);
+            }else if(cnt == 4){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusEastReadyPai5(":/image/r" + paiResultStr + ".png");
+                statusEastReadyPai5.scaled(ui->statusEastReadyPai5->size(), Qt::IgnoreAspectRatio);
+                ui->statusEastReadyPai5->setScaledContents(true);
+                ui->statusEastReadyPai5->setPixmap(statusEastReadyPai5);
+                //个数显示
+                ui->statusEastReadyNum5->setText(paiCntStr);
+            }else if(cnt == 5){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusEastReadyPai6(":/image/r" + paiResultStr + ".png");
+                statusEastReadyPai6.scaled(ui->statusEastReadyPai6->size(), Qt::IgnoreAspectRatio);
+                ui->statusEastReadyPai6->setScaledContents(true);
+                ui->statusEastReadyPai6->setPixmap(statusEastReadyPai6);
+                //个数显示
+                ui->statusEastReadyNum6->setText(paiCntStr);
+            }else if(cnt == 6){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusEastReadyPai7(":/image/r" + paiResultStr + ".png");
+                statusEastReadyPai7.scaled(ui->statusEastReadyPai7->size(), Qt::IgnoreAspectRatio);
+                ui->statusEastReadyPai7->setScaledContents(true);
+                ui->statusEastReadyPai7->setPixmap(statusEastReadyPai7);
+                //个数显示
+                ui->statusEastReadyNum7->setText(paiCntStr);
+            }else if(cnt == 7){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusEastReadyPai8(":/image/r" + paiResultStr + ".png");
+                statusEastReadyPai8.scaled(ui->statusEastReadyPai8->size(), Qt::IgnoreAspectRatio);
+                ui->statusEastReadyPai8->setScaledContents(true);
+                ui->statusEastReadyPai8->setPixmap(statusEastReadyPai8);
+                //个数显示
+                ui->statusEastReadyNum8->setText(paiCntStr);
+            }else if(cnt == 8){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusEastReadyPai9(":/image/r" + paiResultStr + ".png");
+                statusEastReadyPai9.scaled(ui->statusEastReadyPai9->size(), Qt::IgnoreAspectRatio);
+                ui->statusEastReadyPai9->setScaledContents(true);
+                ui->statusEastReadyPai9->setPixmap(statusEastReadyPai9);
+                //个数显示
+                ui->statusEastReadyNum9->setText(paiCntStr);
+            }else if(cnt == 9){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusEastReadyPai10(":/image/r" + paiResultStr + ".png");
+                statusEastReadyPai10.scaled(ui->statusEastReadyPai10->size(), Qt::IgnoreAspectRatio);
+                ui->statusEastReadyPai10->setScaledContents(true);
+                ui->statusEastReadyPai10->setPixmap(statusEastReadyPai10);
+                //个数显示
+                ui->statusEastReadyNum10->setText(paiCntStr);
+            }
+            cnt++;
+        }
+
+
+    }
+    if(isNorthReady == true){
+        //清空之前的内容
+        ui->statusNorthReadyNum1->clear();
+        ui->statusNorthReadyNum2->clear();
+        ui->statusNorthReadyNum3->clear();
+        ui->statusNorthReadyNum4->clear();
+        ui->statusNorthReadyNum5->clear();
+        ui->statusNorthReadyNum6->clear();
+        ui->statusNorthReadyNum7->clear();
+        ui->statusNorthReadyNum8->clear();
+        ui->statusNorthReadyNum9->clear();
+        ui->statusNorthReadyNum10->clear();
+
+        ui->statusNorthReadyPai1->clear();
+        ui->statusNorthReadyPai2->clear();
+        ui->statusNorthReadyPai3->clear();
+        ui->statusNorthReadyPai4->clear();
+        ui->statusNorthReadyPai5->clear();
+        ui->statusNorthReadyPai6->clear();
+        ui->statusNorthReadyPai7->clear();
+        ui->statusNorthReadyPai8->clear();
+        ui->statusNorthReadyPai9->clear();
+        ui->statusNorthReadyPai10->clear();
+
+        //听牌标志显示
+        QPixmap statusNorthReady(":/image/ting.png");
+        statusNorthReady.scaled(ui->statusNorthReady->size(), Qt::IgnoreAspectRatio);
+        ui->statusNorthReady->setScaledContents(true);
+        ui->statusNorthReady->setPixmap(statusNorthReady);
+
+        int cnt = 0;
+        for(auto i: northReadyHash){
+            if(cnt == 0){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusNorthReadyPai1(":/image/" + paiResultStr + ".png");
+                statusNorthReadyPai1.scaled(ui->statusNorthReadyPai1->size(), Qt::IgnoreAspectRatio);
+                ui->statusNorthReadyPai1->setScaledContents(true);
+                ui->statusNorthReadyPai1->setPixmap(statusNorthReadyPai1);
+                //个数显示
+                ui->statusNorthReadyNum1->setText(paiCntStr);
+            }else if(cnt == 1){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusNorthReadyPai2(":/image/" + paiResultStr + ".png");
+                statusNorthReadyPai2.scaled(ui->statusNorthReadyPai2->size(), Qt::IgnoreAspectRatio);
+                ui->statusNorthReadyPai2->setScaledContents(true);
+                ui->statusNorthReadyPai2->setPixmap(statusNorthReadyPai2);
+                //个数显示
+                ui->statusNorthReadyNum2->setText(paiCntStr);
+            }else if(cnt == 2){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusNorthReadyPai3(":/image/" + paiResultStr + ".png");
+                statusNorthReadyPai3.scaled(ui->statusNorthReadyPai3->size(), Qt::IgnoreAspectRatio);
+                ui->statusNorthReadyPai3->setScaledContents(true);
+                ui->statusNorthReadyPai3->setPixmap(statusNorthReadyPai3);
+                //个数显示
+                ui->statusNorthReadyNum3->setText(paiCntStr);
+            }else if(cnt == 3){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusNorthReadyPai4(":/image/" + paiResultStr + ".png");
+                statusNorthReadyPai4.scaled(ui->statusNorthReadyPai4->size(), Qt::IgnoreAspectRatio);
+                ui->statusNorthReadyPai4->setScaledContents(true);
+                ui->statusNorthReadyPai4->setPixmap(statusNorthReadyPai4);
+                //个数显示
+                ui->statusNorthReadyNum4->setText(paiCntStr);
+            }else if(cnt == 4){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusNorthReadyPai5(":/image/" + paiResultStr + ".png");
+                statusNorthReadyPai5.scaled(ui->statusNorthReadyPai5->size(), Qt::IgnoreAspectRatio);
+                ui->statusNorthReadyPai5->setScaledContents(true);
+                ui->statusNorthReadyPai5->setPixmap(statusNorthReadyPai5);
+                //个数显示
+                ui->statusNorthReadyNum5->setText(paiCntStr);
+            }else if(cnt == 5){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusNorthReadyPai6(":/image/" + paiResultStr + ".png");
+                statusNorthReadyPai6.scaled(ui->statusNorthReadyPai6->size(), Qt::IgnoreAspectRatio);
+                ui->statusNorthReadyPai6->setScaledContents(true);
+                ui->statusNorthReadyPai6->setPixmap(statusNorthReadyPai6);
+                //个数显示
+                ui->statusNorthReadyNum6->setText(paiCntStr);
+            }else if(cnt == 6){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusNorthReadyPai7(":/image/" + paiResultStr + ".png");
+                statusNorthReadyPai7.scaled(ui->statusNorthReadyPai7->size(), Qt::IgnoreAspectRatio);
+                ui->statusNorthReadyPai7->setScaledContents(true);
+                ui->statusNorthReadyPai7->setPixmap(statusNorthReadyPai7);
+                //个数显示
+                ui->statusNorthReadyNum7->setText(paiCntStr);
+            }else if(cnt == 7){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusNorthReadyPai8(":/image/" + paiResultStr + ".png");
+                statusNorthReadyPai8.scaled(ui->statusNorthReadyPai8->size(), Qt::IgnoreAspectRatio);
+                ui->statusNorthReadyPai8->setScaledContents(true);
+                ui->statusNorthReadyPai8->setPixmap(statusNorthReadyPai8);
+                //个数显示
+                ui->statusNorthReadyNum8->setText(paiCntStr);
+            }else if(cnt == 8){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusNorthReadyPai9(":/image/" + paiResultStr + ".png");
+                statusNorthReadyPai9.scaled(ui->statusNorthReadyPai9->size(), Qt::IgnoreAspectRatio);
+                ui->statusNorthReadyPai9->setScaledContents(true);
+                ui->statusNorthReadyPai9->setPixmap(statusNorthReadyPai9);
+                //个数显示
+                ui->statusNorthReadyNum9->setText(paiCntStr);
+            }else if(cnt == 9){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusNorthReadyPai10(":/image/" + paiResultStr + ".png");
+                statusNorthReadyPai10.scaled(ui->statusNorthReadyPai10->size(), Qt::IgnoreAspectRatio);
+                ui->statusNorthReadyPai10->setScaledContents(true);
+                ui->statusNorthReadyPai10->setPixmap(statusNorthReadyPai10);
+                //个数显示
+                ui->statusNorthReadyNum10->setText(paiCntStr);
+            }
+            cnt++;
+        }
+
+
+    }
+    if(isWestReady == true){
+        //清空之前的内容
+        ui->statusWestReadyNum1->clear();
+        ui->statusWestReadyNum2->clear();
+        ui->statusWestReadyNum3->clear();
+        ui->statusWestReadyNum4->clear();
+        ui->statusWestReadyNum5->clear();
+        ui->statusWestReadyNum6->clear();
+        ui->statusWestReadyNum7->clear();
+        ui->statusWestReadyNum8->clear();
+        ui->statusWestReadyNum9->clear();
+        ui->statusWestReadyNum10->clear();
+
+        ui->statusWestReadyPai1->clear();
+        ui->statusWestReadyPai2->clear();
+        ui->statusWestReadyPai3->clear();
+        ui->statusWestReadyPai4->clear();
+        ui->statusWestReadyPai5->clear();
+        ui->statusWestReadyPai6->clear();
+        ui->statusWestReadyPai7->clear();
+        ui->statusWestReadyPai8->clear();
+        ui->statusWestReadyPai9->clear();
+        ui->statusWestReadyPai10->clear();
+
+        //听牌标志显示
+        QPixmap statusWestReady(":/image/ting.png");
+        statusWestReady.scaled(ui->statusWestReady->size(), Qt::IgnoreAspectRatio);
+        ui->statusWestReady->setScaledContents(true);
+        ui->statusWestReady->setPixmap(statusWestReady);
+
+        int cnt = 0;
+        for(auto i: westReadyHash){
+            if(cnt == 0){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusWestReadyPai1(":/image/l" + paiResultStr + ".png");
+                statusWestReadyPai1.scaled(ui->statusWestReadyPai1->size(), Qt::IgnoreAspectRatio);
+                ui->statusWestReadyPai1->setScaledContents(true);
+                ui->statusWestReadyPai1->setPixmap(statusWestReadyPai1);
+                //个数显示
+                ui->statusWestReadyNum1->setText(paiCntStr);
+            }else if(cnt == 1){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusWestReadyPai2(":/image/l" + paiResultStr + ".png");
+                statusWestReadyPai2.scaled(ui->statusWestReadyPai2->size(), Qt::IgnoreAspectRatio);
+                ui->statusWestReadyPai2->setScaledContents(true);
+                ui->statusWestReadyPai2->setPixmap(statusWestReadyPai2);
+                //个数显示
+                ui->statusWestReadyNum2->setText(paiCntStr);
+            }else if(cnt == 2){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusWestReadyPai3(":/image/l" + paiResultStr + ".png");
+                statusWestReadyPai3.scaled(ui->statusWestReadyPai3->size(), Qt::IgnoreAspectRatio);
+                ui->statusWestReadyPai3->setScaledContents(true);
+                ui->statusWestReadyPai3->setPixmap(statusWestReadyPai3);
+                //个数显示
+                ui->statusWestReadyNum3->setText(paiCntStr);
+            }else if(cnt == 3){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusWestReadyPai4(":/image/l" + paiResultStr + ".png");
+                statusWestReadyPai4.scaled(ui->statusWestReadyPai4->size(), Qt::IgnoreAspectRatio);
+                ui->statusWestReadyPai4->setScaledContents(true);
+                ui->statusWestReadyPai4->setPixmap(statusWestReadyPai4);
+                //个数显示
+                ui->statusWestReadyNum4->setText(paiCntStr);
+            }else if(cnt == 4){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusWestReadyPai5(":/image/l" + paiResultStr + ".png");
+                statusWestReadyPai5.scaled(ui->statusWestReadyPai5->size(), Qt::IgnoreAspectRatio);
+                ui->statusWestReadyPai5->setScaledContents(true);
+                ui->statusWestReadyPai5->setPixmap(statusWestReadyPai5);
+                //个数显示
+                ui->statusWestReadyNum5->setText(paiCntStr);
+            }else if(cnt == 5){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusWestReadyPai6(":/image/l" + paiResultStr + ".png");
+                statusWestReadyPai6.scaled(ui->statusWestReadyPai6->size(), Qt::IgnoreAspectRatio);
+                ui->statusWestReadyPai6->setScaledContents(true);
+                ui->statusWestReadyPai6->setPixmap(statusWestReadyPai6);
+                //个数显示
+                ui->statusWestReadyNum6->setText(paiCntStr);
+            }else if(cnt == 6){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusWestReadyPai7(":/image/l" + paiResultStr + ".png");
+                statusWestReadyPai7.scaled(ui->statusWestReadyPai7->size(), Qt::IgnoreAspectRatio);
+                ui->statusWestReadyPai7->setScaledContents(true);
+                ui->statusWestReadyPai7->setPixmap(statusWestReadyPai7);
+                //个数显示
+                ui->statusWestReadyNum7->setText(paiCntStr);
+            }else if(cnt == 7){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusWestReadyPai8(":/image/l" + paiResultStr + ".png");
+                statusWestReadyPai8.scaled(ui->statusWestReadyPai8->size(), Qt::IgnoreAspectRatio);
+                ui->statusWestReadyPai8->setScaledContents(true);
+                ui->statusWestReadyPai8->setPixmap(statusWestReadyPai8);
+                //个数显示
+                ui->statusWestReadyNum8->setText(paiCntStr);
+            }else if(cnt == 8){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusWestReadyPai9(":/image/l" + paiResultStr + ".png");
+                statusWestReadyPai9.scaled(ui->statusWestReadyPai9->size(), Qt::IgnoreAspectRatio);
+                ui->statusWestReadyPai9->setScaledContents(true);
+                ui->statusWestReadyPai9->setPixmap(statusWestReadyPai9);
+                //个数显示
+                ui->statusWestReadyNum9->setText(paiCntStr);
+            }else if(cnt == 9){
+                int paiResult = i.first;
+                int paiCnt = i.second;
+
+                QString paiResultStr = QString::number(paiResult);
+                QString paiCntStr = QString::number(paiCnt);
+                //牌显示
+                QPixmap statusWestReadyPai10(":/image/l" + paiResultStr + ".png");
+                statusWestReadyPai10.scaled(ui->statusWestReadyPai10->size(), Qt::IgnoreAspectRatio);
+                ui->statusWestReadyPai10->setScaledContents(true);
+                ui->statusWestReadyPai10->setPixmap(statusWestReadyPai10);
+                //个数显示
+                ui->statusWestReadyNum10->setText(paiCntStr);
+            }
+            cnt++;
+        }
+
+    }
+}
+
+void UIMainWindows::clearHandStatus()
+{        
+//    ui->statusSouthReady->clear();
+    ui->statusSouthChow->clear();
+    ui->statusSouthPong->clear();
+    ui->statusSouthKong->clear();
+    ui->statusSouthWin->clear();
+    ui->statusSouthCheck->clear();
+
+//    ui->statusEastReady->clear();
+    ui->statusEastChow->clear();
+    ui->statusEastPong->clear();
+    ui->statusEastKong->clear();
+    ui->statusEastWin->clear();
+    ui->statusEastCheck->clear();
+
+//    ui->statusNorthReady->clear();
+    ui->statusNorthChow->clear();
+    ui->statusNorthPong->clear();
+    ui->statusNorthKong->clear();
+    ui->statusNorthWin->clear();
+    ui->statusNorthCheck->clear();
+
+//    ui->statusWestReady->clear();
+    ui->statusWestChow->clear();
+    ui->statusWestPong->clear();
+    ui->statusWestKong->clear();
+    ui->statusWestWin->clear();
+    ui->statusWestCheck->clear();
+
+    //听牌
+    //南
+    ui->statusSouthReady->clear();
+
+    ui->statusSouthReadyNum1->clear();
+    ui->statusSouthReadyNum2->clear();
+    ui->statusSouthReadyNum3->clear();
+    ui->statusSouthReadyNum4->clear();
+    ui->statusSouthReadyNum5->clear();
+    ui->statusSouthReadyNum6->clear();
+    ui->statusSouthReadyNum7->clear();
+    ui->statusSouthReadyNum8->clear();
+    ui->statusSouthReadyNum9->clear();
+    ui->statusSouthReadyNum10->clear();
+
+    ui->statusSouthReadyPai1->clear();
+    ui->statusSouthReadyPai2->clear();
+    ui->statusSouthReadyPai3->clear();
+    ui->statusSouthReadyPai4->clear();
+    ui->statusSouthReadyPai5->clear();
+    ui->statusSouthReadyPai6->clear();
+    ui->statusSouthReadyPai7->clear();
+    ui->statusSouthReadyPai8->clear();
+    ui->statusSouthReadyPai9->clear();
+    ui->statusSouthReadyPai10->clear();
+    //东
+    ui->statusEastReady->clear();
+
+    ui->statusEastReadyNum1->clear();
+    ui->statusEastReadyNum2->clear();
+    ui->statusEastReadyNum3->clear();
+    ui->statusEastReadyNum4->clear();
+    ui->statusEastReadyNum5->clear();
+    ui->statusEastReadyNum6->clear();
+    ui->statusEastReadyNum7->clear();
+    ui->statusEastReadyNum8->clear();
+    ui->statusEastReadyNum9->clear();
+    ui->statusEastReadyNum10->clear();
+
+    ui->statusEastReadyPai1->clear();
+    ui->statusEastReadyPai2->clear();
+    ui->statusEastReadyPai3->clear();
+    ui->statusEastReadyPai4->clear();
+    ui->statusEastReadyPai5->clear();
+    ui->statusEastReadyPai6->clear();
+    ui->statusEastReadyPai7->clear();
+    ui->statusEastReadyPai8->clear();
+    ui->statusEastReadyPai9->clear();
+    ui->statusEastReadyPai10->clear();
+    //北
+    ui->statusNorthReady->clear();
+
+    ui->statusNorthReadyNum1->clear();
+    ui->statusNorthReadyNum2->clear();
+    ui->statusNorthReadyNum3->clear();
+    ui->statusNorthReadyNum4->clear();
+    ui->statusNorthReadyNum5->clear();
+    ui->statusNorthReadyNum6->clear();
+    ui->statusNorthReadyNum7->clear();
+    ui->statusNorthReadyNum8->clear();
+    ui->statusNorthReadyNum9->clear();
+    ui->statusNorthReadyNum10->clear();
+
+    ui->statusNorthReadyPai1->clear();
+    ui->statusNorthReadyPai2->clear();
+    ui->statusNorthReadyPai3->clear();
+    ui->statusNorthReadyPai4->clear();
+    ui->statusNorthReadyPai5->clear();
+    ui->statusNorthReadyPai6->clear();
+    ui->statusNorthReadyPai7->clear();
+    ui->statusNorthReadyPai8->clear();
+    ui->statusNorthReadyPai9->clear();
+    ui->statusNorthReadyPai10->clear();
+
+    //西
+    ui->statusWestReady->clear();
+
+    ui->statusWestReadyNum1->clear();
+    ui->statusWestReadyNum2->clear();
+    ui->statusWestReadyNum3->clear();
+    ui->statusWestReadyNum4->clear();
+    ui->statusWestReadyNum5->clear();
+    ui->statusWestReadyNum6->clear();
+    ui->statusWestReadyNum7->clear();
+    ui->statusWestReadyNum8->clear();
+    ui->statusWestReadyNum9->clear();
+    ui->statusWestReadyNum10->clear();
+
+    ui->statusWestReadyPai1->clear();
+    ui->statusWestReadyPai2->clear();
+    ui->statusWestReadyPai3->clear();
+    ui->statusWestReadyPai4->clear();
+    ui->statusWestReadyPai5->clear();
+    ui->statusWestReadyPai6->clear();
+    ui->statusWestReadyPai7->clear();
+    ui->statusWestReadyPai8->clear();
+    ui->statusWestReadyPai9->clear();
+    ui->statusWestReadyPai10->clear();
+}
+
+void UIMainWindows::clearReady()
+{
+    if(mopaiWanjia == 0){
+
+        //南
+        ui->statusSouthReady->clear();
+
+        ui->statusSouthReadyNum1->clear();
+        ui->statusSouthReadyNum2->clear();
+        ui->statusSouthReadyNum3->clear();
+        ui->statusSouthReadyNum4->clear();
+        ui->statusSouthReadyNum5->clear();
+        ui->statusSouthReadyNum6->clear();
+        ui->statusSouthReadyNum7->clear();
+        ui->statusSouthReadyNum8->clear();
+        ui->statusSouthReadyNum9->clear();
+        ui->statusSouthReadyNum10->clear();
+
+        ui->statusSouthReadyPai1->clear();
+        ui->statusSouthReadyPai2->clear();
+        ui->statusSouthReadyPai3->clear();
+        ui->statusSouthReadyPai4->clear();
+        ui->statusSouthReadyPai5->clear();
+        ui->statusSouthReadyPai6->clear();
+        ui->statusSouthReadyPai7->clear();
+        ui->statusSouthReadyPai8->clear();
+        ui->statusSouthReadyPai9->clear();
+        ui->statusSouthReadyPai10->clear();
+    }else if(mopaiWanjia == 1){
+        //东
+        ui->statusEastReady->clear();
+
+        ui->statusEastReadyNum1->clear();
+        ui->statusEastReadyNum2->clear();
+        ui->statusEastReadyNum3->clear();
+        ui->statusEastReadyNum4->clear();
+        ui->statusEastReadyNum5->clear();
+        ui->statusEastReadyNum6->clear();
+        ui->statusEastReadyNum7->clear();
+        ui->statusEastReadyNum8->clear();
+        ui->statusEastReadyNum9->clear();
+        ui->statusEastReadyNum10->clear();
+
+        ui->statusEastReadyPai1->clear();
+        ui->statusEastReadyPai2->clear();
+        ui->statusEastReadyPai3->clear();
+        ui->statusEastReadyPai4->clear();
+        ui->statusEastReadyPai5->clear();
+        ui->statusEastReadyPai6->clear();
+        ui->statusEastReadyPai7->clear();
+        ui->statusEastReadyPai8->clear();
+        ui->statusEastReadyPai9->clear();
+        ui->statusEastReadyPai10->clear();
+    }else if(mopaiWanjia == 2){
+        //北
+        ui->statusNorthReady->clear();
+
+        ui->statusNorthReadyNum1->clear();
+        ui->statusNorthReadyNum2->clear();
+        ui->statusNorthReadyNum3->clear();
+        ui->statusNorthReadyNum4->clear();
+        ui->statusNorthReadyNum5->clear();
+        ui->statusNorthReadyNum6->clear();
+        ui->statusNorthReadyNum7->clear();
+        ui->statusNorthReadyNum8->clear();
+        ui->statusNorthReadyNum9->clear();
+        ui->statusNorthReadyNum10->clear();
+
+        ui->statusNorthReadyPai1->clear();
+        ui->statusNorthReadyPai2->clear();
+        ui->statusNorthReadyPai3->clear();
+        ui->statusNorthReadyPai4->clear();
+        ui->statusNorthReadyPai5->clear();
+        ui->statusNorthReadyPai6->clear();
+        ui->statusNorthReadyPai7->clear();
+        ui->statusNorthReadyPai8->clear();
+        ui->statusNorthReadyPai9->clear();
+        ui->statusNorthReadyPai10->clear();
+    }else if(mopaiWanjia == 3){
+        //西
+        ui->statusWestReady->clear();
+
+        ui->statusWestReadyNum1->clear();
+        ui->statusWestReadyNum2->clear();
+        ui->statusWestReadyNum3->clear();
+        ui->statusWestReadyNum4->clear();
+        ui->statusWestReadyNum5->clear();
+        ui->statusWestReadyNum6->clear();
+        ui->statusWestReadyNum7->clear();
+        ui->statusWestReadyNum8->clear();
+        ui->statusWestReadyNum9->clear();
+        ui->statusWestReadyNum10->clear();
+
+        ui->statusWestReadyPai1->clear();
+        ui->statusWestReadyPai2->clear();
+        ui->statusWestReadyPai3->clear();
+        ui->statusWestReadyPai4->clear();
+        ui->statusWestReadyPai5->clear();
+        ui->statusWestReadyPai6->clear();
+        ui->statusWestReadyPai7->clear();
+        ui->statusWestReadyPai8->clear();
+        ui->statusWestReadyPai9->clear();
+        ui->statusWestReadyPai10->clear();
+    }
+}
+
+void UIMainWindows::bankerDisplay()
+{
+    QPixmap bankerNan(":/image/nan2.png");
+    ui->bankerNan->setPixmap(bankerNan);
+    ui->bankerNan->setFixedSize(bankerNan.size());
+  //  qDebug()<<"nan:"<<ui->bankerNan->height()<<ui->bankerNan->width();
+    ui->bankerNan->setMask(bankerNan.mask()); //遮罩
+   ui->bankerNan->setGeometry(589, 285, ui->bankerNan->width(), ui->bankerNan->height());
+
+   QPixmap bankerBei(":/image/bei2.png");
+   ui->bankerBei->setPixmap(bankerBei);
+   ui->bankerBei->setFixedSize(bankerBei.size());
+   //qDebug()<<"nan:"<<ui->bankerBei->height()<<ui->bankerBei->width();
+   ui->bankerBei->setMask(bankerBei.mask()); //遮罩
+  ui->bankerBei->setGeometry(500, 280, ui->bankerBei->width(), ui->bankerBei->height());
+
+  QPixmap bankerXi(":/image/xi2.png");
+  ui->bankerXi->setPixmap(bankerXi);
+  ui->bankerXi->setFixedSize(bankerXi.size());
+  //qDebug()<<"nan:"<<ui->bankerXi->height()<<ui->bankerXi->width();
+  ui->bankerXi->setMask(bankerXi.mask()); //遮罩
+ ui->bankerXi->setGeometry(508, 281, ui->bankerXi->width(), ui->bankerXi->height());
+
+ QPixmap bankerDong(":/image/dong2.png");
+ ui->bankerDong->setPixmap(bankerDong);
+ ui->bankerDong->setFixedSize(bankerDong.size());
+ //qDebug()<<"nan:"<<ui->bankerDong->height()<<ui->bankerDong->width();
+ ui->bankerDong->setMask(bankerDong.mask()); //遮罩
+ ui->bankerDong->setGeometry(506, 366, ui->bankerDong->width(), ui->bankerDong->height());
+
+}
+//庄家消失
+void UIMainWindows::clearBanker()
+{
+    ui->bankerDong->clear();
+    ui->bankerNan->clear();
+    ui->bankerXi->clear();
+    ui->bankerBei->clear();
+
+}
+//庄家展示
+void UIMainWindows::bankerDirectionDisplay()
+{
+    //获得庄家
+    if(zhuangjia == 0){
+        QPixmap bankerPrompt(":/image/dong.png");
+        bankerPrompt.scaled(ui->bankerPrompt->size(), Qt::IgnoreAspectRatio);
+        ui->bankerPrompt->setScaledContents(true);
+        ui->bankerPrompt->setPixmap(bankerPrompt);
+    }else if(zhuangjia == 1){
+        QPixmap bankerPrompt(":/image/nan.png");
+        bankerPrompt.scaled(ui->bankerPrompt->size(), Qt::IgnoreAspectRatio);
+        ui->bankerPrompt->setScaledContents(true);
+        ui->bankerPrompt->setPixmap(bankerPrompt);
+    }else if(zhuangjia == 2){
+        QPixmap bankerPrompt(":/image/xi.png");
+        bankerPrompt.scaled(ui->bankerPrompt->size(), Qt::IgnoreAspectRatio);
+        ui->bankerPrompt->setScaledContents(true);
+        ui->bankerPrompt->setPixmap(bankerPrompt);
+    }else if(zhuangjia == 3){
+        QPixmap bankerPrompt(":/image/bei.png");
+        bankerPrompt.scaled(ui->bankerPrompt->size(), Qt::IgnoreAspectRatio);
+        ui->bankerPrompt->setScaledContents(true);
+        ui->bankerPrompt->setPixmap(bankerPrompt);
+    }
+}
+
+//初始化游戏界面
+void UIMainWindows::initGamePanel()
+{
+//    //选庄
+    QFont font;
+    font.setPointSize(15);
+//    ui->bankerLabel->setFont(font);
+//    ui->bankerComboBox->setEditable(true);//可以编辑
+//    ui->bankerComboBox->lineEdit()->setPlaceholderText(tr("请先选庄"));
+//    ui->bankerComboBox->addItem(tr("南"));
+//    ui->bankerComboBox->addItem(tr("东"));
+//    ui->bankerComboBox->addItem(tr("北"));
+//    ui->bankerComboBox->addItem(tr("西"));
+
+    //测试（选牌）
+    ui->testLabel->setFont(font);
+    ui->testComboBox->setEditable(true);//可以编辑
+    ui->testComboBox->lineEdit()->setPlaceholderText(tr("测试选牌"));
+    ui->testComboBox->addItem(tr("108"));
+    ui->testComboBox->addItem(tr("136"));
+}
+
+void UIMainWindows::initTray()
+{
+    //创建托盘
+    this->initTrayIcon();
+    connect(trayIcon, &QSystemTrayIcon::activated,
+                this, &UIMainWindows::iconActivated);
+    //托盘事件
+    connect(trayShowMainAction, &QAction::triggered,
+            this, &UIMainWindows::showNormal);
+     connect(trayExitAppAction, &QAction::triggered,
+             this, &UIMainWindows::on_exitAppAction);
+    //this->setWindowState((this->windowState() & ~Qt::WindowMinimized) | Qt::WindowActive);
+    this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowSystemMenuHint | Qt::WindowMinimizeButtonHint);
+
+}
+//安装事件过滤器
+void UIMainWindows::initInstallEventFilter()
+{
+    //事件过滤器
+     //手牌
+     ui->handSouth1->installEventFilter(this);
+     ui->handSouth2->installEventFilter(this);
+     ui->handSouth3->installEventFilter(this);
+     ui->handSouth4->installEventFilter(this);
+     ui->handSouth5->installEventFilter(this);
+     ui->handSouth6->installEventFilter(this);
+     ui->handSouth7->installEventFilter(this);
+     ui->handSouth8->installEventFilter(this);
+     ui->handSouth9->installEventFilter(this);
+     ui->handSouth10->installEventFilter(this);
+     ui->handSouth11->installEventFilter(this);
+     ui->handSouth12->installEventFilter(this);
+     ui->handSouth13->installEventFilter(this);
+     ui->handSouth14->installEventFilter(this);
+     ui->handSouth15->installEventFilter(this);
+     ui->handSouth16->installEventFilter(this);
+     ui->handSouth17->installEventFilter(this);
+     ui->handSouth18->installEventFilter(this);
+
+     ui->handEast1->installEventFilter(this);
+     ui->handEast2->installEventFilter(this);
+     ui->handEast3->installEventFilter(this);
+     ui->handEast4->installEventFilter(this);
+     ui->handEast5->installEventFilter(this);
+     ui->handEast6->installEventFilter(this);
+     ui->handEast7->installEventFilter(this);
+     ui->handEast8->installEventFilter(this);
+     ui->handEast9->installEventFilter(this);
+     ui->handEast10->installEventFilter(this);
+     ui->handEast11->installEventFilter(this);
+     ui->handEast12->installEventFilter(this);
+     ui->handEast13->installEventFilter(this);
+     ui->handEast14->installEventFilter(this);
+     ui->handEast15->installEventFilter(this);
+     ui->handEast16->installEventFilter(this);
+     ui->handEast17->installEventFilter(this);
+     ui->handEast18->installEventFilter(this);
+
+     ui->handNorth1->installEventFilter(this);
+     ui->handNorth2->installEventFilter(this);
+     ui->handNorth3->installEventFilter(this);
+     ui->handNorth4->installEventFilter(this);
+     ui->handNorth5->installEventFilter(this);
+     ui->handNorth6->installEventFilter(this);
+     ui->handNorth7->installEventFilter(this);
+     ui->handNorth8->installEventFilter(this);
+     ui->handNorth9->installEventFilter(this);
+     ui->handNorth10->installEventFilter(this);
+     ui->handNorth11->installEventFilter(this);
+     ui->handNorth12->installEventFilter(this);
+     ui->handNorth13->installEventFilter(this);
+     ui->handNorth14->installEventFilter(this);
+     ui->handNorth15->installEventFilter(this);
+     ui->handNorth16->installEventFilter(this);
+     ui->handNorth17->installEventFilter(this);
+     ui->handNorth18->installEventFilter(this);
+
+     ui->handWest1->installEventFilter(this);
+     ui->handWest2->installEventFilter(this);
+     ui->handWest3->installEventFilter(this);
+     ui->handWest4->installEventFilter(this);
+     ui->handWest5->installEventFilter(this);
+     ui->handWest6->installEventFilter(this);
+     ui->handWest7->installEventFilter(this);
+     ui->handWest8->installEventFilter(this);
+     ui->handWest9->installEventFilter(this);
+     ui->handWest10->installEventFilter(this);
+     ui->handWest11->installEventFilter(this);
+     ui->handWest12->installEventFilter(this);
+     ui->handWest13->installEventFilter(this);
+     ui->handWest14->installEventFilter(this);
+     ui->handWest15->installEventFilter(this);
+     ui->handWest16->installEventFilter(this);
+     ui->handWest17->installEventFilter(this);
+     ui->handWest18->installEventFilter(this);
+
+     //摸牌
+     ui->drawSouth1_2->installEventFilter(this);
+     ui->drawSouth1_3->installEventFilter(this);
+     ui->drawSouth1_4->installEventFilter(this);
+     ui->drawSouth1_5->installEventFilter(this);
+     ui->drawSouth1_6->installEventFilter(this);
+     ui->drawSouth1_7->installEventFilter(this);
+     ui->drawSouth1_8->installEventFilter(this);
+     ui->drawSouth1_9->installEventFilter(this);
+     ui->drawSouth1_10->installEventFilter(this);
+     ui->drawSouth1_11->installEventFilter(this);
+     ui->drawSouth1_12->installEventFilter(this);
+     ui->drawSouth1_13->installEventFilter(this);
+
+     ui->drawSouth2_2->installEventFilter(this);
+     ui->drawSouth2_3->installEventFilter(this);
+     ui->drawSouth2_4->installEventFilter(this);
+     ui->drawSouth2_5->installEventFilter(this);
+     ui->drawSouth2_6->installEventFilter(this);
+     ui->drawSouth2_7->installEventFilter(this);
+     ui->drawSouth2_8->installEventFilter(this);
+     ui->drawSouth2_9->installEventFilter(this);
+     ui->drawSouth2_10->installEventFilter(this);
+     ui->drawSouth2_11->installEventFilter(this);
+     ui->drawSouth2_12->installEventFilter(this);
+     ui->drawSouth2_13->installEventFilter(this);
+
+     ui->drawWest1_2->installEventFilter(this);
+     ui->drawWest1_3->installEventFilter(this);
+     ui->drawWest1_4->installEventFilter(this);
+     ui->drawWest1_5->installEventFilter(this);
+     ui->drawWest1_6->installEventFilter(this);
+     ui->drawWest1_7->installEventFilter(this);
+     ui->drawWest1_8->installEventFilter(this);
+     ui->drawWest1_9->installEventFilter(this);
+     ui->drawWest1_10->installEventFilter(this);
+     ui->drawWest1_11->installEventFilter(this);
+     ui->drawWest1_12->installEventFilter(this);
+     ui->drawWest1_13->installEventFilter(this);
+
+     ui->drawWest2_2->installEventFilter(this);
+     ui->drawWest2_3->installEventFilter(this);
+     ui->drawWest2_4->installEventFilter(this);
+     ui->drawWest2_5->installEventFilter(this);
+     ui->drawWest2_6->installEventFilter(this);
+     ui->drawWest2_7->installEventFilter(this);
+     ui->drawWest2_8->installEventFilter(this);
+     ui->drawWest2_9->installEventFilter(this);
+     ui->drawWest2_10->installEventFilter(this);
+     ui->drawWest2_11->installEventFilter(this);
+     ui->drawWest2_12->installEventFilter(this);
+     ui->drawWest2_13->installEventFilter(this);
+
+
+
+     ui->drawNorth1_2->installEventFilter(this);
+     ui->drawNorth1_3->installEventFilter(this);
+     ui->drawNorth1_4->installEventFilter(this);
+     ui->drawNorth1_5->installEventFilter(this);
+     ui->drawNorth1_6->installEventFilter(this);
+     ui->drawNorth1_7->installEventFilter(this);
+     ui->drawNorth1_8->installEventFilter(this);
+     ui->drawNorth1_9->installEventFilter(this);
+     ui->drawNorth1_10->installEventFilter(this);
+     ui->drawNorth1_11->installEventFilter(this);
+     ui->drawNorth1_12->installEventFilter(this);
+     ui->drawNorth1_13->installEventFilter(this);
+
+     ui->drawNorth2_2->installEventFilter(this);
+     ui->drawNorth2_3->installEventFilter(this);
+     ui->drawNorth2_4->installEventFilter(this);
+     ui->drawNorth2_5->installEventFilter(this);
+     ui->drawNorth2_6->installEventFilter(this);
+     ui->drawNorth2_7->installEventFilter(this);
+     ui->drawNorth2_8->installEventFilter(this);
+     ui->drawNorth2_9->installEventFilter(this);
+     ui->drawNorth2_10->installEventFilter(this);
+     ui->drawNorth2_11->installEventFilter(this);
+     ui->drawNorth2_12->installEventFilter(this);
+     ui->drawNorth2_13->installEventFilter(this);
+
+
+     ui->drawEast1_2->installEventFilter(this);
+     ui->drawEast1_3->installEventFilter(this);
+     ui->drawEast1_4->installEventFilter(this);
+     ui->drawEast1_5->installEventFilter(this);
+     ui->drawEast1_6->installEventFilter(this);
+     ui->drawEast1_7->installEventFilter(this);
+     ui->drawEast1_8->installEventFilter(this);
+     ui->drawEast1_9->installEventFilter(this);
+     ui->drawEast1_10->installEventFilter(this);
+     ui->drawEast1_11->installEventFilter(this);
+     ui->drawEast1_12->installEventFilter(this);
+     ui->drawEast1_13->installEventFilter(this);
+
+     ui->drawEast2_2->installEventFilter(this);
+     ui->drawEast2_3->installEventFilter(this);
+     ui->drawEast2_4->installEventFilter(this);
+     ui->drawEast2_5->installEventFilter(this);
+     ui->drawEast2_6->installEventFilter(this);
+     ui->drawEast2_7->installEventFilter(this);
+     ui->drawEast2_8->installEventFilter(this);
+     ui->drawEast2_9->installEventFilter(this);
+     ui->drawEast2_10->installEventFilter(this);
+     ui->drawEast2_11->installEventFilter(this);
+     ui->drawEast2_12->installEventFilter(this);
+     ui->drawEast2_13->installEventFilter(this);
+
+
+
+     //碰
+     ui->statusSouthPong->installEventFilter(this);
+     ui->statusEastPong->installEventFilter(this);
+     ui->statusNorthPong->installEventFilter(this);
+     ui->statusWestPong->installEventFilter(this);
+    //杠
+     ui->statusSouthKong->installEventFilter(this);
+     ui->statusEastKong->installEventFilter(this);
+     ui->statusNorthKong->installEventFilter(this);
+     ui->statusWestKong->installEventFilter(this);
+     //过
+     ui->statusSouthCheck->installEventFilter(this);
+     ui->statusEastCheck->installEventFilter(this);
+     ui->statusNorthCheck->installEventFilter(this);
+     ui->statusWestCheck->installEventFilter(this);
+     //吃
+     ui->statusSouthChow->installEventFilter(this);
+     ui->statusEastChow->installEventFilter(this);
+     ui->statusNorthChow->installEventFilter(this);
+     ui->statusWestChow->installEventFilter(this);
+     //胡
+     ui->statusSouthWin->installEventFilter(this);
+     ui->statusEastWin->installEventFilter(this);
+     ui->statusNorthWin->installEventFilter(this);
+     ui->statusWestWin->installEventFilter(this);
+
+
+     //撤回
+     ui->gamePage->installEventFilter(this);
+
+     //庄家
+     ui->bankerDong->installEventFilter(this);
+     ui->bankerNan->installEventFilter(this);
+     ui->bankerXi->installEventFilter(this);
+     ui->bankerBei->installEventFilter(this);
+}
+//默认设置
+void UIMainWindows::initConfig()
+{
+    //碰
+     ui->pongCheckBox->setChecked(true);
+     //明杠
+     ui->kongCheckBox->setChecked(true);
+     //暗杠
+     ui->concealedkongCheckBox->setChecked(true);
+     ui->gangshouzhongpaiCheckBox->setChecked(true);//碰后杠
+
+
+    ///启牌
+     QFont font;
+     font.setPointSize(13);
+     //跳牌方式
+     ui->tiaopaiComboBox->setFont(font);
+     ui->tiaopaiComboBox->addItem(tr("隔跳"));
+     ui->tiaopaiComboBox->addItem(tr("平跳"));
+     ui->tiaopaiComboBox->addItem(tr("上下跳"));
+
+     //预测牌数
+    ui->yuceComboBox->setFont(font);
+    ui->yuceComboBox->addItem(tr("10"));
+    ui->yuceComboBox->addItem(tr("9"));
+    ui->yuceComboBox->addItem(tr("8"));
+    ui->yuceComboBox->addItem(tr("7"));
+    ui->yuceComboBox->addItem(tr("6"));
+    ui->yuceComboBox->addItem(tr("5"));
+    ui->yuceComboBox->addItem(tr("4"));
+    ui->yuceComboBox->addItem(tr("3"));
+    ui->yuceComboBox->addItem(tr("2"));
+    ui->yuceComboBox->addItem(tr("1"));
+
+    ///胡牌
+    ///一炮多响
+   // ui->yipaoduoxiangCheckBox->setChecked(true);
+    //抢杠胡
+    ui->qiangganghuCheckBox->setChecked(true);
+    //小七对
+    ui->xiaoqiduiCheckBox->setChecked(true);
+    //缺一门
+    ui->queyimenCheckBox->setChecked(true);
+    //二层牌墙
+    ui->ercengRadioButton->setChecked(true);
+}
+
+void UIMainWindows::initUselessConfig()
+{
+    ui->yipaoduoxiangCheckBox->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+
+    ui->sancengRadioButton->setStyleSheet("QRadioButton{color:rgba(255, 255, 255, 20%)}");
+
+    //->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_2->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_3->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_4->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_5->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_6->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_11->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_12->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_13->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_14->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_16->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_17->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_18->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_19->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_20->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_21->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_22->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_23->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_24->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_25->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_26->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_27->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_28->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_29->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_31->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_32->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_34->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_35->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_37->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_38->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_42->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_43->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_44->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_45->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_46->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_47->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_48->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_49->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_50->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_51->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_52->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_53->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_54->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_55->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_56->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_57->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_58->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_59->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_60->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_61->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_62->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_63->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_64->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_65->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_66->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_67->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_68->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_69->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_70->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_71->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_72->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_73->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_74->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_75->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_76->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_77->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_78->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_79->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_80->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_81->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_82->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_83->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_84->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_85->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_86->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_87->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_88->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_89->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_90->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_91->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_92->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_93->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_94->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_95->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_96->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_97->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_98->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_99->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_100->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_101->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_102->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_103->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_104->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_105->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_106->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+    ui->checkBox_107->setStyleSheet("QCheckBox{color:rgba(255, 255, 255, 20%)}");
+
+}
+
+void UIMainWindows::getConfig()
+{
+
+    //获得配置信息
+
+    //清空暗杠的情况
+    memset(concealedKongNum, 0, sizeof(concealedKongNum));
+
+
+    ///打牌
+    //碰牌设置
+    if(ui->pongCheckBox->isChecked() == true){
+        systemConfig.pongpai = 1;
+    }else if(ui->pongCheckBox->isChecked() == false){
+        systemConfig.pongpai = 0;
+    }
+    //吃牌设置
+    if(ui->chowCheckBox->isChecked() == true){
+        systemConfig.chipai = 1;
+    }else if(ui->chowCheckBox->isChecked() == false){
+        systemConfig.chipai = 0;
+    }
+    //杠牌设置
+    //明杠
+    if(ui->kongCheckBox->isChecked() == true){
+        systemConfig.minggang = 1;
+    }else if(ui->kongCheckBox->isChecked() == false){
+         systemConfig.minggang = 0;
+    }
+    //暗杠
+    if(ui->concealedkongCheckBox->isChecked() == true){
+        systemConfig.angang = 1;
+    }else if(ui->concealedkongCheckBox->isChecked() == false){
+        systemConfig.angang = 0;
+    }
+    //杠手中牌
+    if(ui->gangshouzhongpaiCheckBox->isChecked() == true){
+        systemConfig.gangshouzhongpai = 1;
+    }else if(ui->gangshouzhongpaiCheckBox->isChecked() == false){
+        systemConfig.gangshouzhongpai = 0;
+    }
+
+    ///启牌
+    //设置跳牌
+    QString tiaopaiStr = ui->tiaopaiComboBox->currentText();
+    systemConfig.tiaopai = tiaopaiStr;
+
+    //获得预测牌
+    QString yucePaiStr  = ui->yuceComboBox->currentText();
+    systemConfig.yucepai = yucePaiStr.toInt();
+    ///胡牌
+    /// //抢杠胡
+    if(ui->qiangganghuCheckBox->isChecked() == true){
+        systemConfig.qiangganghu = 1;
+    }else if(ui->qiangganghuCheckBox->isChecked() == false){
+        systemConfig.qiangganghu = 0;
+    }
+    //二五八将
+    if(ui->erwubajiangCheckBox->isChecked() == true){
+        systemConfig.erwubajiang = 1;
+    }else if(ui->erwubajiangCheckBox->isChecked() == false){
+       systemConfig.erwubajiang = 0;
+    }
+    //一炮多响
+//    if(ui->yipaoduoxiangCheckBox->isChecked() == true){
+//        systemConfig.yipaoduoxiang = 1;
+ //  }else if(ui->yipaoduoxiangCheckBox->isChecked() == false){
+ //        systemConfig.yipaoduoxiang = 0;
+  //  }
+    //小七对
+    if(ui->xiaoqiduiCheckBox->isChecked() == true){
+        systemConfig.xiaoqidui = 1;
+    }else if(ui->xiaoqiduiCheckBox->isChecked() == false){
+        systemConfig.xiaoqidui = 0;
+    }
+    //只限自摸
+    if(ui->zhixianzimoCheckBox->isChecked() == true){
+        systemConfig.zhixianzimo = 1;
+    }else if(ui->zhixianzimoCheckBox->isChecked() == false){
+         systemConfig.zhixianzimo = 0;
+    }
+    //缺一门
+    if(ui->queyimenCheckBox->isChecked() == true){
+        systemConfig.queyimen = 1;
+    }else if(ui->queyimenCheckBox->isChecked() == false){
+        systemConfig.queyimen = 0;
+    }
+
+
+}
+
+
+void UIMainWindows::setPredictionNorthMjs(const std::list<Mj> &value)
+{
+    predictionNorthMjs = value;
+}
+
+void UIMainWindows::clear136Information()
+{
+    //清空136张残留的信息
+    ui->drawSouth1_15->clear();
+    ui->drawSouth2_15->clear();
+    ui->drawSouth1_16->clear();
+    ui->drawSouth2_16->clear();
+    ui->drawSouth1_17->clear();
+    ui->drawSouth2_17->clear();
+    ui->drawSouthNumber1_15->clear();
+    ui->drawSouthNumber1_16->clear();
+    ui->drawSouthNumber1_17->clear();
+
+    ui->drawNorth1_15->clear();
+    ui->drawNorth2_15->clear();
+    ui->drawNorth1_16->clear();
+    ui->drawNorth2_16->clear();
+    ui->drawNorth1_17->clear();
+    ui->drawNorth2_17->clear();
+    ui->drawNorthNumber1_15->clear();
+    ui->drawNorthNumber1_16->clear();
+    ui->drawNorthNumber1_17->clear();
+
+    ui->drawWest1_15->clear();
+    ui->drawWest2_15->clear();
+    ui->drawWest1_16->clear();
+    ui->drawWest2_16->clear();
+    ui->drawWest1_17->clear();
+    ui->drawWest2_17->clear();
+    ui->drawWestNumber15->clear();
+    ui->drawWestNumber16->clear();
+    ui->drawWestNumber17->clear();
+
+    ui->drawEast1_15->clear();
+    ui->drawEast2_15->clear();
+    ui->drawEast1_16->clear();
+    ui->drawEast2_16->clear();
+    ui->drawEast1_17->clear();
+    ui->drawEast2_17->clear();
+    ui->drawEastNumber1_15->clear();
+    ui->drawEastNumber1_16->clear();
+    ui->drawEastNumber1_17->clear();
+}
+//摸牌
+void UIMainWindows::draw()
+{
+
+    qDebug()<<"dapaiWanjiaStack.size摸牌 前:"<<dapaiWanjiaStack.size();
+    qDebug()<<"playedPaiStack.size摸牌 前:"<<playedPaiStack.size();
+
+    //判断是否结束游戏
+    if(discardMjs.size() == majhongTotal.size() - 52){
+        return;
+    }
+
+    //查找将摸起的牌
+    Mj tempPai;
+    findPai(tempPai);
+    clearDrawDisplay();
+    //更新下次摸牌的位置
+    updatePai();
+
+    bool isNapai = true;//可以被拿
+    for(auto i:majhongTaken){//查找该牌是否已被拿
+        if(i.getId() == tempPai.getId()){//找到
+            isNapai = false;
+        }
+    }
+
+    //可以摸牌，摸到的牌，分配到玩家手里
+    if(isNapai == true){
+        qDebug()<<"isNapai: Yes";
+        //清空之前的听牌
+        isSouthReady = false;
+        isEastReady = false;
+        isNorthReady = false;
+        isWestReady = false;
+
+        int kongCnt = 0;              
+
+        //把牌加入手牌,并重新展示手牌
+        if(mopaiWanjia == 0){
+            handSouthMjs.push_back(tempPai);
+
+            isDraw = true;
+            southHandDisplay(handSouthMjs);
+            isDraw = false;
+
+            if(systemConfig.angang == 1){
+                isConcealedKong(handSouthMjs, 0);//检测暗杠
+                if(concealedKongNum[0] != 0){
+                   KongDisplay();
+                }
+            }
+
+
+            //检测听牌
+            clearReady();
+            isReady();
+
+            //检测胡牌
+            isWin();
+
+             //mopaiWanjia = 1;
+            updateMopaiWanjia();
+        }else if(mopaiWanjia == 1){
+            handEastMjs.push_back(tempPai);
+
+            isDraw = true;
+            eastHandDisplay(handEastMjs);
+            isDraw = false;
+
+            if(systemConfig.angang == 1){
+                isConcealedKong(handEastMjs, 1);//检测暗杠
+                if(concealedKongNum[1] != 0){
+                   KongDisplay();
+                }
+            }
+ qDebug()<<"东：摸牌测试1:";
+            //检测听牌
+            clearReady();
+            isReady();
+ qDebug()<<"东：摸牌测试2";
+            //检测胡牌
+            isWin();
+
+          // mopaiWanjia = 2;
+            updateMopaiWanjia();
+qDebug()<<"东：摸牌测试3";
+        }else if(mopaiWanjia == 2){
+            handNorthMjs.push_back(tempPai);
+
+            isDraw = true;
+            northHandDisplay(handNorthMjs);
+            isDraw = false;
+
+            if(systemConfig.angang == 1){
+                isConcealedKong(handNorthMjs,2);//检测暗杠
+                if(concealedKongNum[2] != 0){
+                   KongDisplay();
+                }
+            }
+
+            //检测听牌
+            clearReady();
+            isReady();
+
+            //检测胡牌
+            isWin();
+
+           //mopaiWanjia = 3;
+            updateMopaiWanjia();
+        }else if(mopaiWanjia == 3){
+            handWestMjs.push_back(tempPai);
+
+            isDraw = true;
+            westHandDisplay(handWestMjs);
+            isDraw = false;
+
+            if(systemConfig.angang == 1){
+                isConcealedKong(handWestMjs, 3);//检测暗杠
+                if(concealedKongNum[3] != 0){
+                   KongDisplay();
+                }
+            }
+
+
+            //检测听牌
+            clearReady();
+            isReady();
+
+            //检测胡牌
+            isWin();
+
+           // mopaiWanjia = 0;
+            updateMopaiWanjia();
+        }
+
+        //把被摸的牌放入摸牌队列中
+        majhongTaken.push_back(tempPai);
+
+        for(list<Mj>::iterator iter = majhongRemain.begin(); iter != majhongRemain.end(); iter++){
+            if(iter->getId() == tempPai.getId()){
+                majhongRemain.erase(iter);
+                break;
+            }
+        }
+
+
+    }else{
+         qDebug()<<"isNapai: No";
+    }
+
+    qDebug()<<"majhongTaken:"<<majhongTaken.size();
+    qDebug()<<"majhongTotal:"<<majhongTotal.size();
+    qDebug()<<"majhongRemain:"<<majhongRemain.size();
+
+    qDebug()<<"dapaiWanjiaStack.size摸牌 后:"<<dapaiWanjiaStack.size();
+    qDebug()<<"playedPaiStack.size摸牌 后:"<<playedPaiStack.size();
+
+}
+
+void UIMainWindows::beginDraw(std::list<Mj>& handOne, std::list<Mj>& handTwo,
+                              std::list<Mj>& handThree, std::list<Mj>& handFour){
+    Mj tempPai;
+
+    //1
+    findPai(tempPai);
+    handOne.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();//
+    findPai(tempPai);
+    handOne.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();//
+    findPai(tempPai);
+    handOne.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();//
+    findPai(tempPai);
+    handOne.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();//
+
+    findPai(tempPai);
+    handTwo.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();//
+    findPai(tempPai);
+    handTwo.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();//
+    findPai(tempPai);
+    handTwo.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();//
+    findPai(tempPai);
+    handTwo.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();//
+
+    findPai(tempPai);
+    handThree.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();//
+    findPai(tempPai);
+    handThree.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();//
+    findPai(tempPai);
+    handThree.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();//
+    findPai(tempPai);
+    handThree.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();//
+
+    findPai(tempPai);
+    handFour.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+    findPai(tempPai);
+    handFour.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+    findPai(tempPai);
+    handFour.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+    findPai(tempPai);
+    handFour.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+
+    //2
+    findPai(tempPai);
+    handOne.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+    findPai(tempPai);
+    handOne.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+    findPai(tempPai);
+    handOne.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+    findPai(tempPai);
+    handOne.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+
+    findPai(tempPai);
+    handTwo.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+    findPai(tempPai);
+    handTwo.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+    findPai(tempPai);
+    handTwo.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+    findPai(tempPai);
+    handTwo.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+
+    findPai(tempPai);///改牌
+    handThree.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+    findPai(tempPai);
+    handThree.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+    findPai(tempPai);
+    handThree.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+    findPai(tempPai);
+    handThree.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+
+    findPai(tempPai);
+    handFour.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+    findPai(tempPai);
+    handFour.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+    findPai(tempPai);
+    handFour.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+    findPai(tempPai);
+    handFour.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+
+    //3
+    findPai(tempPai);
+    handOne.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+    findPai(tempPai);
+    handOne.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+    findPai(tempPai);
+    handOne.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+    findPai(tempPai);
+    handOne.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+
+    findPai(tempPai);
+    handTwo.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+    findPai(tempPai);
+    handTwo.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+    findPai(tempPai);
+    handTwo.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+    findPai(tempPai);
+    handTwo.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+
+    findPai(tempPai);    
+    handThree.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+    findPai(tempPai);
+    handThree.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+    findPai(tempPai);
+    handThree.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+    findPai(tempPai);
+    handThree.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+
+    findPai(tempPai);
+    handFour.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+    findPai(tempPai);
+    handFour.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+    findPai(tempPai);
+    handFour.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+    findPai(tempPai);
+    handFour.push_back(tempPai);
+    clearDrawDisplay();
+    updatePai();
+
+    ///跳牌摸牌
+    if(systemConfig.tiaopai == "隔跳"){//跳牌
+        findPai(tempPai);
+        handOne.push_back(tempPai);
+        clearDrawDisplay();
+        updatePai();
+
+        findPai(tempPai);
+        handTwo.push_back(tempPai);
+        clearDrawDisplay();
+        updatePai();
+
+        findPai(tempPai);
+        handThree.push_back(tempPai);
+        clearDrawDisplay();
+        updatePai();
+
+        findPai(tempPai);
+        handFour.push_back(tempPai);
+        clearDrawDisplay();
+        updatePai();
+
+        findPai(tempPai);
+        handOne.push_back(tempPai);
+        clearDrawDisplay();
+        updatePai();
+
+    }else if(systemConfig.tiaopai == "上下跳"){//上下跳
+        findPai(tempPai);
+        handOne.push_back(tempPai);
+        clearDrawDisplay();
+        updatePai();
+
+        findPai(tempPai);
+        handOne.push_back(tempPai);
+        clearDrawDisplay();
+        updatePai();
+
+        findPai(tempPai);
+        handTwo.push_back(tempPai);
+        clearDrawDisplay();
+        updatePai();
+
+        findPai(tempPai);
+        handThree.push_back(tempPai);
+        clearDrawDisplay();
+        updatePai();
+
+        findPai(tempPai);
+        handFour.push_back(tempPai);
+        clearDrawDisplay();
+        updatePai();
+
+    }else if(systemConfig.tiaopai == "平跳"){//平跳
+        findPai(tempPai);
+        handOne.push_back(tempPai);
+        clearDrawDisplay();
+        updatePai();
+
+        findPai(tempPai);
+        handTwo.push_back(tempPai);
+        clearDrawDisplay();
+        updatePai();
+
+        findPai(tempPai);
+        handOne.push_back(tempPai);
+        clearDrawDisplay();
+        updatePai();
+
+        findPai(tempPai);
+        handThree.push_back(tempPai);
+        clearDrawDisplay();
+        updatePai();
+
+        findPai(tempPai);
+        handFour.push_back(tempPai);
+        clearDrawDisplay();
+        updatePai();
+    }
+
+    //更新下次摸牌的玩家
+    updateMopaiWanjia();
+
+//     if(mopaiWanjia == 0){
+//         mopaiWanjia = 1;
+//     }else if(mopaiWanjia == 1){
+//         mopaiWanjia = 2;
+//     }else if(mopaiWanjia == 2){
+//         mopaiWanjia = 3;
+//     }else if(mopaiWanjia == 3){
+//         mopaiWanjia = 0;
+//     }
+
+    //把第一次摸过的牌放进已摸牌中    
+     for(auto i:handTwo){
+         majhongTaken.push_back(i);        
+
+     }
+
+     for(auto i:handThree){
+         majhongTaken.push_back(i);
+
+     }
+
+     for(auto i:handFour){
+         majhongTaken.push_back(i);
+
+     }
+
+     for(auto i:handOne){
+         majhongTaken.push_back(i);
+     }
+
+     for(list<Mj>::iterator i = majhongTaken.begin();i != majhongTaken.end(); i++){
+         for(list<Mj>::iterator j = majhongRemain.begin();j != majhongRemain.end(); j++){
+             if(i->getId() == j->getId()){
+                 j = majhongRemain.erase(j);
+                 break;
+             }
+         }
+      }
+
+
+    //展示当前打牌位置
+    directionDisplay(dapaiWanjia);
+
+    //预测    
+    yuceDirection  = mopaiDirection;
+    yucePos = mopaiPos;
+    yuceCeng = mopaiCeng;
+
+    yucePai();
+
+    qDebug()<<"majhongRemain.size:"<<majhongRemain.size();
+    qDebug()<<"majhongTaken:"<<majhongTaken.size();
+    qDebug()<<"majhongTotal:"<<majhongTotal.size();
+
+}
+
+
+void UIMainWindows::findPai(Mj& tempPai)
+{
+    //查找将摸起的牌
+    if(mopaiDirection == 0){
+        if(mopaiPos == 0){
+            if(mopaiCeng == 0){
+                tempPai = drawSouthMjs[0];
+            }else if(mopaiCeng == 1){
+                 tempPai = drawSouthMjs[0 + zhangshuSouth/2];
+            }
+        }else if(mopaiPos == 1){
+            if(mopaiCeng == 0){
+                tempPai = drawSouthMjs[1];
+            }else if(mopaiCeng == 1){
+                 tempPai = drawSouthMjs[1 + zhangshuSouth/2];
+            }
+        }else if(mopaiPos == 2){
+            if(mopaiCeng == 0){
+                tempPai = drawSouthMjs[2];
+            }else if(mopaiCeng == 1){
+                 tempPai = drawSouthMjs[2 + zhangshuSouth/2];
+            }
+        }else if(mopaiPos == 3){
+            if(mopaiCeng == 0){
+                tempPai = drawSouthMjs[3];
+            }else if(mopaiCeng == 1){
+                 tempPai = drawSouthMjs[3 + zhangshuSouth/2];
+            }
+        }else if(mopaiPos == 4){
+            if(mopaiCeng == 0){
+                tempPai = drawSouthMjs[4];
+            }else if(mopaiCeng == 1){
+                 tempPai = drawSouthMjs[4 + zhangshuSouth/2];
+            }
+        }else if(mopaiPos == 5){
+            if(mopaiCeng == 0){
+                tempPai = drawSouthMjs[5];
+            }else if(mopaiCeng == 1){
+                 tempPai = drawSouthMjs[5 + zhangshuSouth/2];
+            }
+        }else if(mopaiPos == 6){
+            if(mopaiCeng == 0){
+                tempPai = drawSouthMjs[6];
+            }else if(mopaiCeng == 1){
+                 tempPai = drawSouthMjs[6 + zhangshuSouth/2];
+            }
+        }else if(mopaiPos == 7){
+            if(mopaiCeng == 0){
+                tempPai = drawSouthMjs[7];
+            }else if(mopaiCeng == 1){
+                 tempPai = drawSouthMjs[7 + zhangshuSouth/2];
+            }
+        }else if(mopaiPos == 8){
+            if(mopaiCeng == 0){
+                tempPai = drawSouthMjs[8];
+            }else if(mopaiCeng == 1){
+                 tempPai = drawSouthMjs[8 + zhangshuSouth/2];
+            }
+        }else if(mopaiPos == 9){
+            if(mopaiCeng == 0){
+                tempPai = drawSouthMjs[9];
+            }else if(mopaiCeng == 1){
+                 tempPai = drawSouthMjs[9 + zhangshuSouth/2];
+            }
+        }else if(mopaiPos == 10){
+            if(mopaiCeng == 0){
+                tempPai = drawSouthMjs[10];
+            }else if(mopaiCeng == 1){
+                 tempPai = drawSouthMjs[10 + zhangshuSouth/2];
+            }
+        }else if(mopaiPos == 11){
+            if(mopaiCeng == 0){
+                tempPai = drawSouthMjs[11];
+            }else if(mopaiCeng == 1){
+                 tempPai = drawSouthMjs[11 + zhangshuSouth/2];
+            }
+        }else if(mopaiPos == 12){
+            if(mopaiCeng == 0){
+                tempPai = drawSouthMjs[12];
+            }else if(mopaiCeng == 1){
+                 tempPai = drawSouthMjs[12 + zhangshuSouth/2];
+            }
+        }else if(mopaiPos == 13){
+            if(mopaiCeng == 0){
+                tempPai = drawSouthMjs[13];
+            }else if(mopaiCeng == 1){
+                 tempPai = drawSouthMjs[13 + zhangshuSouth/2];
+            }
+        }else if(mopaiPos == 14){
+            if(mopaiCeng == 0){
+                tempPai = drawSouthMjs[14];
+            }else if(mopaiCeng == 1){
+                 tempPai = drawSouthMjs[14 + zhangshuSouth/2];
+            }
+        }else if(mopaiPos == 15){
+            if(mopaiCeng == 0){
+                tempPai = drawSouthMjs[15];
+            }else if(mopaiCeng == 1){
+                 tempPai = drawSouthMjs[15 + zhangshuSouth/2];
+            }
+        }else if(mopaiPos == 16){
+            if(mopaiCeng == 0){
+                tempPai = drawSouthMjs[16];
+            }else if(mopaiCeng == 1){
+                 tempPai = drawSouthMjs[16 + zhangshuSouth/2];
+            }
+        }
+    }else if(mopaiDirection == 1){
+        if(mopaiPos == 0){
+            if(mopaiCeng == 0){
+                tempPai = drawEastMjs[0];
+            }else if(mopaiCeng == 1){
+                tempPai = drawEastMjs[0 + zhangshuEast/2];
+            }
+        }else if(mopaiPos == 1){
+            if(mopaiCeng == 0){
+                tempPai = drawEastMjs[1];
+            }else if(mopaiCeng == 1){
+                tempPai = drawEastMjs[1 + zhangshuEast/2];
+            }
+        }else if(mopaiPos == 2){
+            if(mopaiCeng == 0){
+                tempPai = drawEastMjs[2];
+            }else if(mopaiCeng == 1){
+                tempPai = drawEastMjs[2 + zhangshuEast/2];
+            }
+        }else if(mopaiPos == 3){
+            if(mopaiCeng== 0){
+                tempPai = drawEastMjs[3];
+            }else if(mopaiCeng == 1){
+                tempPai = drawEastMjs[3 + zhangshuEast/2];
+            }
+        }else if(mopaiPos == 4){
+            if(mopaiCeng == 0){
+                tempPai = drawEastMjs[4];
+            }else if(mopaiCeng == 1){
+                tempPai = drawEastMjs[4 + zhangshuEast/2];
+            }
+        }else if(mopaiPos == 5){
+            if(mopaiCeng == 0){
+                tempPai = drawEastMjs[5];
+            }else if(mopaiCeng == 1){
+                tempPai = drawEastMjs[5 + zhangshuEast/2];
+            }
+        }else if(mopaiPos == 6){
+            if(mopaiCeng == 0){
+                tempPai = drawEastMjs[6];
+            }else if(mopaiCeng == 1){
+                tempPai = drawEastMjs[6 + zhangshuEast/2];
+            }
+        }else if(mopaiPos == 7){
+            if(mopaiCeng == 0){
+                tempPai = drawEastMjs[7];
+            }else if(mopaiCeng == 1){
+                tempPai = drawEastMjs[7 + zhangshuEast/2];
+            }
+        }else if(mopaiPos == 8){
+            if(mopaiCeng == 0){
+                tempPai = drawEastMjs[8];
+            }else if(mopaiCeng == 1){
+                tempPai = drawEastMjs[8 + zhangshuEast/2];
+            }
+        }else if(mopaiPos == 9){
+            if(mopaiCeng == 0){
+                tempPai = drawEastMjs[9];
+            }else if(mopaiCeng == 1){
+                tempPai = drawEastMjs[9 + zhangshuEast/2];
+            }
+        }else if(mopaiPos == 10){
+            if(mopaiCeng == 0){
+                tempPai = drawEastMjs[10];
+            }else if(mopaiCeng == 1){
+                tempPai = drawEastMjs[10 + zhangshuEast/2];
+            }
+        }else if(mopaiPos == 11){
+            if(mopaiCeng == 0){
+                tempPai = drawEastMjs[11];
+            }else if(mopaiCeng == 1){
+                tempPai = drawEastMjs[11 + zhangshuEast/2];
+            }
+        }else if(mopaiPos == 12){
+            if(mopaiCeng == 0){
+                tempPai = drawEastMjs[12];
+            }else if(mopaiCeng == 1){
+                tempPai = drawEastMjs[12 + zhangshuEast/2];
+            }
+        }else if(mopaiPos == 13){
+            if(mopaiCeng == 0){
+                tempPai = drawEastMjs[13];
+            }else if(mopaiCeng == 1){
+                tempPai = drawEastMjs[13 + zhangshuEast/2];
+            }
+        }else if(mopaiPos == 14){
+            if(mopaiCeng == 0){
+                tempPai = drawEastMjs[14];
+            }else if(mopaiCeng== 1){
+                tempPai = drawEastMjs[14 + zhangshuEast/2];
+            }
+        }else if(mopaiPos == 15){
+            if(mopaiCeng == 0){
+                tempPai = drawEastMjs[15];
+            }else if(mopaiCeng == 1){
+                tempPai = drawEastMjs[15 + zhangshuEast/2];
+            }
+        }else if(mopaiPos == 16){
+            if(mopaiCeng == 0){
+                tempPai = drawEastMjs[16];
+             }else if(mopaiCeng== 1){
+                tempPai = drawEastMjs[16 + zhangshuEast/2];
+            }
+        }
+    }else if(mopaiDirection == 2){
+        if(mopaiPos == 0){
+          if(mopaiCeng == 0){
+              tempPai = drawNorthMjs[0];
+          }else if(mopaiCeng == 1){
+              tempPai = drawNorthMjs[0 + zhangshuNorth/2];
+          }
+        }else if(mopaiPos == 1){
+            if(mopaiCeng == 0){
+                tempPai = drawNorthMjs[1];
+            }else if(mopaiCeng == 1){
+                tempPai = drawNorthMjs[1 + zhangshuNorth/2];
+            }
+        }else if(mopaiPos == 2){
+            if(mopaiCeng == 0){
+                tempPai = drawNorthMjs[2];
+            }else if(mopaiCeng == 1){
+                tempPai = drawNorthMjs[2 + zhangshuNorth/2];
+            }
+        }else if(mopaiPos == 3){
+            if(mopaiCeng == 0){
+                tempPai = drawNorthMjs[3];
+            }else if(mopaiCeng == 1){
+                tempPai = drawNorthMjs[3 + zhangshuNorth/2];
+            }
+        }else if(mopaiPos == 4){
+            if(mopaiCeng == 0){
+                tempPai = drawNorthMjs[4];
+            }else if(mopaiCeng == 1){
+                tempPai = drawNorthMjs[4 + zhangshuNorth/2];
+            }
+        }else if(mopaiPos == 5){
+            if(mopaiCeng == 0){
+                tempPai = drawNorthMjs[5];
+            }else if(mopaiCeng == 1){
+                tempPai = drawNorthMjs[5 + zhangshuNorth/2];
+            }
+        }else if(mopaiPos == 6){
+            if(mopaiCeng == 0){
+                tempPai = drawNorthMjs[6];
+            }else if(mopaiCeng == 1){
+                tempPai = drawNorthMjs[6 + zhangshuNorth/2];
+            }
+        }else if(mopaiPos == 7){
+            if(mopaiCeng == 0){
+                tempPai = drawNorthMjs[7];
+            }else if(mopaiCeng == 1){
+                tempPai = drawNorthMjs[7 + zhangshuNorth/2];
+            }
+        }else if(mopaiPos == 8){
+            if(mopaiCeng == 0){
+                tempPai = drawNorthMjs[8];
+            }else if(mopaiCeng == 1){
+                tempPai = drawNorthMjs[8 + zhangshuNorth/2];
+            }
+        }else if(mopaiPos == 9){
+            if(mopaiCeng == 0){
+                tempPai = drawNorthMjs[9];
+            }else if(mopaiCeng == 1){
+                tempPai = drawNorthMjs[9 + zhangshuNorth/2];
+            }
+        }else if(mopaiPos == 10){
+            if(mopaiCeng == 0){
+                tempPai = drawNorthMjs[10];
+            }else if(mopaiCeng == 1){
+                tempPai = drawNorthMjs[10 + zhangshuNorth/2];
+            }
+        }else if(mopaiPos == 11){
+            if(mopaiCeng == 0){
+                tempPai = drawNorthMjs[11];
+            }else if(mopaiCeng == 1){
+                tempPai = drawNorthMjs[11 + zhangshuNorth/2];
+            }
+        }else if(mopaiPos == 12){
+            if(mopaiCeng == 0){
+                tempPai = drawNorthMjs[12];
+            }else if(mopaiCeng == 1){
+                tempPai = drawNorthMjs[12 + zhangshuNorth/2];
+            }
+        }else if(mopaiPos == 13){
+            if(mopaiCeng == 0){
+                tempPai = drawNorthMjs[13];
+            }else if(mopaiCeng == 1){
+                tempPai = drawNorthMjs[13 + zhangshuNorth/2];
+            }
+        }else if(mopaiPos == 14){
+            if(mopaiCeng == 0){
+                tempPai = drawNorthMjs[14];
+            }else if(mopaiCeng == 1){
+                tempPai = drawNorthMjs[14 + zhangshuNorth/2];
+            }
+        }else if(mopaiPos == 15){
+            if(mopaiCeng == 0){
+                tempPai = drawNorthMjs[15];
+            }else if(mopaiCeng == 1){
+                tempPai = drawNorthMjs[15 + zhangshuNorth/2];
+            }
+        }else if(mopaiPos == 16){
+            if(mopaiCeng == 0){
+                tempPai = drawNorthMjs[16];
+            }else if(mopaiCeng == 1){
+                tempPai = drawNorthMjs[16 + zhangshuNorth/2];
+            }
+        }
+    }else if(mopaiDirection == 3){
+            if(mopaiPos == 0){
+                if(mopaiCeng == 0){
+                    tempPai = drawWestMjs[0];
+                }else if(mopaiCeng == 1){
+                    tempPai = drawWestMjs[0 + zhangshuWest/2];
+                }
+            }else if(mopaiPos == 1){
+                if(mopaiCeng == 0){
+                    tempPai = drawWestMjs[1];
+                }else if(mopaiCeng == 1){
+                    tempPai = drawWestMjs[1 + zhangshuWest/2];
+                }
+            }else if(mopaiPos == 2){
+                if(mopaiCeng == 0){
+                    tempPai = drawWestMjs[2];
+                }else if(mopaiCeng == 1){
+                    tempPai = drawWestMjs[2 + zhangshuWest/2];
+                }
+            }else if(mopaiPos == 3){
+                if(mopaiCeng == 0){
+                    tempPai = drawWestMjs[3];
+                }else if(mopaiCeng == 1){
+                    tempPai = drawWestMjs[3 + zhangshuWest/2];
+                }
+            }else if(mopaiPos == 4){
+                if(mopaiCeng == 0){
+                    tempPai = drawWestMjs[4];
+                }else if(mopaiCeng == 1){
+                    tempPai = drawWestMjs[4 + zhangshuWest/2];
+                }
+            }else if(mopaiPos == 5){
+                if(mopaiCeng == 0){
+                    tempPai = drawWestMjs[5];
+                }else if(mopaiCeng == 1){
+                    tempPai = drawWestMjs[5 + zhangshuWest/2];
+                }
+            }else if(mopaiPos == 6){
+                if(mopaiCeng == 0){
+                    tempPai = drawWestMjs[6];
+                }else if(mopaiCeng == 1){
+                    tempPai = drawWestMjs[6 + zhangshuWest/2];
+                }
+            }else if(mopaiPos == 7){
+                if(mopaiCeng == 0){
+                    tempPai = drawWestMjs[7];
+                }else if(mopaiCeng == 1){
+                    tempPai = drawWestMjs[7 + zhangshuWest/2];
+                }
+            }else if(mopaiPos == 8){
+                if(mopaiCeng == 0){
+                    tempPai = drawWestMjs[8];
+                }else if(mopaiCeng == 1){
+                    tempPai = drawWestMjs[8 + zhangshuWest/2];
+                }
+            }else if(mopaiPos == 9){
+                if(mopaiCeng == 0){
+                    tempPai = drawWestMjs[9];
+                }else if(mopaiCeng == 1){
+                    tempPai = drawWestMjs[9 + zhangshuWest/2];
+                }
+            }else if(mopaiPos == 10){
+                if(mopaiCeng == 0){
+                    tempPai = drawWestMjs[10];
+                }else if(mopaiCeng == 1){
+                    tempPai = drawWestMjs[10 + zhangshuWest/2];
+                }
+            }else if(mopaiPos == 11){
+                if(mopaiCeng == 0){
+                    tempPai = drawWestMjs[11];
+                }else if(mopaiCeng == 1){
+                    tempPai = drawWestMjs[11 + zhangshuWest/2];
+                }
+            }else if(mopaiPos == 12){
+                if(mopaiCeng == 0){
+                    tempPai = drawWestMjs[12];
+                }else if(mopaiCeng == 1){
+                    tempPai = drawWestMjs[12 + zhangshuWest/2];
+                }
+            }else if(mopaiPos == 13){
+                if(mopaiCeng == 0){
+                    tempPai = drawWestMjs[13];
+                }else if(mopaiCeng == 1){
+                    tempPai = drawWestMjs[13 + zhangshuWest/2];
+                }
+            }else if(mopaiPos == 14){
+                if(mopaiCeng == 0){
+                    tempPai = drawWestMjs[14];
+                }else if(mopaiCeng == 1){
+                    tempPai = drawWestMjs[14 + zhangshuWest/2];
+                }
+            }else if(mopaiPos ==15){
+                if(mopaiCeng == 0){
+                    tempPai = drawWestMjs[15];
+                }else if(mopaiCeng == 1){
+                    tempPai = drawWestMjs[15 + zhangshuWest/2];
+                }
+            }else if(mopaiPos ==16){
+                if(mopaiCeng == 0){
+                    tempPai = drawWestMjs[16];
+                }else if(mopaiCeng == 1){
+                    tempPai = drawWestMjs[16 + zhangshuWest/2];
+                }
+            }
+    }
+}
+
+void UIMainWindows::updatePai()
+{
+    //更新下一摸牌的位置
+    if(mopaiDirection == 0){//南
+        if(mopaiCeng == 1){//第二层
+            mopaiCeng = 0;
+            mopaiPos++;
+        }else if(mopaiCeng == 0){//第一层
+            mopaiCeng = 1;
+        }
+
+        if(mopaiPos >= zhangshuSouth/2){
+            mopaiDirection = 3;//西
+            mopaiPos = 0;
+            mopaiCeng = 0;
+        }
+    }else if(mopaiDirection == 1){//东
+        if(mopaiCeng == 1){//第二层
+            mopaiCeng = 0;
+            mopaiPos++;
+        }else if(mopaiCeng == 0){//第一层
+            mopaiCeng = 1;
+        }
+
+        if(mopaiPos >= zhangshuEast/2){
+            mopaiDirection = 0;//南
+            mopaiPos = 0;
+            mopaiCeng = 0;
+        }
+    }else if(mopaiDirection == 2){//北
+        if(mopaiCeng == 1){//第二层
+            mopaiCeng = 0;
+            mopaiPos++;
+        }else if(mopaiCeng == 0){//第一层
+            mopaiCeng = 1;
+        }
+
+        if(mopaiPos >= zhangshuNorth/2){
+            mopaiDirection = 1;//东
+            mopaiPos = 0;
+            mopaiCeng = 0;
+        }
+    }else if(mopaiDirection == 3){//西
+        if(mopaiCeng == 1){//第二层
+            mopaiCeng = 0;
+            mopaiPos++;
+        }else if(mopaiCeng == 0){//第一层
+            mopaiCeng = 1;
+        }
+
+        if(mopaiPos >= zhangshuWest/2){
+            mopaiDirection = 2;//北
+            mopaiPos = 0;
+            mopaiCeng = 0;
+        }
+    }
+
+    //预测
+    yuceDirection  = mopaiDirection;
+    yucePos = mopaiPos;
+    yuceCeng = mopaiCeng;
+}
+
+void UIMainWindows::undoPai()
+{
+    //更新下一摸牌的位置
+    if(mopaiDirection == 0){//南
+        if(mopaiCeng == 1){//第二层
+            mopaiCeng = 0;
+        }else if(mopaiCeng == 0){//第一层
+            mopaiCeng = 1;
+            mopaiPos--;
+        }
+
+        if(mopaiPos < 0){
+            mopaiDirection = 1;//东
+            mopaiPos = zhangshuEast/2;
+            mopaiCeng = 1;
+        }
+    }else if(mopaiDirection == 1){//东
+        if(mopaiCeng == 1){//第二层
+            mopaiCeng = 0;
+        }else if(mopaiCeng == 0){//第一层
+            mopaiCeng = 1;
+             mopaiPos--;
+        }
+
+        if(mopaiPos < 0 ){
+            mopaiDirection = 2;//北
+            mopaiPos = zhangshuEast/2;
+            mopaiCeng = 1;
+        }
+    }else if(mopaiDirection == 2){//北
+        if(mopaiCeng == 1){//第二层
+            mopaiCeng = 0;
+        }else if(mopaiCeng == 0){//第一层
+            mopaiCeng = 1;
+            mopaiPos--;
+        }
+
+        if(mopaiPos < 0){
+            mopaiDirection = 3;//西
+            mopaiPos = zhangshuNorth/2;
+            mopaiCeng = 1;
+        }
+    }else if(mopaiDirection == 3){//西
+        if(mopaiCeng == 1){//第二层
+            mopaiCeng = 0;
+        }else if(mopaiCeng == 0){//第一层
+            mopaiCeng = 1;
+            mopaiPos--;
+        }
+
+        if(mopaiPos < 0){
+            mopaiDirection = 0;//南
+            mopaiPos = zhangshuWest/2;
+            mopaiCeng = 1;
+        }
+    }
+
+    //预测
+    yuceDirection  = mopaiDirection;
+    yucePos = mopaiPos;
+    yuceCeng = mopaiCeng;
+}
+
+//结束游戏
+void UIMainWindows::endGame()
+{   
+
+    //清空所有变量
+    clearVariable();
+
+    //清空面板
+    clearPanel();
+}
+
+void UIMainWindows::yucePai()
+{
+    predictionNorthMjs.clear();
+    predictionSouthMjs.clear();
+    predictionEastMjs.clear();
+    predictionWestMjs.clear();
+
+    list<Mj> predOne;
+    list<Mj> predTwo;
+    list<Mj> predThree;
+    list<Mj> predFour;
+
+    if(endWanjia.size() == 0){
+        //查找将摸起的牌
+        Mj tempPai;
+
+        bool isNapai = true;//可以被拿
+        int num = systemConfig.yucepai;
+        while(num--){
+            yuceFindPai(tempPai);
+
+            for(auto i:majhongTaken){//查找该牌是否已被拿
+                if(i.getId() == tempPai.getId()){//找到
+                    isNapai = false;
+                }
+            }
+
+            if(isNapai == true){
+                predOne.push_back(tempPai);
+                yuceUpdatePai();
+            }else{
+                break;
+            }
+
+            yuceFindPai(tempPai);
+            for(auto i:majhongTaken){//查找该牌是否已被拿
+                if(i.getId() == tempPai.getId()){//找到
+                    isNapai = false;
+                }
+            }
+
+            if(isNapai == true){
+                predTwo.push_back(tempPai);
+                yuceUpdatePai();
+            }else{
+                break;
+            }
+
+            yuceFindPai(tempPai);
+            for(auto i:majhongTaken){//查找该牌是否已被拿
+                if(i.getId() == tempPai.getId()){//找到
+                    isNapai = false;
+                }
+            }
+
+            if(isNapai == true){
+                predThree.push_back(tempPai);
+                yuceUpdatePai();
+            }else{
+                break;
+            }
+
+            yuceFindPai(tempPai);
+            for(auto i:majhongTaken){//查找该牌是否已被拿
+                if(i.getId() == tempPai.getId()){//找到
+                    isNapai = false;
+                }
+            }
+
+            if(isNapai == true){
+                predFour.push_back(tempPai);
+                yuceUpdatePai();
+            }else{
+                break;
+            }
+
+        }
+
+        if(mopaiWanjia == 0){
+            predictionSouthMjs = predOne;
+            predictionEastMjs = predTwo;
+            predictionNorthMjs = predThree;
+            predictionWestMjs = predFour;
+        }else if(mopaiWanjia == 1){
+            predictionSouthMjs = predFour;
+            predictionEastMjs = predOne;
+            predictionNorthMjs = predTwo;
+            predictionWestMjs = predThree;
+        }else if(mopaiWanjia == 2){
+            predictionSouthMjs = predThree;
+            predictionEastMjs = predFour;
+            predictionNorthMjs = predOne;
+            predictionWestMjs = predTwo;
+        }else if(mopaiWanjia == 3){
+            predictionSouthMjs = predTwo;
+            predictionEastMjs = predThree;
+            predictionNorthMjs = predFour;
+            predictionWestMjs = predOne;
+        }
+
+        //展示预测牌
+        southPredictionDisplay(predictionSouthMjs);
+        northPredictionDisplay(predictionNorthMjs);
+        westPredictionDisplay(predictionWestMjs);
+        eastPredictionDisplay(predictionEastMjs);
+    }else if(endWanjia.size() == 1){
+        //查找将摸起的牌
+        Mj tempPai;
+
+        bool isNapai = true;//可以被拿
+        int num = systemConfig.yucepai;
+        while(num--){
+            yuceFindPai(tempPai);
+
+            for(auto i:majhongTaken){//查找该牌是否已被拿
+                if(i.getId() == tempPai.getId()){//找到
+                    isNapai = false;
+                }
+            }
+
+            if(isNapai == true){
+                predOne.push_back(tempPai);
+                yuceUpdatePai();
+            }else{
+                break;
+            }
+
+            yuceFindPai(tempPai);
+            for(auto i:majhongTaken){//查找该牌是否已被拿
+                if(i.getId() == tempPai.getId()){//找到
+                    isNapai = false;
+                }
+            }
+
+            if(isNapai == true){
+                predTwo.push_back(tempPai);
+                yuceUpdatePai();
+            }else{
+                break;
+            }
+
+            yuceFindPai(tempPai);
+            for(auto i:majhongTaken){//查找该牌是否已被拿
+                if(i.getId() == tempPai.getId()){//找到
+                    isNapai = false;
+                }
+            }
+
+            if(isNapai == true){
+                predThree.push_back(tempPai);
+                yuceUpdatePai();
+            }else{
+                break;
+            }
+        }
+
+        if(endWanjia.find(0) != endWanjia.end()){//南胡
+            if(mopaiWanjia == 1){
+                predictionEastMjs = predOne;
+                predictionNorthMjs = predTwo;
+                predictionWestMjs = predThree;
+            }else if(mopaiWanjia == 2){
+                predictionEastMjs =  predThree;
+                predictionNorthMjs = predOne;
+                predictionWestMjs = predTwo;
+            }else if(mopaiWanjia == 3){
+                predictionEastMjs = predTwo;
+                predictionNorthMjs = predThree;
+                predictionWestMjs = predOne;
+            }
+
+            //展示预测牌
+            northPredictionDisplay(predictionNorthMjs);
+            westPredictionDisplay(predictionWestMjs);
+            eastPredictionDisplay(predictionEastMjs);
+        }else if(endWanjia.find(1) != endWanjia.end()){//东胡
+            if(mopaiWanjia == 0){
+                predictionSouthMjs = predOne;
+                predictionNorthMjs = predTwo;
+                predictionWestMjs = predThree;
+            }else if(mopaiWanjia == 2){
+                predictionSouthMjs = predThree;
+                predictionNorthMjs = predOne;
+                predictionWestMjs = predTwo;
+            }else if(mopaiWanjia == 3){
+                predictionSouthMjs = predTwo;
+                predictionNorthMjs = predThree;
+                predictionWestMjs = predOne;
+            }
+
+            //展示预测牌
+            southPredictionDisplay(predictionSouthMjs);
+            northPredictionDisplay(predictionNorthMjs);
+            westPredictionDisplay(predictionWestMjs);
+        }else if(endWanjia.find(2) != endWanjia.end()){//北胡
+            if(mopaiWanjia == 0){
+                predictionSouthMjs = predOne;
+                predictionEastMjs = predTwo;
+                predictionWestMjs = predThree;
+            }else if(mopaiWanjia == 1){
+                predictionSouthMjs = predThree;
+                predictionEastMjs = predOne;
+                predictionWestMjs = predTwo;
+            }else if(mopaiWanjia == 3){
+                predictionSouthMjs = predTwo;
+                predictionEastMjs = predThree;
+                predictionWestMjs = predOne;
+            }
+            //展示预测牌
+            southPredictionDisplay(predictionSouthMjs);
+            westPredictionDisplay(predictionWestMjs);
+            eastPredictionDisplay(predictionEastMjs);
+
+        }else if(endWanjia.find(3) != endWanjia.end()){
+            if(mopaiWanjia == 0){
+                predictionSouthMjs = predOne;
+                predictionEastMjs = predTwo;
+                predictionNorthMjs = predThree;
+            }else if(mopaiWanjia == 1){
+                predictionSouthMjs = predThree;
+                predictionEastMjs = predOne;
+                predictionNorthMjs = predTwo;
+            }else if(mopaiWanjia == 2){
+                predictionSouthMjs = predTwo;
+                predictionEastMjs = predThree;
+                predictionNorthMjs = predOne;
+            }
+            //展示预测牌
+            southPredictionDisplay(predictionSouthMjs);
+            northPredictionDisplay(predictionNorthMjs);
+            eastPredictionDisplay(predictionEastMjs);
+        }
+
+    }else if(endWanjia.size() == 2){
+        //查找将摸起的牌
+        Mj tempPai;
+
+        bool isNapai = true;//可以被拿
+        int num = systemConfig.yucepai;
+        while(num--){
+            yuceFindPai(tempPai);
+
+            for(auto i:majhongTaken){//查找该牌是否已被拿
+                if(i.getId() == tempPai.getId()){//找到
+                    isNapai = false;
+                }
+            }
+
+            if(isNapai == true){
+                predOne.push_back(tempPai);
+                yuceUpdatePai();
+            }else{
+                break;
+            }
+
+            yuceFindPai(tempPai);
+            for(auto i:majhongTaken){//查找该牌是否已被拿
+                if(i.getId() == tempPai.getId()){//找到
+                    isNapai = false;
+                }
+            }
+
+            if(isNapai == true){
+                predTwo.push_back(tempPai);
+                yuceUpdatePai();
+            }else{
+                break;
+            }
+        }
+
+        if(endWanjia.find(0) != endWanjia.end() && endWanjia.find(1) != endWanjia.end()){
+            if(mopaiWanjia == 2){
+                predictionNorthMjs = predOne;
+                predictionWestMjs = predTwo;
+            }else if(mopaiWanjia == 3){
+                predictionNorthMjs = predTwo;
+                predictionWestMjs = predOne;
+            }
+
+            //展示预测牌
+            northPredictionDisplay(predictionNorthMjs);
+            westPredictionDisplay(predictionWestMjs);
+        }if(endWanjia.find(0) != endWanjia.end() && endWanjia.find(2) != endWanjia.end()){
+            if(mopaiWanjia == 1){
+                predictionEastMjs = predOne;
+                predictionWestMjs = predTwo;
+            }else if(mopaiWanjia == 3){
+                predictionEastMjs = predTwo;
+                predictionWestMjs = predOne;
+            }
+
+            //展示预测牌
+            westPredictionDisplay(predictionWestMjs);
+            eastPredictionDisplay(predictionEastMjs);
+        }if(endWanjia.find(0) != endWanjia.end() && endWanjia.find(3) != endWanjia.end()){
+           if(mopaiWanjia == 1){
+                predictionEastMjs = predOne;
+                predictionNorthMjs = predTwo;
+            }else if(mopaiWanjia == 2){
+                predictionEastMjs = predTwo;
+                predictionNorthMjs = predOne;
+            }
+
+           //展示预测牌
+           northPredictionDisplay(predictionNorthMjs);
+           eastPredictionDisplay(predictionEastMjs);
+        }if(endWanjia.find(1) != endWanjia.end() && endWanjia.find(2) != endWanjia.end()){
+            if(mopaiWanjia == 0){
+                predictionSouthMjs = predOne;
+                predictionWestMjs = predTwo;
+            }else if(mopaiWanjia == 3){
+                predictionSouthMjs = predTwo;
+                predictionWestMjs = predOne;
+            }
+
+            //展示预测牌
+            southPredictionDisplay(predictionSouthMjs);
+            westPredictionDisplay(predictionWestMjs);
+        }if(endWanjia.find(1) != endWanjia.end() && endWanjia.find(3) != endWanjia.end()){
+            if(mopaiWanjia == 0){
+                predictionSouthMjs = predOne;
+                predictionNorthMjs = predTwo;
+            }else if(mopaiWanjia == 2){
+                predictionSouthMjs = predTwo;
+                predictionNorthMjs = predOne;
+            }
+
+            //展示预测牌
+            southPredictionDisplay(predictionSouthMjs);
+            northPredictionDisplay(predictionNorthMjs);
+        }if(endWanjia.find(2) != endWanjia.end() && endWanjia.find(3) != endWanjia.end()){
+            if(mopaiWanjia == 0){
+                predictionSouthMjs = predOne;
+                predictionEastMjs = predTwo;
+            }else if(mopaiWanjia == 1){
+                predictionSouthMjs = predTwo;
+                predictionEastMjs = predOne;
+            }
+
+            //展示预测牌
+            southPredictionDisplay(predictionSouthMjs);
+            eastPredictionDisplay(predictionEastMjs);
+        }
+    }
+}
+
+void UIMainWindows::dapai(int pos)
+{
+
+    qDebug()<<"dapaiWanjiaStack.size打牌 前:"<<dapaiWanjiaStack.size();
+    qDebug()<<"playedPaiStack.size打牌 前:"<<playedPaiStack.size();
+
+    qDebug()<<"dapaiPos:"<<pos;
+
+    if(dapaiWanjia == 0){//防止点击重叠部分，造成pos溢出
+        if(pos >= static_cast<int>(handSouthMjs.size())){
+            pos = static_cast<int>(handSouthMjs.size()) - 1;
+        }
+    }else if(dapaiWanjia == 1){
+        if(pos >= static_cast<int>(handEastMjs.size())){
+            pos = static_cast<int>(handEastMjs.size()) - 1;
+        }
+    }else if(dapaiWanjia == 2){
+        if(pos >= static_cast<int>(handNorthMjs.size())){
+            pos = static_cast<int>(handNorthMjs.size()) - 1;
+        }
+    }else if(dapaiWanjia == 3){
+        if(pos >= static_cast<int>(handWestMjs.size())){
+            pos = static_cast<int>(handWestMjs.size()) - 1;
+        }
+    }
+
+    qDebug()<<"handSouthIndex:"<<handSouthIndex;
+    qDebug()<<"handWestIndex:"<<handWestIndex;
+    qDebug()<<"handEastIndex:"<<handEastIndex;
+    qDebug()<<"handNorthIndex:"<<handNorthIndex;
+
+    playedPai.clear();
+    //清空之前的胡牌
+    isSouthWin = false;
+    isEastWin = false;
+    isNorthWin = false;
+    isWestWin = false;
+
+    //剔除打出的牌
+    int cnt = 0;
+
+    if(dapaiWanjia == 0){
+        for(list<Mj>::iterator iter =  handSouthMjs.begin(); iter != handSouthMjs.end();iter++){
+
+            if(cnt == pos){
+                playedPai.push_back(*iter);//暂存已打出的牌
+                //记录缺门牌
+                if(isSouthQue == true && systemConfig.queyimen == 1){
+                    if(iter->getResult() < 10){
+                        southQue = 0;
+                    }else if(iter->getResult() > 10 && iter->getResult() < 20){
+                        southQue = 10;
+                    }else if(iter->getResult() > 20 && iter->getResult() < 30){
+                        southQue = 20;
+                    }
+                    isSouthQue = false;
+                }
+
+                //加入弃牌堆
+                discardMjs.push_back(*iter);
+                //从手牌剔除
+                handSouthMjs.erase(iter);
+
+                break;
+            }
+            cnt++;
+        }
+
+       discardDisplay(discardMjs);//展示弃牌
+
+        //撤回：记录打牌
+       playedPaiStack.push(*(playedPai.begin()));
+
+       //重新展示手牌
+       handSouthMjs.sort(cmpHandMjs);//重新排序
+       southHandDisplay(handSouthMjs);
+
+       //设置遮罩层(消失)
+       ui->justTakenLabel->setStyleSheet(QString("background-color:rgba(0, 0, 0, 0%);"));
+       ui->justTakenLabel->setGeometry(1130,20,10,10);
+
+       //判断吃碰杠
+       if(systemConfig.chipai == 1 && systemConfig.queyimen == 0){
+           isChow();
+           ChowDisplay();
+       }
+
+       if(systemConfig.pongpai == 1){
+           isPong();
+           PongDisplay();
+       }
+
+       if(systemConfig.minggang == 1){
+           isKong();
+           KongDisplay();
+       }
+
+       ui->statusSouthKong->clear();//杠
+       ui->statusSouthCheck->clear();//过
+       ui->statusSouthWin->clear();//胡
+
+       if(systemConfig.zhixianzimo == 0){
+             isWin2();
+       }
+
+       if(isSouthPong == false && isEastPong == false && isNorthPong == false && isWestPong == false
+         && isSouthChow == false && isEastChow == false && isNorthChow == false && isWestChow == false
+         && isSouthKong == false && isEastKong == false && isNorthKong == false && isWestKong == false
+//         && concealedKongNum[0] == 0
+         && isSouthWin == false && isEastWin == false && isNorthWin == false && isWestWin == false
+           ){
+           //清除暗杠标识
+           ui->statusSouthKong->clear();
+           ui->statusSouthCheck->clear();
+
+           //下家摸新牌
+           draw();//更新下一个摸牌(更新摸牌玩家)
+
+           updateDapaiWanjia();
+           //展示当前打牌位置
+           directionDisplay(dapaiWanjia);
+
+
+       }else{
+           //预测位置更新为下一个摸牌的位置，以此来预测
+           yuceDirection  = mopaiDirection;
+           yucePos = mopaiPos;
+           yuceCeng = mopaiCeng;
+
+
+       }
+
+
+    }else if(dapaiWanjia == 1){
+        for(list<Mj>::iterator iter =  handEastMjs.begin(); iter != handEastMjs.end();iter++){
+
+            if(cnt == pos){
+                //暂存已打出的牌
+                 playedPai.push_back(*iter);
+
+                 //记录缺门牌
+                 if(isEastQue == true && systemConfig.queyimen == 1){
+                     if(iter->getResult() < 10){
+                         eastQue = 0;
+                     }else if(iter->getResult() > 10 && iter->getResult() < 20){
+                         eastQue = 10;
+                     }else if(iter->getResult() > 20 && iter->getResult() < 30){
+                         eastQue = 20;
+                     }
+                     isEastQue = false;
+                 }
+
+                //加入弃牌堆
+                discardMjs.push_back(*iter);
+                //从手牌剔除
+                handEastMjs.erase(iter);
+                break;
+            }
+            cnt++;
+
+        }
+
+        discardDisplay(discardMjs);//展示弃牌
+
+        //撤回：记录打牌
+       playedPaiStack.push(*(playedPai.begin()));
+
+       //重新展示手牌
+        handEastMjs.sort(cmpHandMjs);
+       eastHandDisplay(handEastMjs);
+       //设置遮罩层(消失)
+       ui->justTakenLabel->setStyleSheet(QString("background-color:rgba(0, 0, 0, 0%);"));
+       ui->justTakenLabel->setGeometry(1130,20,10,10);
+
+       //判断吃碰杠
+       if(systemConfig.chipai == 1 && systemConfig.queyimen == 0){
+           isChow();
+           ChowDisplay();
+       }
+
+       if(systemConfig.pongpai == 1){
+           isPong();
+           PongDisplay();
+       }
+
+       if(systemConfig.minggang == 1){
+           isKong();
+           KongDisplay();
+       }
+
+
+       ui->statusEastKong->clear();
+       ui->statusEastCheck->clear();
+       ui->statusEastWin->clear();//胡
+
+       if(systemConfig.zhixianzimo == 0){
+            isWin2();
+       }
+
+      if(isSouthPong == false && isEastPong == false && isNorthPong == false && isWestPong == false
+         && isSouthChow == false && isEastChow == false && isNorthChow == false && isWestChow == false
+         && isSouthKong == false && isEastKong == false && isNorthKong == false && isWestKong == false
+//         && concealedKongNum[1] == 0
+         && isSouthWin == false && isEastWin == false && isNorthWin == false && isWestWin == false
+              ){
+          //清除暗杠标识
+          ui->statusEastKong->clear();
+          ui->statusEastCheck->clear();
+
+           //下家摸新牌
+           draw();//更新下一个摸牌(更新摸牌玩家)
+           updateDapaiWanjia();
+           //展示当前打牌位置
+           directionDisplay(dapaiWanjia);
+       }else{
+          //预测位置更新为下一个摸牌的位置，以此来预测
+          yuceDirection  = mopaiDirection;
+          yucePos = mopaiPos;
+          yuceCeng = mopaiCeng;
+      }
+
+    }else if(dapaiWanjia == 2){
+        for(list<Mj>::iterator iter =  handNorthMjs.begin(); iter != handNorthMjs.end();iter++){
+            if(cnt == pos){
+                //暂存已打出的牌
+                 playedPai.push_back(*iter);
+
+                 //记录缺门牌
+                 if(isNorthQue == true && systemConfig.queyimen == 1){
+                     if(iter->getResult() < 10){
+                         northQue = 0;
+                     }else if(iter->getResult() > 10 && iter->getResult() < 20){
+                         northQue = 10;
+                     }else if(iter->getResult() > 20 && iter->getResult() < 30){
+                         northQue = 20;
+                     }
+                     isNorthQue = false;
+                 }
+
+                //加入弃牌堆
+                discardMjs.push_back(*iter);
+                //从手牌剔除
+                handNorthMjs.erase(iter);
+                break;
+            }
+            cnt++;
+        }
+       discardDisplay(discardMjs);//展示弃牌
+
+       //撤回：记录打牌
+      playedPaiStack.push(*(playedPai.begin()));
+
+       //重新展示手牌
+       handNorthMjs.sort(cmpHandMjs);
+       northHandDisplay(handNorthMjs);
+       //设置遮罩层(消失)
+       ui->justTakenLabel->setStyleSheet(QString("background-color:rgba(0, 0, 0, 0%);"));
+       ui->justTakenLabel->setGeometry(1130,20,10,10);
+
+       //判断吃碰杠
+       if(systemConfig.chipai == 1  && systemConfig.queyimen == 0){
+           isChow();
+           ChowDisplay();
+       }
+
+       if(systemConfig.pongpai == 1){
+           isPong();
+           PongDisplay();
+       }
+
+       if(systemConfig.minggang == 1){
+           isKong();
+           KongDisplay();
+       }
+
+
+       ui->statusNorthKong->clear();
+       ui->statusNorthCheck->clear();
+       ui->statusNorthWin->clear();//胡
+
+       if(systemConfig.zhixianzimo == 0){
+            isWin2();
+       }
+
+       if(isSouthPong == false && isEastPong == false && isNorthPong == false && isWestPong == false
+        && isSouthChow == false && isEastChow == false && isNorthChow == false && isWestChow == false
+         && isSouthKong == false && isEastKong == false && isNorthKong == false && isWestKong == false
+//         && concealedKongNum[2] == 0
+         && isSouthWin == false && isEastWin == false && isNorthWin == false && isWestWin == false
+               ){
+           //清除暗杠标识
+           ui->statusNorthKong->clear();
+           ui->statusNorthCheck->clear();
+
+           //下家摸新牌
+           draw();//更新下一个摸牌(更新摸牌玩家)
+
+           updateDapaiWanjia();
+           //展示当前打牌位置
+           directionDisplay(dapaiWanjia);
+       }else{
+           //预测位置更新为下一个摸牌的位置，以此来预测
+           yuceDirection  = mopaiDirection;
+           yucePos = mopaiPos;
+           yuceCeng = mopaiCeng;
+       }
+
+    }else if(dapaiWanjia == 3){
+        for(list<Mj>::iterator iter =  handWestMjs.begin(); iter != handWestMjs.end();iter++){
+            if(cnt == pos){
+                //暂存已打出的牌
+                 playedPai.push_back(*iter);
+
+                 //记录缺门牌
+                 if(isWestQue == true && systemConfig.queyimen == 1){
+                     if(iter->getResult() < 10){
+                         westQue = 0;
+                     }else if(iter->getResult() > 10 && iter->getResult() < 20){
+                         westQue = 10;
+                     }else if(iter->getResult() > 20 && iter->getResult() < 30){
+                         westQue = 20;
+                     }
+                     isWestQue = false;
+                 }
+
+                //加入弃牌堆
+                discardMjs.push_back(*iter);
+                //从手牌剔除
+                handWestMjs.erase(iter);
+                break;
+            }
+            cnt++;
+        }
+        discardDisplay(discardMjs);//展示弃牌
+
+        //撤回：记录打牌
+       playedPaiStack.push(*(playedPai.begin()));
+
+
+       //重新展示手牌
+       handWestMjs.sort(cmpHandMjs);
+       westHandDisplay(handWestMjs);
+       //设置遮罩层(消失)
+       ui->justTakenLabel->setStyleSheet(QString("background-color:rgba(0, 0, 0, 0%);"));
+       ui->justTakenLabel->setGeometry(1130,20,10,10);
+
+       //判断吃碰杠
+       if(systemConfig.chipai == 1 && systemConfig.queyimen == 0){
+           isChow();
+           ChowDisplay();
+       }
+
+       if(systemConfig.pongpai == 1){
+           isPong();
+           PongDisplay();
+       }
+
+       if(systemConfig.minggang == 1){
+           isKong();
+           KongDisplay();
+       }
+
+       ui->statusWestKong->clear();
+       ui->statusWestCheck->clear();
+       ui->statusWestWin->clear();//胡
+       if(systemConfig.zhixianzimo == 0){
+            isWin2();
+       }
+
+       if(isSouthPong == false && isEastPong == false && isNorthPong == false && isWestPong == false
+         && isSouthChow == false && isEastChow == false && isNorthChow == false && isWestChow == false
+         && isSouthKong == false && isEastKong == false && isNorthKong == false && isWestKong == false
+//          && concealedKongNum[3] == 0
+          && isSouthWin == false && isEastWin == false && isNorthWin == false && isWestWin == false
+               ){
+           //清除暗杠标识
+           ui->statusSouthKong->clear();
+           ui->statusSouthCheck->clear();
+
+           //下家摸新牌
+           draw();//更新下一个摸牌(更新摸牌玩家)
+
+           updateDapaiWanjia();
+           //展示当前打牌位置
+           directionDisplay(dapaiWanjia);
+       }else{
+           //预测位置更新为下一个摸牌的位置，以此来预测
+           yuceDirection  = mopaiDirection;
+           yucePos = mopaiPos;
+           yuceCeng = mopaiCeng;
+       }
+    }
+
+//    qDebug()<<"majhongTotal.size:"<<majhongTotal.size();
+//    qDebug()<<"majhongTaken.size:"<<majhongTaken.size();
+
+
+    if(discardMjs.size() == majhongTotal.size() - 52){//减去4个人13张手牌
+        endGame();
+        QMessageBox::information(this, tr("提示"),tr("游戏结束！"),
+                                 QMessageBox::Ok);
+    }
+
+    qDebug()<<"dapaiWanjiaStack.size 打牌后:"<<dapaiWanjiaStack.size();
+    qDebug()<<"playedPaiStack.size打牌 后:"<<playedPaiStack.size();
+}
+
+void UIMainWindows::chowDapai(int pos)
+{
+
+    pos++;//到实际位置
+    pos++;//因为前面多了一个吃的牌
+
+    if(dapaiWanjia == 0){//南
+        list<Mj>::iterator iter = handSouthMjs.begin();
+        while(--pos){
+            iter++;
+        }
+        bool isFound = false;
+        int paiNum;
+        for(auto i:chowVec){
+            if(i.getId() == iter->getId()){
+                isFound = true;
+                paiNum = iter->getResult();
+                break;
+            }
+        }
+
+        if(isFound == true){
+            int diff = playedPai.begin()->getResult() - paiNum;//差值
+
+            //qDebug()<<"south diff:"<<diff;
+
+            if(diff == 1){//type = 0  【3,4,5】diff = 4-3 = 1
+                chowOperating2(handSouthMjs,0);
+            }else if(diff == -1){//type = 1 【4,5,6】diff = 4 - 5 = -1
+                chowOperating2(handSouthMjs,1);
+            }else if(diff == 2){//type = 2 【2,3,4】 diff = 4 - 2 = 2
+                chowOperating2(handSouthMjs,2);
+            }
+
+            //可以操作的牌的开始位置
+            handSouthIndex += 3;
+            //重置碰标志
+            isSouthChow = false;
+
+             //更新摸牌玩家
+             mopaiWanjia = 1;//摸牌转移到下家
+             //展示手牌
+             southHandDisplay(handSouthMjs);
+
+             //清空吃组合
+             chowType.clear();
+             //展示当前打牌位置(更新位置)
+             directionDisplay(dapaiWanjia);
+
+             //预测（不摸牌的预测）
+             yuceDirection  = mopaiDirection;
+             yucePos = mopaiPos;
+             yuceCeng = mopaiCeng;
+             //预测牌
+             yucePai();
+
+
+        }
+
+    }else if(dapaiWanjia == 1){//东
+        list<Mj>::iterator iter = handEastMjs.begin();
+        qDebug()<<"ListHead:"<<iter->getResult();
+        while(--pos){
+            iter++;
+        }
+        bool isFound = false;
+        int paiNum;
+        for(auto i:chowVec){
+            qDebug()<<"chow List:"<<i.getResult();
+            qDebug()<<"paiNum:"<<iter->getResult();
+            if(i.getId() == iter->getId()){
+                isFound = true;
+                paiNum = iter->getResult();
+
+            }
+        }
+
+        if(isFound == true){
+            int diff = playedPai.begin()->getResult() - paiNum;//差值
+            //4为例
+            if(diff == 1){//type = 0  【3,4,5】diff = 4-3 = 1
+                chowOperating2(handEastMjs, 0);
+            }else if(diff == -1){//type = 1 【4,5,6】diff = 4 - 5 = -1
+                chowOperating2(handEastMjs, 1);
+            }else if(diff == 2){//type = 2 【2,3,4】 diff = 4 - 2 = 2
+                chowOperating2(handEastMjs, 2);
+            }
+
+            //可以操作的牌的开始位置
+            handEastIndex += 3;
+            //重置碰标志
+            isEastChow = false;
+
+             //更新摸牌玩家
+             mopaiWanjia = 2;
+             //展示手牌
+             eastHandDisplay(handEastMjs);
+
+             //清空吃组合
+             chowType.clear();
+             //展示当前打牌位置(更新位置)
+             directionDisplay(dapaiWanjia);
+
+             //预测（不摸牌的预测）
+             yuceDirection  = mopaiDirection;
+             yucePos = mopaiPos;
+             yuceCeng = mopaiCeng;
+             //预测牌
+             yucePai();
+        }
+
+
+    }else if(dapaiWanjia == 2){//北
+        list<Mj>::iterator iter = handNorthMjs.begin();
+        while(--pos){
+            iter++;
+        }
+        bool isFound = false;
+        int paiNum;
+        for(auto i:chowVec){
+            if(i.getId() == iter->getId()){
+                isFound = true;
+                paiNum = iter->getResult();
+                break;
+            }
+        }
+
+        if(isFound == true){
+            int diff = playedPai.begin()->getResult() - paiNum;//差值
+            if(diff == 1){//type = 0  【3,4,5】diff = 4-3 = 1
+                chowOperating2(handNorthMjs,0);
+            }else if(diff == -1){//type = 1 【4,5,6】diff = 4 - 5 = -1
+                chowOperating2(handNorthMjs,1);
+            }else if(diff == 2){//type = 2 【2,3,4】 diff = 4 - 2 = 2
+                chowOperating2(handNorthMjs,2);
+            }
+
+            //可以操作的牌的开始位置
+            handNorthIndex += 3;
+            //重置碰标志
+            isNorthChow = false;
+
+             //更新摸牌玩家
+             mopaiWanjia = 3;
+             //展示手牌
+             northHandDisplay(handNorthMjs);
+
+             //清空吃组合
+             chowType.clear();
+             //展示当前打牌位置(更新位置)
+             directionDisplay(dapaiWanjia);
+
+             //预测（不摸牌的预测）
+             yuceDirection  = mopaiDirection;
+             yucePos = mopaiPos;
+             yuceCeng = mopaiCeng;
+             //预测牌
+             yucePai();
+        }
+    }else if(dapaiWanjia == 3){//西
+        list<Mj>::iterator iter = handWestMjs.begin();
+        while(--pos){
+            iter++;
+        }
+        bool isFound = false;
+        int paiNum;
+        for(auto i:chowVec){
+            if(i.getId() == iter->getId()){
+                isFound = true;
+                paiNum = iter->getResult();
+                break;
+            }
+        }
+
+        if(isFound == true){
+            int diff = playedPai.begin()->getResult() - paiNum;//差值
+            if(diff == 1){//type = 0  【3,4,5】diff = 4-3 = 1
+                chowOperating2(handWestMjs,0);
+            }else if(diff == -1){//type = 1 【4,5,6】diff = 4 - 5 = -1
+                chowOperating2(handWestMjs,1);
+            }else if(diff == 2){//type = 2 【2,3,4】 diff = 4 - 2 = 2
+                chowOperating2(handWestMjs,2);
+            }
+
+            //可以操作的牌的开始位置
+            handWestIndex += 3;
+            //重置碰标志
+            isWestChow = false;
+
+             //更新摸牌玩家
+             mopaiWanjia = 0;
+             //展示手牌
+             westHandDisplay(handWestMjs);
+
+             //清空吃组合
+             chowType.clear();
+             //展示当前打牌位置(更新位置)
+             directionDisplay(dapaiWanjia);
+
+             //预测（不摸牌的预测）
+             yuceDirection  = mopaiDirection;
+             yucePos = mopaiPos;
+             yuceCeng = mopaiCeng;
+             //预测牌
+             yucePai();
+        }
+    }
+
+    //从弃牌堆拿走被吃的牌
+    for(list<Mj>::iterator iter = discardMjs.begin();iter != discardMjs.end();iter++){
+        if(iter->getId() == playedPai.begin()->getId()){
+            discardMjs.erase(iter);
+        }
+    }
+    discardDisplay(discardMjs);
+
+
+}
+
+void UIMainWindows::kongDapai(int pos)
+{
+   isQiangganghu = false;
+   qiangganghuPaiNum = 0;
+   qiangganghuType = -1;
+
+   pos++;//到实际位置
+
+   if(dapaiWanjia == 0){
+       list<Mj>::iterator iter = handSouthMjs.begin();
+       while(--pos){
+           iter++;
+       }
+       bool isFound = false;
+       int paiNum  = 0;
+
+       for(auto i:concealedKongElement[0]){
+           if(i == iter->getResult() && iter->getPaizhuangtai() == 0){
+               isFound = true;
+               paiNum = iter->getResult();
+               break;
+           }
+       }
+
+       if(isFound == true){
+           for(auto i:qiangganghuElement[0]){
+               if(i == paiNum){
+                   isQiangganghu = true;
+                   break;
+               }
+           }
+           if(systemConfig.qiangganghu == 1 && isQiangganghu == true){
+               isWin3(paiNum);
+           }
+
+            if(systemConfig.qiangganghu == 1 & isQiangganghu == true && (isSouthWin == true || isEastWin == true || isNorthWin == true || isWestWin == true)){
+                qiangganghuPaiNum = paiNum;
+                qiangganghuType = 1;
+           }else{
+                 kongOperating3(handSouthMjs, paiNum);
+            }
+
+       }
+
+   }else if(dapaiWanjia == 1){
+       list<Mj>::iterator iter = handEastMjs.begin();
+       while(--pos){
+           iter++;
+       }
+       bool isFound = false;
+       int paiNum = 0;
+       for(auto i:concealedKongElement[1]){
+           if(i == iter->getResult() && iter->getPaizhuangtai() == 0){
+               isFound = true;
+               paiNum = iter->getResult();
+               break;
+           }
+       }
+
+       if(isFound == true){
+           for(auto i:qiangganghuElement[1]){
+               if(i == paiNum){
+                   isQiangganghu = true;
+                   break;
+               }
+           }
+           if(systemConfig.qiangganghu == 1 && isQiangganghu == true){
+               isWin3(paiNum);
+           }
+
+           if(systemConfig.qiangganghu == 1 & isQiangganghu == true && (isSouthWin == true || isEastWin == true || isNorthWin == true || isWestWin == true)){
+               qiangganghuPaiNum = paiNum;
+                  qiangganghuType = 1;
+                  qDebug()<<"kongDapai:"<<qiangganghuPaiNum;
+           }else{
+                kongOperating3(handEastMjs, paiNum);
+            }
+       }
+   }else if(dapaiWanjia == 2){
+       list<Mj>::iterator iter = handNorthMjs.begin();
+       while(--pos){
+           iter++;
+       }
+       bool isFound = false;
+       int paiNum = 0;
+       for(auto i:concealedKongElement[2]){
+           if(i == iter->getResult() && iter->getPaizhuangtai() == 0){
+               isFound = true;
+               paiNum = iter->getResult();
+               break;
+           }
+       }
+
+       if(isFound == true){
+           for(auto i:qiangganghuElement[2]){
+               if(i == paiNum){
+                   isQiangganghu = true;
+                   break;
+               }
+           }
+
+           if(systemConfig.qiangganghu == 1 && isQiangganghu == true){
+               isWin3(paiNum);
+           }
+
+           if(systemConfig.qiangganghu == 1 & isQiangganghu == true && (isSouthWin == true || isEastWin == true || isNorthWin == true || isWestWin == true)){
+                qiangganghuPaiNum = paiNum;
+                qiangganghuType = 1;
+           }else{
+               kongOperating3(handNorthMjs, paiNum);
+           }
+       }
+   }else if(dapaiWanjia == 3){
+       list<Mj>::iterator iter = handWestMjs.begin();
+       while(--pos){
+           iter++;
+       }
+       bool isFound = false;
+       int paiNum =  0;
+       for(auto i:concealedKongElement[3]){
+           if(i == iter->getResult() && iter->getPaizhuangtai() == 0){
+               isFound = true;
+               paiNum = iter->getResult();
+               break;
+           }
+       }
+
+       if(isFound == true){
+           for(auto i:qiangganghuElement[3]){
+               if(i == paiNum){
+                   isQiangganghu = true;
+                   break;
+               }
+           }
+           if(systemConfig.qiangganghu == 1 && isQiangganghu == true){
+                isWin3(paiNum);
+           }
+
+            if(systemConfig.qiangganghu == 1 & isQiangganghu == true && (isSouthWin == true || isEastWin == true || isNorthWin == true || isWestWin == true)){
+                 qiangganghuPaiNum = paiNum;
+                 qiangganghuType = 1;
+           }else{
+                 kongOperating3(handWestMjs, paiNum);
+            }
+       }
+   }
+
+}
+
+void UIMainWindows::yuceUpdatePai()
+{
+    //更新下一摸牌的位置
+    if(yuceDirection == 0){//南
+        if(yuceCeng == 1){//第二层
+            yuceCeng = 0;
+            yucePos++;
+        }else if(yuceCeng == 0){//第一层
+            yuceCeng = 1;
+        }
+
+        if(yucePos >= zhangshuSouth/2){
+            yuceDirection = 3;//西
+            yucePos = 0;
+            yuceCeng = 0;
+        }
+    }else if(yuceDirection == 1){//东
+        if(yuceCeng == 1){//第二层
+            yuceCeng = 0;
+            yucePos++;
+        }else if(yuceCeng == 0){//第一层
+            yuceCeng = 1;
+        }
+
+        if(yucePos >= zhangshuEast/2){
+            yuceDirection = 0;//南
+            yucePos = 0;
+            yuceCeng = 0;
+        }
+    }else if(yuceDirection == 2){//北
+        if(yuceCeng == 1){//第二层
+            yuceCeng = 0;
+            yucePos++;
+        }else if(yuceCeng == 0){//第一层
+            yuceCeng = 1;
+        }
+
+        if(yucePos >= zhangshuNorth/2){
+            yuceDirection = 1;//东
+            yucePos = 0;
+            yuceCeng = 0;
+        }
+    }else if(yuceDirection == 3){//西
+        if(yuceCeng == 1){//第二层
+            yuceCeng = 0;
+            yucePos++;
+        }else if(yuceCeng == 0){//第一层
+            yuceCeng = 1;
+        }
+
+        if(yucePos >= zhangshuWest/2){
+            yuceDirection = 2;//北
+            yucePos = 0;
+            yuceCeng = 0;
+        }
+    }
+}
+
+void UIMainWindows::yuceFindPai(Mj &tempPai)
+{
+
+    //查找将摸起的牌
+    if(yuceDirection == 0){
+        if(yucePos == 0){
+            if(yuceCeng == 0){
+                tempPai = drawSouthMjs[0];
+            }else if(yuceCeng == 1){
+                 tempPai = drawSouthMjs[0 + zhangshuSouth/2];
+            }
+        }else if(yucePos == 1){
+            if(yuceCeng == 0){
+                tempPai = drawSouthMjs[1];
+            }else if(yuceCeng == 1){
+                 tempPai = drawSouthMjs[1 + zhangshuSouth/2];
+            }
+        }else if(yucePos == 2){
+            if(yuceCeng == 0){
+                tempPai = drawSouthMjs[2];
+            }else if(yuceCeng == 1){
+                 tempPai = drawSouthMjs[2 + zhangshuSouth/2];
+            }
+        }else if(yucePos == 3){
+            if(yuceCeng == 0){
+                tempPai = drawSouthMjs[3];
+            }else if(yuceCeng == 1){
+                 tempPai = drawSouthMjs[3 + zhangshuSouth/2];
+            }
+        }else if(yucePos == 4){
+            if(yuceCeng == 0){
+                tempPai = drawSouthMjs[4];
+            }else if(yuceCeng == 1){
+                 tempPai = drawSouthMjs[4 + zhangshuSouth/2];
+            }
+        }else if(yucePos == 5){
+            if(yuceCeng == 0){
+                tempPai = drawSouthMjs[5];
+            }else if(yuceCeng == 1){
+                 tempPai = drawSouthMjs[5 + zhangshuSouth/2];
+            }
+        }else if(yucePos == 6){
+            if(yuceCeng == 0){
+                tempPai = drawSouthMjs[6];
+            }else if(yuceCeng == 1){
+                 tempPai = drawSouthMjs[6 + zhangshuSouth/2];
+            }
+        }else if(yucePos == 7){
+            if(yuceCeng == 0){
+                tempPai = drawSouthMjs[7];
+            }else if(yuceCeng == 1){
+                 tempPai = drawSouthMjs[7 + zhangshuSouth/2];
+            }
+        }else if(yucePos == 8){
+            if(yuceCeng == 0){
+                tempPai = drawSouthMjs[8];
+            }else if(yuceCeng == 1){
+                 tempPai = drawSouthMjs[8 + zhangshuSouth/2];
+            }
+        }else if(yucePos == 9){
+            if(yuceCeng == 0){
+                tempPai = drawSouthMjs[9];
+            }else if(yuceCeng == 1){
+                 tempPai = drawSouthMjs[9 + zhangshuSouth/2];
+            }
+        }else if(yucePos == 10){
+            if(yuceCeng == 0){
+                tempPai = drawSouthMjs[10];
+            }else if(yuceCeng == 1){
+                 tempPai = drawSouthMjs[10 + zhangshuSouth/2];
+            }
+        }else if(yucePos == 11){
+            if(yuceCeng == 0){
+                tempPai = drawSouthMjs[11];
+            }else if(yuceCeng == 1){
+                 tempPai = drawSouthMjs[11 + zhangshuSouth/2];
+            }
+        }else if(yucePos == 12){
+            if(yuceCeng == 0){
+                tempPai = drawSouthMjs[12];
+            }else if(yuceCeng == 1){
+                 tempPai = drawSouthMjs[12 + zhangshuSouth/2];
+            }
+        }else if(yucePos == 13){
+            if(yuceCeng == 0){
+                tempPai = drawSouthMjs[13];
+            }else if(yuceCeng == 1){
+                 tempPai = drawSouthMjs[13 + zhangshuSouth/2];
+            }
+        }else if(yucePos == 14){
+            if(yuceCeng == 0){
+                tempPai = drawSouthMjs[14];
+            }else if(yuceCeng == 1){
+                 tempPai = drawSouthMjs[14 + zhangshuSouth/2];
+            }
+        }else if(yucePos == 15){
+            if(yuceCeng == 0){
+                tempPai = drawSouthMjs[15];
+            }else if(yuceCeng == 1){
+                 tempPai = drawSouthMjs[15 + zhangshuSouth/2];
+            }
+        }else if(yucePos == 16){
+            if(yuceCeng == 0){
+                tempPai = drawSouthMjs[16];
+            }else if(yuceCeng == 1){
+                 tempPai = drawSouthMjs[16 + zhangshuSouth/2];
+            }
+        }
+    }else if(yuceDirection == 1){
+        if(yucePos == 0){
+            if(yuceCeng == 0){
+                tempPai = drawEastMjs[0];
+            }else if(yuceCeng == 1){
+                tempPai = drawEastMjs[0 + zhangshuEast/2];
+            }
+        }else if(yucePos == 1){
+            if(yuceCeng == 0){
+                tempPai = drawEastMjs[1];
+            }else if(yuceCeng == 1){
+                tempPai = drawEastMjs[1 + zhangshuEast/2];
+            }
+        }else if(yucePos == 2){
+            if(yuceCeng == 0){
+                tempPai = drawEastMjs[2];
+            }else if(yuceCeng == 1){
+                tempPai = drawEastMjs[2 + zhangshuEast/2];
+            }
+        }else if(yucePos == 3){
+            if(yuceCeng== 0){
+                tempPai = drawEastMjs[3];
+            }else if(yuceCeng == 1){
+                tempPai = drawEastMjs[3 + zhangshuEast/2];
+            }
+        }else if(yucePos == 4){
+            if(yuceCeng == 0){
+                tempPai = drawEastMjs[4];
+            }else if(yuceCeng == 1){
+                tempPai = drawEastMjs[4 + zhangshuEast/2];
+            }
+        }else if(yucePos == 5){
+            if(yuceCeng == 0){
+                tempPai = drawEastMjs[5];
+            }else if(yuceCeng == 1){
+                tempPai = drawEastMjs[5 + zhangshuEast/2];
+            }
+        }else if(yucePos == 6){
+            if(yuceCeng == 0){
+                tempPai = drawEastMjs[6];
+            }else if(yuceCeng == 1){
+                tempPai = drawEastMjs[6 + zhangshuEast/2];
+            }
+        }else if(yucePos == 7){
+            if(yuceCeng == 0){
+                tempPai = drawEastMjs[7];
+            }else if(yuceCeng == 1){
+                tempPai = drawEastMjs[7 + zhangshuEast/2];
+            }
+        }else if(yucePos == 8){
+            if(yuceCeng == 0){
+                tempPai = drawEastMjs[8];
+            }else if(yuceCeng == 1){
+                tempPai = drawEastMjs[8 + zhangshuEast/2];
+            }
+        }else if(yucePos == 9){
+            if(yuceCeng == 0){
+                tempPai = drawEastMjs[9];
+            }else if(yuceCeng == 1){
+                tempPai = drawEastMjs[9 + zhangshuEast/2];
+            }
+        }else if(yucePos == 10){
+            if(yuceCeng == 0){
+                tempPai = drawEastMjs[10];
+            }else if(yuceCeng == 1){
+                tempPai = drawEastMjs[10 + zhangshuEast/2];
+            }
+        }else if(yucePos == 11){
+            if(yuceCeng == 0){
+                tempPai = drawEastMjs[11];
+            }else if(yuceCeng == 1){
+                tempPai = drawEastMjs[11 + zhangshuEast/2];
+            }
+        }else if(yucePos == 12){
+            if(yuceCeng == 0){
+                tempPai = drawEastMjs[12];
+            }else if(mopaiCeng == 1){
+                tempPai = drawEastMjs[12 + zhangshuEast/2];
+            }
+        }else if(yucePos == 13){
+            if(yuceCeng == 0){
+                tempPai = drawEastMjs[13];
+            }else if(yuceCeng == 1){
+                tempPai = drawEastMjs[13 + zhangshuEast/2];
+            }
+        }else if(yucePos == 14){
+            if(yuceCeng == 0){
+                tempPai = drawEastMjs[14];
+            }else if(yuceCeng== 1){
+                tempPai = drawEastMjs[14 + zhangshuEast/2];
+            }
+        }else if(yucePos == 15){
+            if(yuceCeng == 0){
+                tempPai = drawEastMjs[15];
+            }else if(yuceCeng == 1){
+                tempPai = drawEastMjs[15 + zhangshuEast/2];
+            }
+        }else if(yucePos == 16){
+            if(yuceCeng == 0){
+                tempPai = drawEastMjs[16];
+             }else if(yuceCeng== 1){
+                tempPai = drawEastMjs[16 + zhangshuEast/2];
+            }
+        }
+    }else if(yuceDirection == 2){
+        if(yucePos == 0){
+          if(yuceCeng == 0){
+              tempPai = drawNorthMjs[0];
+          }else if(yuceCeng == 1){
+              tempPai = drawNorthMjs[0 + zhangshuNorth/2];
+          }
+        }else if(yucePos == 1){
+            if(yuceCeng == 0){
+                tempPai = drawNorthMjs[1];
+            }else if(yuceCeng == 1){
+                tempPai = drawNorthMjs[1 + zhangshuNorth/2];
+            }
+        }else if(yucePos == 2){
+            if(yuceCeng == 0){
+                tempPai = drawNorthMjs[2];
+            }else if(yuceCeng == 1){
+                tempPai = drawNorthMjs[2 + zhangshuNorth/2];
+            }
+        }else if(yucePos == 3){
+            if(yuceCeng == 0){
+                tempPai = drawNorthMjs[3];
+            }else if(yuceCeng == 1){
+                tempPai = drawNorthMjs[3 + zhangshuNorth/2];
+            }
+        }else if(yucePos == 4){
+            if(yuceCeng == 0){
+                tempPai = drawNorthMjs[4];
+            }else if(yuceCeng == 1){
+                tempPai = drawNorthMjs[4 + zhangshuNorth/2];
+            }
+        }else if(yucePos == 5){
+            if(yuceCeng == 0){
+                tempPai = drawNorthMjs[5];
+            }else if(yuceCeng == 1){
+                tempPai = drawNorthMjs[5 + zhangshuNorth/2];
+            }
+        }else if(yucePos == 6){
+            if(yuceCeng == 0){
+                tempPai = drawNorthMjs[6];
+            }else if(yuceCeng == 1){
+                tempPai = drawNorthMjs[6 + zhangshuNorth/2];
+            }
+        }else if(yucePos == 7){
+            if(yuceCeng == 0){
+                tempPai = drawNorthMjs[7];
+            }else if(yuceCeng == 1){
+                tempPai = drawNorthMjs[7 + zhangshuNorth/2];
+            }
+        }else if(yucePos == 8){
+            if(yuceCeng == 0){
+                tempPai = drawNorthMjs[8];
+            }else if(yuceCeng == 1){
+                tempPai = drawNorthMjs[8 + zhangshuNorth/2];
+            }
+        }else if(yucePos == 9){
+            if(yuceCeng == 0){
+                tempPai = drawNorthMjs[9];
+            }else if(yuceCeng == 1){
+                tempPai = drawNorthMjs[9 + zhangshuNorth/2];
+            }
+        }else if(yucePos == 10){
+            if(yuceCeng == 0){
+                tempPai = drawNorthMjs[10];
+            }else if(yuceCeng == 1){
+                tempPai = drawNorthMjs[10 + zhangshuNorth/2];
+            }
+        }else if(yucePos == 11){
+            if(yuceCeng == 0){
+                tempPai = drawNorthMjs[11];
+            }else if(yuceCeng == 1){
+                tempPai = drawNorthMjs[11 + zhangshuNorth/2];
+            }
+        }else if(yucePos == 12){
+            if(yuceCeng == 0){
+                tempPai = drawNorthMjs[12];
+            }else if(yuceCeng == 1){
+                tempPai = drawNorthMjs[12 + zhangshuNorth/2];
+            }
+        }else if(yucePos == 13){
+            if(yuceCeng == 0){
+                tempPai = drawNorthMjs[13];
+            }else if(yuceCeng == 1){
+                tempPai = drawNorthMjs[13 + zhangshuNorth/2];
+            }
+        }else if(yucePos == 14){
+            if(yuceCeng == 0){
+                tempPai = drawNorthMjs[14];
+            }else if(yuceCeng == 1){
+                tempPai = drawNorthMjs[14 + zhangshuNorth/2];
+            }
+        }else if(yucePos == 15){
+            if(yuceCeng == 0){
+                tempPai = drawNorthMjs[15];
+            }else if(yuceCeng == 1){
+                tempPai = drawNorthMjs[15 + zhangshuNorth/2];
+            }
+        }else if(yucePos == 16){
+            if(yuceCeng == 0){
+                tempPai = drawNorthMjs[16];
+            }else if(yuceCeng == 1){
+                tempPai = drawNorthMjs[16 + zhangshuNorth/2];
+            }
+        }
+    }else if(yuceDirection == 3){
+            if(yucePos == 0){
+                if(yuceCeng == 0){
+                    tempPai = drawWestMjs[0];
+                }else if(yuceCeng == 1){
+                    tempPai = drawWestMjs[0 + zhangshuWest/2];
+                }
+            }else if(yucePos == 1){
+                if(yuceCeng == 0){
+                    tempPai = drawWestMjs[1];
+                }else if(yuceCeng == 1){
+                    tempPai = drawWestMjs[1 + zhangshuWest/2];
+                }
+            }else if(yucePos == 2){
+                if(yuceCeng == 0){
+                    tempPai = drawWestMjs[2];
+                }else if(yuceCeng == 1){
+                    tempPai = drawWestMjs[2 + zhangshuWest/2];
+                }
+            }else if(yucePos == 3){
+                if(yuceCeng == 0){
+                    tempPai = drawWestMjs[3];
+                }else if(yuceCeng == 1){
+                    tempPai = drawWestMjs[3 + zhangshuWest/2];
+                }
+            }else if(yucePos == 4){
+                if(yuceCeng == 0){
+                    tempPai = drawWestMjs[4];
+                }else if(yuceCeng == 1){
+                    tempPai = drawWestMjs[4 + zhangshuWest/2];
+                }
+            }else if(yucePos == 5){
+                if(yuceCeng == 0){
+                    tempPai = drawWestMjs[5];
+                }else if(yuceCeng == 1){
+                    tempPai = drawWestMjs[5 + zhangshuWest/2];
+                }
+            }else if(yucePos == 6){
+                if(yuceCeng == 0){
+                    tempPai = drawWestMjs[6];
+                }else if(yuceCeng == 1){
+                    tempPai = drawWestMjs[6 + zhangshuWest/2];
+                }
+            }else if(yucePos == 7){
+                if(yuceCeng == 0){
+                    tempPai = drawWestMjs[7];
+                }else if(yuceCeng == 1){
+                    tempPai = drawWestMjs[7 + zhangshuWest/2];
+                }
+            }else if(yucePos == 8){
+                if(yuceCeng == 0){
+                    tempPai = drawWestMjs[8];
+                }else if(yuceCeng == 1){
+                    tempPai = drawWestMjs[8 + zhangshuWest/2];
+                }
+            }else if(yucePos == 9){
+                if(yuceCeng == 0){
+                    tempPai = drawWestMjs[9];
+                }else if(yuceCeng == 1){
+                    tempPai = drawWestMjs[9 + zhangshuWest/2];
+                }
+            }else if(yucePos == 10){
+                if(yuceCeng == 0){
+                    tempPai = drawWestMjs[10];
+                }else if(yuceCeng == 1){
+                    tempPai = drawWestMjs[10 + zhangshuWest/2];
+                }
+            }else if(yucePos == 11){
+                if(yuceCeng == 0){
+                    tempPai = drawWestMjs[11];
+                }else if(yuceCeng == 1){
+                    tempPai = drawWestMjs[11 + zhangshuWest/2];
+                }
+            }else if(yucePos == 12){
+                if(yuceCeng == 0){
+                    tempPai = drawWestMjs[12];
+                }else if(yuceCeng == 1){
+                    tempPai = drawWestMjs[12 + zhangshuWest/2];
+                }
+            }else if(yucePos == 13){
+                if(yuceCeng == 0){
+                    tempPai = drawWestMjs[13];
+                }else if(yuceCeng == 1){
+                    tempPai = drawWestMjs[13 + zhangshuWest/2];
+                }
+            }else if(yucePos == 14){
+                if(mopaiCeng == 0){
+                    tempPai = drawWestMjs[14];
+                }else if(yuceCeng == 1){
+                    tempPai = drawWestMjs[14 + zhangshuWest/2];
+                }
+            }else if(yucePos ==15){
+                if(yuceCeng == 0){
+                    tempPai = drawWestMjs[15];
+                }else if(yuceCeng == 1){
+                    tempPai = drawWestMjs[15 + zhangshuWest/2];
+                }
+            }else if(yucePos ==16){
+                if(yuceCeng == 0){
+                    tempPai = drawWestMjs[16];
+                }else if(yuceCeng == 1){
+                    tempPai = drawWestMjs[16 + zhangshuWest/2];
+                }
+            }
+    }
+}
+
+void UIMainWindows::isChow()
+{
+    isSouthChow = false;
+    isNorthChow = false;
+    isEastChow = false;
+    isWestChow = false;
+    chowType.clear();
+
+    int paiValue = playedPai.begin()->getResult();//获得当前牌的数字
+
+    int nPai1;//相邻的两张牌
+    int nPai2;
+    bool isFound1;
+    bool isFound2;
+
+    if(dapaiWanjia == 0){
+
+        nPai1 = paiValue - 1;
+        nPai2 = paiValue + 1;
+        isFound1 = false;
+        isFound2 = false;
+
+        for(auto i:handEastMjs){
+            if(i.getResult() == nPai1 && i.getPaizhuangtai() == 0){
+                isFound1 = true;
+            }
+            if(i.getResult() == nPai2 && i.getPaizhuangtai() == 0){
+                isFound2 = true;
+            }
+        }
+        if(isFound1 == true && isFound2 == true){
+            isEastChow = true;
+             chowType.push_back(0);
+        }
+
+        nPai1 = paiValue + 1;
+        nPai2 = paiValue + 2;
+        isFound1 = false;
+        isFound2 = false;
+
+        for(auto i:handEastMjs){
+            if(i.getResult() == nPai1 && i.getPaizhuangtai() == 0){
+                isFound1 = true;
+            }
+            if(i.getResult() == nPai2 && i.getPaizhuangtai() == 0){
+                isFound2 = true;
+            }
+        }
+        if(isFound1 == true && isFound2 == true){
+            isEastChow = true;
+            chowType.push_back(1);
+        }
+
+        nPai1 = paiValue - 1;
+        nPai2 = paiValue - 2;
+        isFound1 = false;
+        isFound2 = false;
+
+        for(auto i:handEastMjs){
+            if(i.getResult() == nPai1 && i.getPaizhuangtai() == 0){
+                isFound1 = true;
+            }
+            if(i.getResult() == nPai2 && i.getPaizhuangtai() == 0){
+                isFound2 = true;
+
+            }
+        }
+        if(isFound1 == true && isFound2 == true){
+            isEastChow = true;
+             chowType.push_back(2);
+        }
+
+    }else if(dapaiWanjia == 1){
+
+        nPai1 = paiValue - 1;
+        nPai2 = paiValue + 1;
+        isFound1 = false;
+        isFound2 = false;
+
+        for(auto i:handNorthMjs){
+            if(i.getResult() == nPai1 && i.getPaizhuangtai() == 0){
+                isFound1 = true;
+            }
+            if(i.getResult() == nPai2 && i.getPaizhuangtai() == 0){
+                isFound2 = true;
+            }
+        }
+        if(isFound1 == true && isFound2 == true){
+            isNorthChow = true;
+            chowType.push_back(0);
+        }
+
+        nPai1 = paiValue + 1;
+        nPai2 = paiValue + 2;
+        isFound1 = false;
+        isFound2 = false;
+
+        for(auto i:handNorthMjs){
+            if(i.getResult() == nPai1 && i.getPaizhuangtai() == 0){
+                isFound1 = true;
+            }
+            if(i.getResult() == nPai2 && i.getPaizhuangtai() == 0){
+                isFound2 = true;
+            }
+        }
+        if(isFound1 == true && isFound2 == true){
+            isNorthChow = true;
+            chowType.push_back(1);
+        }
+
+        nPai1 = paiValue - 1;
+        nPai2 = paiValue - 2;
+        isFound1 = false;
+        isFound2 = false;
+
+        for(auto i:handNorthMjs){
+            if(i.getResult() == nPai1 && i.getPaizhuangtai() == 0){
+                isFound1 = true;
+            }
+            if(i.getResult() == nPai2 && i.getPaizhuangtai() == 0){
+                isFound2 = true;
+            }
+        }
+        if(isFound1 == true && isFound2 == true){
+            isNorthChow = true;
+            chowType.push_back(2);
+        }
+    }else if(dapaiWanjia == 2){
+
+        nPai1 = paiValue - 1;
+        nPai2 = paiValue + 1;
+        isFound1 = false;
+        isFound2 = false;
+
+        for(auto i:handWestMjs){
+            if(i.getResult() == nPai1 && i.getPaizhuangtai() == 0){
+                isFound1 = true;
+            }
+            if(i.getResult() == nPai2 && i.getPaizhuangtai() == 0){
+                isFound2 = true;
+            }
+        }
+        if(isFound1 == true && isFound2 == true){
+            isWestChow = true;
+            chowType.push_back(0);
+        }
+
+        nPai1 = paiValue + 1;
+        nPai2 = paiValue + 2;
+        isFound1 = false;
+        isFound2 = false;
+
+        for(auto i:handWestMjs){
+            if(i.getResult() == nPai1 && i.getPaizhuangtai() == 0){
+                isFound1 = true;
+            }
+            if(i.getResult() == nPai2 && i.getPaizhuangtai() == 0){
+                isFound2 = true;
+            }
+        }
+        if(isFound1 == true && isFound2 == true){
+            isWestChow = true;
+            chowType.push_back(1);
+        }
+
+        nPai1 = paiValue - 1;
+        nPai2 = paiValue - 2;
+        isFound1 = false;
+        isFound2 = false;
+
+        for(auto i:handWestMjs){
+            if(i.getResult() == nPai1 && i.getPaizhuangtai() == 0){
+                isFound1 = true;
+            }
+            if(i.getResult() == nPai2 && i.getPaizhuangtai() == 0){
+                isFound2 = true;
+            }
+        }
+        if(isFound1 == true && isFound2 == true){
+            isWestChow = true;
+            chowType.push_back(2);
+        }
+    }else if(dapaiWanjia == 3){
+
+        nPai1 = paiValue - 1;
+        nPai2 = paiValue + 1;
+        isFound1 = false;
+        isFound2 = false;
+
+        for(auto i:handSouthMjs){
+            if(i.getResult() == nPai1 && i.getPaizhuangtai() == 0){
+                isFound1 = true;
+            }
+            if(i.getResult() == nPai2 && i.getPaizhuangtai() == 0){
+                isFound2 = true;
+            }
+        }
+        if(isFound1 == true && isFound2 == true){
+            isSouthChow = true;
+            chowType.push_back(0);
+        }
+
+        nPai1 = paiValue + 1;
+        nPai2 = paiValue + 2;
+        isFound1 = false;
+        isFound2 = false;
+
+        for(auto i:handSouthMjs){
+            if(i.getResult() == nPai1 && i.getPaizhuangtai() == 0){
+                isFound1 = true;
+            }
+            if(i.getResult() == nPai2 && i.getPaizhuangtai() == 0){
+                isFound2 = true;
+            }
+        }
+        if(isFound1 == true && isFound2 == true){
+            isSouthChow = true;
+            chowType.push_back(1);
+        }
+
+        nPai1 = paiValue - 1;
+        nPai2 = paiValue - 2;
+        isFound1 = false;
+        isFound2 = false;
+
+        for(auto i:handSouthMjs){
+            if(i.getResult() == nPai1 && i.getPaizhuangtai() == 0){
+                isFound1 = true;
+            }
+            if(i.getResult() == nPai2 && i.getPaizhuangtai() == 0){
+                isFound2 = true;
+            }
+        }
+        if(isFound1 == true && isFound2 == true){
+            isSouthChow = true;
+            chowType.push_back(2);
+        }
+    }
+
+
+}
+
+bool UIMainWindows::isChow2(int direction, int paiValue)
+{
+    int nPai1;//相邻的两张牌
+    int nPai2;
+    bool isFound1;
+    bool isFound2;
+
+    if(direction == 0){
+
+        nPai1 = paiValue - 1;
+        nPai2 = paiValue + 1;
+        isFound1 = false;
+        isFound2 = false;
+
+        for(auto i:handEastMjs){
+            if(i.getResult() == nPai1 && i.getPaizhuangtai() == 0){
+                isFound1 = true;
+            }
+            if(i.getResult() == nPai2 && i.getPaizhuangtai() == 0){
+                isFound2 = true;
+            }
+        }
+        if(isFound1 == true && isFound2 == true){
+            return true;
+        }
+
+        nPai1 = paiValue + 1;
+        nPai2 = paiValue + 2;
+        isFound1 = false;
+        isFound2 = false;
+
+        for(auto i:handEastMjs){
+            if(i.getResult() == nPai1 && i.getPaizhuangtai() == 0){
+                isFound1 = true;
+            }
+            if(i.getResult() == nPai2 && i.getPaizhuangtai() == 0){
+                isFound2 = true;
+            }
+        }
+        if(isFound1 == true && isFound2 == true){
+           return true;
+        }
+
+        nPai1 = paiValue - 1;
+        nPai2 = paiValue - 2;
+        isFound1 = false;
+        isFound2 = false;
+
+        for(auto i:handEastMjs){
+            if(i.getResult() == nPai1 && i.getPaizhuangtai() == 0){
+                isFound1 = true;
+            }
+            if(i.getResult() == nPai2 && i.getPaizhuangtai() == 0){
+                isFound2 = true;
+
+            }
+        }
+        if(isFound1 == true && isFound2 == true){
+            return true;
+        }
+
+    }else if(direction == 1){
+
+        nPai1 = paiValue - 1;
+        nPai2 = paiValue + 1;
+        isFound1 = false;
+        isFound2 = false;
+
+        for(auto i:handNorthMjs){
+            if(i.getResult() == nPai1 && i.getPaizhuangtai() == 0){
+                isFound1 = true;
+            }
+            if(i.getResult() == nPai2 && i.getPaizhuangtai() == 0){
+                isFound2 = true;
+            }
+        }
+        if(isFound1 == true && isFound2 == true){
+            return true;
+        }
+
+        nPai1 = paiValue + 1;
+        nPai2 = paiValue + 2;
+        isFound1 = false;
+        isFound2 = false;
+
+        for(auto i:handNorthMjs){
+            if(i.getResult() == nPai1 && i.getPaizhuangtai() == 0){
+                isFound1 = true;
+            }
+            if(i.getResult() == nPai2 && i.getPaizhuangtai() == 0){
+                isFound2 = true;
+            }
+        }
+        if(isFound1 == true && isFound2 == true){
+           return true;
+        }
+
+        nPai1 = paiValue - 1;
+        nPai2 = paiValue - 2;
+        isFound1 = false;
+        isFound2 = false;
+
+        for(auto i:handNorthMjs){
+            if(i.getResult() == nPai1 && i.getPaizhuangtai() == 0){
+                isFound1 = true;
+            }
+            if(i.getResult() == nPai2 && i.getPaizhuangtai() == 0){
+                isFound2 = true;
+            }
+        }
+        if(isFound1 == true && isFound2 == true){
+            return true;
+        }
+    }else if(direction == 2){
+
+        nPai1 = paiValue - 1;
+        nPai2 = paiValue + 1;
+        isFound1 = false;
+        isFound2 = false;
+
+        for(auto i:handWestMjs){
+            if(i.getResult() == nPai1 && i.getPaizhuangtai() == 0){
+                isFound1 = true;
+            }
+            if(i.getResult() == nPai2 && i.getPaizhuangtai() == 0){
+                isFound2 = true;
+            }
+        }
+        if(isFound1 == true && isFound2 == true){
+            return true;
+        }
+
+        nPai1 = paiValue + 1;
+        nPai2 = paiValue + 2;
+        isFound1 = false;
+        isFound2 = false;
+
+        for(auto i:handWestMjs){
+            if(i.getResult() == nPai1 && i.getPaizhuangtai() == 0){
+                isFound1 = true;
+            }
+            if(i.getResult() == nPai2 && i.getPaizhuangtai() == 0){
+                isFound2 = true;
+            }
+        }
+        if(isFound1 == true && isFound2 == true){
+           return true;
+        }
+
+        nPai1 = paiValue - 1;
+        nPai2 = paiValue - 2;
+        isFound1 = false;
+        isFound2 = false;
+
+        for(auto i:handWestMjs){
+            if(i.getResult() == nPai1 && i.getPaizhuangtai() == 0){
+                isFound1 = true;
+            }
+            if(i.getResult() == nPai2 && i.getPaizhuangtai() == 0){
+                isFound2 = true;
+            }
+        }
+        if(isFound1 == true && isFound2 == true){
+           return true;
+        }
+    }else if(direction == 3){
+
+        nPai1 = paiValue - 1;
+        nPai2 = paiValue + 1;
+        isFound1 = false;
+        isFound2 = false;
+
+        for(auto i:handSouthMjs){
+            if(i.getResult() == nPai1 && i.getPaizhuangtai() == 0){
+                isFound1 = true;
+            }
+            if(i.getResult() == nPai2 && i.getPaizhuangtai() == 0){
+                isFound2 = true;
+            }
+        }
+        if(isFound1 == true && isFound2 == true){
+            return true;
+        }
+
+        nPai1 = paiValue + 1;
+        nPai2 = paiValue + 2;
+        isFound1 = false;
+        isFound2 = false;
+
+        for(auto i:handSouthMjs){
+            if(i.getResult() == nPai1 && i.getPaizhuangtai() == 0){
+                isFound1 = true;
+            }
+            if(i.getResult() == nPai2 && i.getPaizhuangtai() == 0){
+                isFound2 = true;
+            }
+        }
+        if(isFound1 == true && isFound2 == true){
+            return true;
+        }
+
+        nPai1 = paiValue - 1;
+        nPai2 = paiValue - 2;
+        isFound1 = false;
+        isFound2 = false;
+
+        for(auto i:handSouthMjs){
+            if(i.getResult() == nPai1 && i.getPaizhuangtai() == 0){
+                isFound1 = true;
+            }
+            if(i.getResult() == nPai2 && i.getPaizhuangtai() == 0){
+                isFound2 = true;
+            }
+        }
+        if(isFound1 == true && isFound2 == true){
+           return true;
+        }
+    }
+    return false;
+}
+
+void UIMainWindows::chowOperating(std::list<Mj> &handMjs)
+{
+    //把吃的牌放入牌首
+    handMjs.push_front(*(playedPai.begin()));
+    handMjs.begin()->setPaizhuangtai(4);
+
+    //清空吃碰杠状态
+    clearHandStatus();
+
+    if(chowType.size() == 1){
+        int type = *chowType.begin();
+        int nPai1, nPai2;//自己牌中吃的牌
+        int cnt1, cnt2;//只记录第一个组合可以吃的牌
+        int paiNum = playedPai.begin()->getResult();//吃的牌
+        Mj mj1, mj2;//插入的两个麻将
+
+        if(type == 0){//-1,+1
+            cnt1 = 0;
+            cnt2 = 0;
+
+            nPai1 = paiNum - 1;
+            nPai2 = paiNum + 1;
+            list<Mj>::iterator iter = handMjs.begin();
+
+            while(iter != handMjs.end()){
+                if(iter->getResult() == nPai1 && cnt1 == 0 && iter->getPaizhuangtai() == 0){
+                    mj1 = *iter;
+                    mj1.setPaizhuangtai(4);
+                    iter = handMjs.erase(iter);
+
+                    cnt1++;
+                }else if(iter->getResult() == nPai2 && cnt2 == 0 && iter->getPaizhuangtai() == 0){
+                    mj2 = *iter;
+                    mj2.setPaizhuangtai(4);
+                    iter = handMjs.erase(iter);
+
+                    cnt2++;
+                }else {
+                    iter++;
+                }
+            }
+
+            handMjs.push_front(mj1);
+
+            iter = handMjs.begin();
+            iter++;
+            iter++;
+            handMjs.insert(iter, mj2);
+        }else if(type == 1){//+1.+2
+            qDebug()<<"type1";
+
+            cnt1 = 0;
+            cnt2 = 0;
+
+            nPai1 = paiNum + 1;
+            nPai2 = paiNum + 2;
+            list<Mj>::iterator iter = handMjs.begin();
+
+            while(iter != handMjs.end()){
+                if(iter->getResult() == nPai1 && cnt1 == 0 && iter->getPaizhuangtai() == 0){
+                    mj1 = *iter;
+                    mj1.setPaizhuangtai(4);
+                    iter = handMjs.erase(iter);
+
+                    cnt1++;
+                }else if(iter->getResult() == nPai2 && cnt2 == 0 && iter->getPaizhuangtai() == 0){
+                    mj2 = *iter;
+                    mj2.setPaizhuangtai(4);
+                    iter = handMjs.erase(iter);
+
+                    cnt2++;
+                }else {
+                    iter++;
+                }
+            }
+
+            iter = handMjs.begin();
+            iter++;
+            handMjs.insert(iter, mj1);
+            handMjs.insert(iter, mj2);
+
+
+        }else if(type == 2){//-1,-2
+            cnt1 = 0;
+            cnt2 = 0;
+
+            nPai1 = paiNum - 1;
+            nPai2 = paiNum - 2;
+            list<Mj>::iterator iter = handMjs.begin();
+
+            while(iter != handMjs.end()){
+                if(iter->getResult() == nPai1 && cnt1 == 0 && iter->getPaizhuangtai() == 0){
+                    mj1 = *iter;
+                    mj1.setPaizhuangtai(4);
+                    iter = handMjs.erase(iter);
+
+                    cnt1++;
+                }else if(iter->getResult() == nPai2 && cnt2 == 0 && iter->getPaizhuangtai() == 0){
+                    mj2 = *iter;
+                    mj2.setPaizhuangtai(4);
+                    iter = handMjs.erase(iter);
+
+                    cnt2++;
+                }else {
+                    iter++;
+                }
+            }
+
+            handMjs.push_front(mj1);
+            handMjs.push_front(mj2);
+        }
+    }else{//多个吃组合， 记录吃组合的第一张牌
+         chowVec.clear();
+
+         int nPai;//自己牌中吃的牌
+         int paiNum = playedPai.begin()->getResult();//吃的牌
+          Mj mj1;//插入的两个麻将
+
+         for(auto i:chowType){
+             list<Mj>::iterator iter = handMjs.begin();
+             iter++;
+
+             if(i == 0){//-1,+1
+                  nPai = paiNum - 1;
+                 while(iter != handMjs.end()){
+                     if(iter->getResult() == nPai && iter->getPaizhuangtai() == 0){
+                         chowVec.push_back(*iter);
+
+                     }
+                     iter++;
+                 }
+             }else if(i == 1){//+1，+2
+                 nPai = paiNum + 1;
+                while(iter != handMjs.end()){
+                    if(iter->getResult() == nPai && iter->getPaizhuangtai() == 0){
+                        chowVec.push_back(*iter);
+
+                    }
+                    iter++;
+                }
+
+             }else if(i == 2){//-1，-2
+                 nPai = paiNum - 2;
+                while(iter != handMjs.end()){
+                    if(iter->getResult() == nPai && iter->getPaizhuangtai() == 0){
+                        chowVec.push_back(*iter);
+
+                    }
+                    iter++;
+                }
+             }
+         }
+    }//else
+}
+
+void UIMainWindows::chowOperating2(std::list<Mj> &handMjs, int type)
+{
+
+    int nPai1, nPai2;//自己牌中吃的牌
+    int cnt1, cnt2;//只记录第一个组合可以吃的牌
+    int paiNum = playedPai.begin()->getResult();//吃的牌
+    Mj mj1, mj2;//插入的两个麻将
+
+    if(type == 0){//-1，+1
+        cnt1 = 0;
+        cnt2 = 0;
+
+        nPai1 = paiNum - 1;
+        nPai2 = paiNum + 1;
+        list<Mj>::iterator iter = handMjs.begin();
+
+        while(iter != handMjs.end()){
+            if(iter->getResult() == nPai1 && cnt1 == 0 && iter->getPaizhuangtai() == 0){
+                mj1 = *iter;
+                mj1.setPaizhuangtai(4);
+                iter = handMjs.erase(iter);
+
+                cnt1++;
+            }else if(iter->getResult() == nPai2 && cnt2 == 0 && iter->getPaizhuangtai() == 0){
+                mj2 = *iter;
+                mj2.setPaizhuangtai(4);
+                iter = handMjs.erase(iter);
+
+                cnt2++;
+            }else {
+                iter++;
+            }
+        }
+
+        handMjs.push_front(mj1);
+
+        iter = handMjs.begin();
+        iter++;
+        iter++;
+        handMjs.insert(iter, mj2);
+    }else if(type == 1){//+1，+2
+
+        cnt1 = 0;
+        cnt2 = 0;
+
+        nPai1 = paiNum + 1;
+        nPai2 = paiNum + 2;
+        qDebug()<<"nPai1:"<< nPai1;
+        qDebug()<<"nPai2:"<<nPai2;
+        list<Mj>::iterator iter = handMjs.begin();
+
+        while(iter != handMjs.end()){
+            if(iter->getResult() == nPai1 && cnt1 == 0 && iter->getPaizhuangtai() == 0){
+                mj1 = *iter;
+                mj1.setPaizhuangtai(4);
+                iter = handMjs.erase(iter);
+
+                cnt1++;
+            }else if(iter->getResult() == nPai2 && cnt2 == 0 && iter->getPaizhuangtai() == 0){
+                mj2 = *iter;
+                mj2.setPaizhuangtai(4);
+                iter = handMjs.erase(iter);
+
+                cnt2++;
+            }else {
+                iter++;
+            }
+        }
+
+        iter = handMjs.begin();
+        iter++;
+        handMjs.insert(iter,mj1);
+
+        handMjs.insert(iter, mj2);
+
+
+    }else if(type == 2){
+        cnt1 = 0;
+        cnt2 = 0;
+
+        nPai1 = paiNum - 1;
+        nPai2 = paiNum - 2;
+        list<Mj>::iterator iter = handMjs.begin();
+
+        while(iter != handMjs.end()){
+            if(iter->getResult() == nPai1 && cnt1 == 0 && iter->getPaizhuangtai() == 0){
+                mj1 = *iter;
+                mj1.setPaizhuangtai(4);
+                iter = handMjs.erase(iter);
+
+                cnt1++;
+            }else if(iter->getResult() == nPai2 && cnt2 == 0 && iter->getPaizhuangtai() == 0){
+                mj2 = *iter;
+                mj2.setPaizhuangtai(4);
+                iter = handMjs.erase(iter);
+
+                cnt2++;
+            }else {
+                iter++;
+            }
+        }
+
+        handMjs.push_front(mj1);
+        handMjs.push_front(mj2);
+    }
+}
+
+void UIMainWindows::isPong()
+{
+    isSouthPong = false;
+    isNorthPong = false;
+    isEastPong = false;
+    isWestPong = false;
+
+    int cnt = 0;
+
+    int paiValue = playedPai.begin()->getResult();//获得当前牌的数字
+    qDebug()<<"paiValue:"<<paiValue;
+
+
+    if(dapaiWanjia == 0){//南
+        if(systemConfig.queyimen == 1 && eastQue < paiValue && paiValue < eastQue + 10){
+
+        }else{
+            for(auto i:handEastMjs){
+                if(i.getResult() == paiValue && i.getPaizhuangtai() == 0){
+                    cnt++;
+                }
+            }
+            if(cnt == 2 || cnt == 3){
+                isEastPong  = true;
+                return;
+            }
+        }
+
+        cnt = 0;
+        if(systemConfig.queyimen == 1 && northQue < paiValue && paiValue < northQue + 10){
+
+        }else{
+            for(auto i:handNorthMjs){
+                if(i.getResult() == paiValue && i.getPaizhuangtai() == 0){
+                   cnt++;
+                }
+            }
+            if(cnt == 2 || cnt == 3){
+                isNorthPong = true;
+                return;
+            }
+        }
+
+
+        cnt = 0;
+        if(systemConfig.queyimen == 1 && westQue < paiValue && paiValue < westQue + 10){
+
+        }else{
+            for(auto i:handWestMjs){
+                if(i.getResult() == paiValue && i.getPaizhuangtai() == 0){
+                   cnt++;
+                }
+            }
+            if(cnt == 2 || cnt == 3){
+                isWestPong = true;
+                return;
+            }
+        }
+
+
+    }else if(dapaiWanjia == 1){
+        if(systemConfig.queyimen == 1 && northQue < paiValue && paiValue < northQue + 10){
+
+        }else{
+            for(auto i:handNorthMjs){
+                if(i.getResult() == paiValue && i.getPaizhuangtai() == 0){
+                   cnt++;
+                }
+            }
+            if(cnt == 2 || cnt == 3){
+                isNorthPong = true;
+                return;
+            }
+        }
+
+        cnt = 0;
+        if(systemConfig.queyimen == 1 && westQue < paiValue && paiValue < westQue + 10){
+
+        }else{
+            for(auto i:handWestMjs){
+                if(i.getResult() == paiValue && i.getPaizhuangtai() == 0){
+                   cnt++;
+                }
+            }
+            if(cnt == 2 || cnt == 3){
+                isWestPong = true;
+                return;
+            }
+        }
+
+        cnt = 0;
+        if(systemConfig.queyimen == 1 && southQue < paiValue && paiValue < southQue + 10){
+
+        }else{
+            for(auto i:handSouthMjs){
+                if(i.getResult() == paiValue && i.getPaizhuangtai() == 0){
+                    cnt++;
+                }
+            }
+
+            if(cnt == 2 || cnt == 3){
+                isSouthPong = true;
+                return;
+            }
+        }
+
+    }else if(dapaiWanjia == 2){
+        if(systemConfig.queyimen == 1 && westQue < paiValue && paiValue < westQue + 10){
+
+        }else{
+            for(auto i:handWestMjs){
+                if(i.getResult() == paiValue && i.getPaizhuangtai() == 0){
+                   cnt++;
+                }
+            }
+            if(cnt == 2 || cnt == 3){
+                isWestPong = true;
+                return;
+            }
+        }
+
+        cnt = 0;
+        if(systemConfig.queyimen == 1 && southQue < paiValue && paiValue < southQue + 10){
+
+        }else{
+            for(auto i:handSouthMjs){
+                if(i.getResult() == paiValue && i.getPaizhuangtai() == 0){
+                    cnt++;
+                }
+            }
+
+            if(cnt == 2 || cnt == 3){
+                isSouthPong = true;
+                return;
+            }
+        }
+
+        cnt = 0;
+        for(auto i:handEastMjs){
+            if(i.getResult() == paiValue && i.getPaizhuangtai() == 0){
+               cnt++;
+            }
+        }
+
+        if(cnt == 2 || cnt == 3){
+            isEastPong = true;
+            return;
+        }
+
+
+
+    }else if(dapaiWanjia == 3){
+        if(systemConfig.queyimen == 1 && southQue < paiValue && paiValue < southQue + 10){
+
+        }else{
+            for(auto i:handSouthMjs){
+                if(i.getResult() == paiValue && i.getPaizhuangtai() == 0){
+                    cnt++;
+                }
+            }
+
+            if(cnt == 2 || cnt == 3){
+                isSouthPong = true;
+                return;
+            }
+        }
+
+        cnt = 0;
+        if(systemConfig.queyimen == 1 && eastQue < paiValue && paiValue < eastQue + 10){
+
+        }else{
+            for(auto i:handEastMjs){
+                if(i.getResult() == paiValue && i.getPaizhuangtai() == 0){
+                    cnt++;
+                }
+            }
+            if(cnt == 2 || cnt == 3){
+                isEastPong  = true;
+                return;
+            }
+        }
+
+        cnt = 0;
+        if(systemConfig.queyimen == 1 && northQue < paiValue && paiValue < northQue + 10){
+
+        }else{
+            for(auto i:handNorthMjs){
+                if(i.getResult() == paiValue && i.getPaizhuangtai() == 0){
+                   cnt++;
+                }
+            }
+            if(cnt == 2 || cnt == 3){
+                isNorthPong = true;
+                return;
+            }
+        }
+    }
+
+}
+
+void UIMainWindows::pongOperating(std::list<Mj> &handMjs)
+{
+    //把碰的牌放入牌首
+    handMjs.push_front(*(playedPai.begin()));
+    handMjs.begin()->setPaizhuangtai(1);
+
+    //把牌中组成碰的牌放到牌首
+    Mj tempMj;
+    list<Mj>::iterator iter =  handMjs.begin();
+    iter++;
+    int cnt = 0;
+    qDebug()<<"碰牌:"<<playedPai.begin()->getResult();
+
+    while(iter != handMjs.end()){
+        if(iter->getResult() == playedPai.begin()->getResult()){
+            tempMj = *iter;
+            tempMj.setPaizhuangtai(1);
+
+            iter =  handMjs.erase(iter);
+            handMjs.push_front(tempMj);
+
+            cnt++;
+            qDebug()<<"cnt:"<<cnt;
+        }else{
+            iter++;
+        }
+        if(cnt == 2){
+            break;
+        }
+    }
+
+    //从弃牌堆拿走被碰的牌
+    for(list<Mj>::iterator iter = discardMjs.begin();iter != discardMjs.end();iter++){
+        if(iter->getId() == playedPai.begin()->getId()){
+            discardMjs.erase(iter);
+            break;
+        }
+    }
+    discardDisplay(discardMjs);
+
+
+    if(isSouthPong == true){//南碰
+        handSouthIndex += 3;
+
+        //重置碰标志
+        isSouthPong = false;
+
+        //清空吃碰杠状态
+        clearHandStatus();
+
+        //更新摸牌玩家
+        mopaiWanjia = 0;
+       updateMopaiWanjia();
+
+
+        //展示手牌
+        southHandDisplay(handSouthMjs);
+
+        //预测
+        yuceDirection  = mopaiDirection;
+        yucePos = mopaiPos;
+        yuceCeng = mopaiCeng;
+        //预测牌
+        yucePai();
+
+        //变更打牌玩家
+         dapaiWanjia = 0;
+        //展示当前打牌位置
+        directionDisplay(dapaiWanjia);
+    }else if(isEastPong == true){//东碰
+        handEastIndex += 3;
+
+        //重置碰标志
+        isEastPong = false;
+
+        //清空吃碰杠状态
+        clearHandStatus();
+
+        //更新摸牌玩家
+       mopaiWanjia = 1;
+       updateMopaiWanjia();
+
+
+        //展示手牌
+        eastHandDisplay(handEastMjs);
+
+        //预测
+        yuceDirection  = mopaiDirection;
+        yucePos = mopaiPos;
+        yuceCeng = mopaiCeng;
+        //预测牌
+        yucePai();
+
+        //变更打牌玩家
+        dapaiWanjia = 1;
+        //展示当前打牌位置
+        directionDisplay(dapaiWanjia);
+
+    }else if(isNorthPong == true){//北碰
+
+        handNorthIndex += 3;
+
+        //重置碰标志
+        isNorthPong = false;
+
+        //清空吃碰杠状态
+        clearHandStatus();
+
+        //更新摸牌玩家
+        mopaiWanjia = 2;
+        updateMopaiWanjia();
+
+        //展示手牌
+        northHandDisplay(handNorthMjs);
+
+        //预测
+        yuceDirection  = mopaiDirection;
+        yucePos = mopaiPos;
+        yuceCeng = mopaiCeng;
+        //预测牌
+        yucePai();
+
+        //变更打牌玩家
+         dapaiWanjia = 2;
+        //展示当前打牌位置
+        directionDisplay(dapaiWanjia);
+    }else if(isWestPong == true){//西碰
+        handWestIndex += 3;
+
+        //重置碰标志
+        isWestPong = false;
+
+        //清空吃碰杠状态
+        clearHandStatus();
+
+        //更新摸牌玩家
+        mopaiWanjia = 3;
+        updateMopaiWanjia();
+
+        //展示手牌
+        westHandDisplay(handWestMjs);
+
+        //预测
+        yuceDirection  = mopaiDirection;
+        yucePos = mopaiPos;
+        yuceCeng = mopaiCeng;
+        //预测牌
+        yucePai();
+
+        //变更打牌玩家
+        dapaiWanjia = 3;
+        //展示当前打牌位置
+        directionDisplay(dapaiWanjia);
+    }
+}
+//牌上箭头碰
+int UIMainWindows::isPong2(int direction, int paiNum)
+{
+     int paiCnt = 1;
+    if(direction == 0){
+        if(systemConfig.queyimen == 1){
+            if(paiNum < eastQue || paiNum > eastQue){
+                for(auto i:handEastMjs){
+                    if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                        paiCnt++;
+                    }
+                }
+                if(paiCnt >= 3){
+                    return 1;
+                }
+            }
+        }else{
+            for(auto i:handEastMjs){
+                if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                    paiCnt++;
+                }
+            }
+            if(paiCnt >= 3){
+                return 1;
+            }
+        }
+
+
+        paiCnt = 1;
+        if(systemConfig.queyimen == 1){
+            if(paiNum < northQue || paiNum > northQue){
+                for(auto i:handNorthMjs){
+                    if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                        paiCnt++;
+                    }
+                }
+                if(paiCnt >= 3){
+                    return 2;
+                }
+            }
+        }else{
+            for(auto i:handNorthMjs){
+                if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                    paiCnt++;
+                }
+            }
+            if(paiCnt >= 3){
+                return 2;
+            }
+        }
+
+        paiCnt = 1;
+        if(systemConfig.queyimen == 1){
+            if(paiNum < westQue || paiNum > westQue){
+                for(auto i:handWestMjs){
+                    if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                        paiCnt++;
+                    }
+                }
+                if(paiCnt >= 3){
+                    return 3;
+                }
+            }
+        }else{
+            for(auto i:handWestMjs){
+                if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                    paiCnt++;
+                }
+            }
+            if(paiCnt >= 3){
+                return 3;
+            }
+        }
+
+    }else if(direction == 1){
+        if(systemConfig.queyimen == 1){
+            if(paiNum < northQue || paiNum > northQue){
+                for(auto i:handNorthMjs){
+                    if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                        paiCnt++;
+                    }
+                }
+                if(paiCnt >= 3){
+                    return 2;
+                }
+            }
+        }else{
+            for(auto i:handNorthMjs){
+                if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                    paiCnt++;
+                }
+            }
+            if(paiCnt >= 3){
+                return 2;
+            }
+        }
+
+        paiCnt = 1;
+        if(systemConfig.queyimen == 1){
+            if(paiNum < westQue || paiNum > westQue){
+                for(auto i:handWestMjs){
+                    if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                        paiCnt++;
+                    }
+                }
+                if(paiCnt >= 3){
+                    return 3;
+                }
+            }
+        }else{
+            for(auto i:handWestMjs){
+                if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                    paiCnt++;
+                }
+            }
+            if(paiCnt >= 3){
+                return 3;
+            }
+        }
+
+
+        paiCnt = 1;
+        if(systemConfig.queyimen == 1){
+             if(paiNum < southQue || paiNum > southQue){
+                 for(auto i:handSouthMjs){
+                     if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                         paiCnt++;
+                     }
+                 }
+                 if(paiCnt >= 3){
+                     return 0;
+                 }
+             }
+        }else{
+            for(auto i:handSouthMjs){
+                if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                    paiCnt++;
+                }
+            }
+            if(paiCnt >= 3){
+                return 0;
+            }
+        }
+
+    }else if(direction == 2){
+        if(systemConfig.queyimen == 1){
+            if(paiNum < westQue || paiNum > westQue){
+                for(auto i:handWestMjs){
+                    if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                        paiCnt++;
+                    }
+                }
+                if(paiCnt >= 3){
+                    return 3;
+                }
+            }
+        }else{
+            for(auto i:handWestMjs){
+                if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                    paiCnt++;
+                }
+            }
+            if(paiCnt >= 3){
+                return 3;
+            }
+        }
+
+        paiCnt = 1;
+        if(systemConfig.queyimen == 1){
+             if(paiNum < southQue || paiNum > southQue){
+                 for(auto i:handSouthMjs){
+                     if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                         paiCnt++;
+                     }
+                 }
+                 if(paiCnt >= 3){
+                     return 0;
+                 }
+             }
+        }else{
+            for(auto i:handSouthMjs){
+                if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                    paiCnt++;
+                }
+            }
+            if(paiCnt >= 3){
+                return 0;
+            }
+        }
+
+        paiCnt = 1;
+        if(systemConfig.queyimen == 1){
+            if(paiNum < eastQue || paiNum > eastQue){
+                for(auto i:handEastMjs){
+                    if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                        paiCnt++;
+                    }
+                }
+                if(paiCnt >= 3){
+                    return 1;
+                }
+            }
+        }else{
+            for(auto i:handEastMjs){
+                if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                    paiCnt++;
+                }
+            }
+            if(paiCnt >= 3){
+                return 1;
+            }
+        }
+    }else if(direction == 3){
+        if(systemConfig.queyimen == 1){
+             if(paiNum < southQue || paiNum > southQue){
+                 for(auto i:handSouthMjs){
+                     if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                         paiCnt++;
+                     }
+                 }
+                 if(paiCnt >= 3){
+                     return 0;
+                 }
+             }
+        }else{
+            for(auto i:handSouthMjs){
+                if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                    paiCnt++;
+                }
+            }
+            if(paiCnt >= 3){
+                return 0;
+            }
+        }
+
+        paiCnt = 1;
+        if(systemConfig.queyimen == 1){
+            if(paiNum < eastQue || paiNum > eastQue){
+                for(auto i:handEastMjs){
+                    if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                        paiCnt++;
+                    }
+                }
+                if(paiCnt >= 3){
+                    return 1;
+                }
+            }
+        }else{
+            for(auto i:handEastMjs){
+                if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                    paiCnt++;
+                }
+            }
+            if(paiCnt >= 3){
+                return 1;
+            }
+        }
+
+        paiCnt = 1;
+        if(systemConfig.queyimen == 1){
+            if(paiNum < northQue || paiNum > northQue){
+                for(auto i:handNorthMjs){
+                    if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                        paiCnt++;
+                    }
+                }
+                if(paiCnt >= 3){
+                    return 2;
+                }
+            }
+        }else{
+            for(auto i:handNorthMjs){
+                if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                    paiCnt++;
+                }
+            }
+            if(paiCnt >= 3){
+                return 2;
+            }
+        }
+    }
+    return -1;
+}
+//明杠判断
+void UIMainWindows::isKong()
+{
+   isSouthKong = false;
+   isWestKong = false;
+   isNorthKong = false;
+   isEastKong = false;
+
+   int paiValue = playedPai.begin()->getResult();//获得当前牌的数字
+
+    //明杠
+   int cnt = 0;
+   if(dapaiWanjia == 0){//南
+
+       if(systemConfig.queyimen == 1 && eastQue < paiValue && paiValue < eastQue + 10){
+
+       }else{
+           for(auto i:handEastMjs){
+               if(i.getResult() == paiValue && i.getPaizhuangtai() == 0){
+                   cnt++;
+               }
+           }
+           if(cnt == 3){
+               isEastKong  = true;
+               return;
+           }
+       }
+
+       cnt = 0;
+       if(systemConfig.queyimen == 1 && northQue < paiValue && paiValue < northQue + 10){
+
+       }else{
+           for(auto i:handNorthMjs){
+               if(i.getResult() == paiValue && i.getPaizhuangtai() == 0){
+                  cnt++;
+               }
+           }
+           if(cnt == 3){
+               isNorthKong = true;
+               return;
+           }
+       }
+
+       cnt = 0;
+       if(systemConfig.queyimen == 1 && westQue < paiValue && paiValue < westQue + 10){
+
+       }else{
+           for(auto i:handWestMjs){
+               if(i.getResult() == paiValue && i.getPaizhuangtai() == 0){
+                  cnt++;
+               }
+           }
+           if(cnt == 3){
+               isWestKong = true;
+               return;
+           }
+       }
+
+       //南
+       if(systemConfig.queyimen == 1 && southQue < paiValue && paiValue < southQue + 10){
+
+       }else{
+           for(auto i:handSouthMjs){
+               if(i.getResult() == paiValue && i.getPaizhuangtai() == 0){
+                   cnt++;
+               }
+           }
+
+           if(cnt == 3){
+               isSouthKong = true;
+               return;
+           }
+       }
+
+   }else if(dapaiWanjia == 1){
+       if(systemConfig.queyimen == 1 && southQue < paiValue && paiValue < southQue + 10){
+
+       }else{
+           for(auto i:handSouthMjs){
+               if(i.getResult() == paiValue && i.getPaizhuangtai() == 0){
+                   cnt++;
+               }
+           }
+
+           if(cnt == 3){
+               isSouthKong = true;
+               return;
+           }
+       }
+
+       cnt = 0;
+       if(systemConfig.queyimen == 1 && northQue < paiValue && paiValue < northQue + 10){
+
+       }else{
+           for(auto i:handNorthMjs){
+               if(i.getResult() == paiValue && i.getPaizhuangtai() == 0){
+                  cnt++;
+               }
+           }
+           if(cnt == 3){
+               isNorthKong = true;
+               return;
+           }
+       }
+
+       cnt = 0;
+       if(systemConfig.queyimen == 1 && westQue < paiValue && paiValue < westQue + 10){
+
+       }else{
+           for(auto i:handWestMjs){
+               if(i.getResult() == paiValue && i.getPaizhuangtai() == 0){
+                  cnt++;
+               }
+           }
+           if(cnt == 3){
+               isWestKong = true;
+               return;
+           }
+       }
+
+   }else if(dapaiWanjia == 2){
+       if(systemConfig.queyimen == 1 && southQue < paiValue && paiValue < southQue + 10){
+
+       }else{
+           for(auto i:handSouthMjs){
+               if(i.getResult() == paiValue && i.getPaizhuangtai() == 0){
+                   cnt++;
+               }
+           }
+
+           if(cnt == 3){
+               isSouthKong = true;
+               return;
+           }
+       }
+
+       cnt = 0;
+       if(systemConfig.queyimen == 1 && eastQue < paiValue && paiValue < eastQue + 10){
+
+       }else{
+           for(auto i:handEastMjs){
+               if(i.getResult() == paiValue && i.getPaizhuangtai() == 0){
+                   cnt++;
+               }
+           }
+           if(cnt == 3){
+               isEastKong  = true;
+               return;
+           }
+       }
+
+       cnt = 0;
+       if(systemConfig.queyimen == 1 && westQue < paiValue && paiValue < westQue + 10){
+
+       }else{
+           for(auto i:handWestMjs){
+               if(i.getResult() == paiValue && i.getPaizhuangtai() == 0){
+                  cnt++;
+               }
+           }
+           if(cnt == 3){
+               isWestKong = true;
+               return;
+           }
+       }
+   }else if(dapaiWanjia == 3){
+       if(systemConfig.queyimen == 1 && southQue < paiValue && paiValue < southQue + 10){
+
+       }else{
+           for(auto i:handSouthMjs){
+               if(i.getResult() == paiValue && i.getPaizhuangtai() == 0){
+                   cnt++;
+               }
+           }
+
+           if(cnt == 3){
+               isSouthKong = true;
+               return;
+           }
+       }
+
+       cnt = 0;
+       if(systemConfig.queyimen == 1 && eastQue < paiValue && paiValue < eastQue + 10){
+
+       }else{
+           for(auto i:handEastMjs){
+               if(i.getResult() == paiValue && i.getPaizhuangtai() == 0){
+                   cnt++;
+               }
+           }
+           if(cnt == 3){
+               isEastKong  = true;
+               return;
+           }
+       }
+
+       cnt = 0;
+       if(systemConfig.queyimen == 1 && northQue < paiValue && paiValue < northQue + 10){
+
+       }else{
+           for(auto i:handNorthMjs){
+               if(i.getResult() == paiValue && i.getPaizhuangtai() == 0){
+                  cnt++;
+               }
+           }
+           if(cnt == 3){
+               isNorthKong = true;
+               return;
+           }
+       }
+   }
+}
+//牌上箭头杠
+int UIMainWindows::isKong2(int direction, int paiNum)
+{
+    int paiCnt = 1;
+   if(direction == 0){
+       if(systemConfig.queyimen == 1){
+           if(paiNum < eastQue || paiNum > eastQue){
+               for(auto i:handEastMjs){
+                   if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                       paiCnt++;
+                   }
+               }
+               if(paiCnt == 4){
+                   return 1;
+               }
+           }
+       }else{
+           for(auto i:handEastMjs){
+               if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                   paiCnt++;
+               }
+           }
+           if(paiCnt == 4){
+               return 1;
+           }
+       }
+
+
+       paiCnt = 1;
+       if(systemConfig.queyimen == 1){
+           if(paiNum < northQue || paiNum > northQue){
+               for(auto i:handNorthMjs){
+                   if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                       paiCnt++;
+                   }
+               }
+               if(paiCnt == 4){
+                   return 2;
+               }
+           }
+       }else{
+           for(auto i:handNorthMjs){
+               if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                   paiCnt++;
+               }
+           }
+           if(paiCnt == 4){
+               return 2;
+           }
+       }
+
+       paiCnt = 1;
+       if(systemConfig.queyimen == 1){
+           if(paiNum < westQue || paiNum > westQue){
+               for(auto i:handWestMjs){
+                   if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                       paiCnt++;
+                   }
+               }
+               if(paiCnt == 4){
+                   return 3;
+               }
+           }
+       }else{
+           for(auto i:handWestMjs){
+               if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                   paiCnt++;
+               }
+           }
+           if(paiCnt == 4){
+               return 3;
+           }
+       }
+
+   }else if(direction == 1){
+       if(systemConfig.queyimen == 1){
+           if(paiNum < northQue || paiNum > northQue){
+               for(auto i:handNorthMjs){
+                   if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                       paiCnt++;
+                   }
+               }
+               if(paiCnt == 4){
+                   return 2;
+               }
+           }
+       }else{
+           for(auto i:handNorthMjs){
+               if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                   paiCnt++;
+               }
+           }
+           if(paiCnt == 4){
+               return 2;
+           }
+       }
+
+       paiCnt = 1;
+       if(systemConfig.queyimen == 1){
+           if(paiNum < westQue || paiNum > westQue){
+               for(auto i:handWestMjs){
+                   if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                       paiCnt++;
+                   }
+               }
+               if(paiCnt == 4){
+                   return 3;
+               }
+           }
+       }else{
+           for(auto i:handWestMjs){
+               if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                   paiCnt++;
+               }
+           }
+           if(paiCnt == 4){
+               return 3;
+           }
+       }
+
+
+       paiCnt = 1;
+       if(systemConfig.queyimen == 1){
+            if(paiNum < southQue || paiNum > southQue){
+                for(auto i:handSouthMjs){
+                    if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                        paiCnt++;
+                    }
+                }
+                if(paiCnt == 4){
+                    return 0;
+                }
+            }
+       }else{
+           for(auto i:handSouthMjs){
+               if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                   paiCnt++;
+               }
+           }
+            if(paiCnt == 4){
+               return 0;
+           }
+       }
+
+   }else if(direction == 2){
+       if(systemConfig.queyimen == 1){
+           if(paiNum < westQue || paiNum > westQue){
+               for(auto i:handWestMjs){
+                   if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                       paiCnt++;
+                   }
+               }
+               if(paiCnt == 4){
+                   return 3;
+               }
+           }
+       }else{
+           for(auto i:handWestMjs){
+               if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                   paiCnt++;
+               }
+           }
+           if(paiCnt == 4){
+               return 3;
+           }
+       }
+
+       paiCnt = 1;
+       if(systemConfig.queyimen == 1){
+            if(paiNum < southQue || paiNum > southQue){
+                for(auto i:handSouthMjs){
+                    if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                        paiCnt++;
+                    }
+                }
+                if(paiCnt == 4){
+                    return 0;
+                }
+            }
+       }else{
+           for(auto i:handSouthMjs){
+               if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                   paiCnt++;
+               }
+           }
+           if(paiCnt == 4){
+               return 0;
+           }
+       }
+
+       paiCnt = 1;
+       if(systemConfig.queyimen == 1){
+           if(paiNum < eastQue || paiNum > eastQue){
+               for(auto i:handEastMjs){
+                   if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                       paiCnt++;
+                   }
+               }
+               if(paiCnt == 4){
+                   return 1;
+               }
+           }
+       }else{
+           for(auto i:handEastMjs){
+               if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                   paiCnt++;
+               }
+           }
+           if(paiCnt == 4){
+               return 1;
+           }
+       }
+   }else if(direction == 3){
+       if(systemConfig.queyimen == 1){
+            if(paiNum < southQue || paiNum > southQue){
+                for(auto i:handSouthMjs){
+                    if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                        paiCnt++;
+                    }
+                }
+                if(paiCnt == 4){
+                    return 0;
+                }
+            }
+       }else{
+           for(auto i:handSouthMjs){
+               if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                   paiCnt++;
+               }
+           }
+           if(paiCnt == 4){
+               return 0;
+           }
+       }
+
+       paiCnt = 1;
+       if(systemConfig.queyimen == 1){
+           if(paiNum < eastQue || paiNum > eastQue){
+               for(auto i:handEastMjs){
+                   if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                       paiCnt++;
+                   }
+               }
+               if(paiCnt == 4){
+                   return 1;
+               }
+           }
+       }else{
+           for(auto i:handEastMjs){
+               if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                   paiCnt++;
+               }
+           }
+           if(paiCnt == 4){
+               return 1;
+           }
+       }
+
+       paiCnt = 1;
+       if(systemConfig.queyimen == 1){
+           if(paiNum < northQue || paiNum > northQue){
+               for(auto i:handNorthMjs){
+                   if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                       paiCnt++;
+                   }
+               }
+               if(paiCnt == 4){
+                   return 2;
+               }
+           }
+       }else{
+           for(auto i:handNorthMjs){
+               if(i.getResult() == paiNum && i.getPaizhuangtai() == 0){
+                   paiCnt++;
+               }
+           }
+           if(paiCnt == 4){
+               return 2;
+           }
+       }
+   }
+   return -1;
+}
+//暗杠判断
+void UIMainWindows::isConcealedKong(std::list<Mj> handMjs,int wanjia)
+{
+    //清空之前的数据
+    concealedKongNum[0] = 0;
+    concealedKongNum[1] = 0;
+    concealedKongNum[2] = 0;
+    concealedKongNum[3] = 0;
+
+    concealedKongElement[0].clear();
+    concealedKongElement[1].clear();
+    concealedKongElement[2].clear();
+    concealedKongElement[3].clear();
+
+    concealedKongType[0].clear();
+    concealedKongType[1].clear();
+    concealedKongType[2].clear();
+    concealedKongType[3].clear();
+
+    //抢杠胡
+    qiangganghuElement[0].clear();
+    qiangganghuElement[1].clear();
+    qiangganghuElement[2].clear();
+    qiangganghuElement[3].clear();
+
+    int cnt = 0;
+    int PongNum = 0;
+    for(list<Mj>::iterator i = handMjs.begin();i != handMjs.end();i++){
+       int iResult = i->getResult();
+//if(iResult == 6){
+
+//}
+//qDebug()<<"暗杠判断的牌"<< iResult;
+
+        if(i->getPaizhuangtai() == 0){//4个暗杠都是手牌            
+            if(systemConfig.queyimen == 1){//判断缺一门
+                if(wanjia == 0 && i->getResult() > southQue && i->getResult() < southQue + 10){
+                    continue;
+                }else if(wanjia == 1 && i->getResult() > eastQue && i->getResult() < eastQue + 10){
+                    continue;
+                }else if(wanjia == 2 && i->getResult() > northQue && i->getResult() < northQue + 10){
+                    continue;
+                }else if(wanjia == 3 && i->getResult() > westQue && i->getResult() < westQue + 10){
+                    continue;
+                }
+            }
+
+            cnt = 0;
+            list<Mj>::iterator tempI = i;
+            tempI++;
+            for(list<Mj>::iterator j = tempI;j != handMjs.end();j++){
+                int paiNum = j->getResult();//暂时记录牌数字
+                if(i->getResult() == j->getResult()){
+                    cnt++;
+                }
+
+//                qDebug()<<"后判断的牌:"<<paiNum;
+
+                if(cnt == 3){
+qDebug()<<"存在4个暗杠";
+                    if(wanjia == 0){
+                        concealedKongNum[0]++;
+                        concealedKongElement[0].push_back(paiNum);
+                        concealedKongType[0].push_back(0);
+
+                    }else if(wanjia == 1){
+                        concealedKongNum[1]++;
+                        concealedKongElement[1].push_back(paiNum);
+                        concealedKongType[1].push_back(0);
+
+                    }else if(wanjia == 2){
+                       concealedKongNum[2]++;
+                       concealedKongElement[2].push_back(paiNum);
+                       concealedKongType[2].push_back(0);
+
+                    }else if(wanjia == 3){
+                       concealedKongNum[3]++;
+                       concealedKongElement[3].push_back(paiNum);
+                       concealedKongType[3].push_back(0);
+
+                    }
+                    break;
+                }
+
+            }
+        }else if(i->getPaizhuangtai() == 1 && systemConfig.gangshouzhongpai == 1){//3个碰牌，一个手牌
+            if(PongNum == i->getResult()){//过滤相同的杠牌
+                continue;
+            }else{
+               PongNum = i->getResult();
+            }
+
+            cnt = 0;
+            list<Mj>::iterator tempI = i;
+            tempI++;
+
+            for(list<Mj>::iterator j = ++tempI;j != handMjs.end();j++){
+                int paiNum = j->getResult();//暂时记录牌数字
+
+                if(j->getPaizhuangtai() == 0 && i->getResult() == j->getResult()){
+                    if(wanjia == 0){
+                        concealedKongNum[0]++;
+                        concealedKongElement[0].push_back(paiNum);
+                        concealedKongType[0].push_back(1);
+
+                        qiangganghuElement[0].push_back(paiNum);
+                    }else if(wanjia == 1){
+                        concealedKongNum[1]++;
+                        concealedKongElement[1].push_back(paiNum);
+                        concealedKongType[1].push_back(1);
+
+                        qiangganghuElement[1].push_back(paiNum);
+                    }else if(wanjia == 2){
+                       concealedKongNum[2]++;
+                       concealedKongElement[2].push_back(paiNum);
+                       concealedKongType[2].push_back(1);
+
+                       qiangganghuElement[2].push_back(paiNum);
+                    }else if(wanjia == 3){
+                       concealedKongNum[3]++;
+                       concealedKongElement[3].push_back(paiNum);
+                       concealedKongType[3].push_back(1);
+
+                       qiangganghuElement[3].push_back(paiNum);
+                    }
+                    break;
+                }
+
+            }
+        }//else if
+    }
+    qDebug()<<"暗杠判断";
+
+}
+//明杠操作
+void UIMainWindows::kongOperating(std::list<Mj> &handMjs)
+{
+    //把刚的牌放入牌首
+    handMjs.push_front(*(playedPai.begin()));
+    handMjs.begin()->setPaizhuangtai(2);
+
+    //把牌中组成碰的牌放到牌首
+    Mj tempMj;
+    list<Mj>::iterator iter =  handMjs.begin();
+    iter++;
+    int cnt = 0;
+    while(iter != handMjs.end()){
+        if(iter->getResult() == playedPai.begin()->getResult()){
+            tempMj = *iter;
+            tempMj.setPaizhuangtai(2);
+
+            iter =  handMjs.erase(iter);
+            handMjs.push_front(tempMj);
+
+            cnt++;
+        }else{
+            iter++;
+        }
+        if(cnt == 3){
+            break;
+        }
+    }
+
+    //从弃牌堆拿走被碰的牌
+    for(list<Mj>::iterator iter = discardMjs.begin();iter != discardMjs.end();iter++){
+        if(iter->getId() == playedPai.begin()->getId()){
+            discardMjs.erase(iter);
+        }
+    }
+    discardDisplay(discardMjs);
+
+
+    if(isSouthKong == true){//南杠
+        handSouthIndex += 4;
+
+        //重置碰标志
+        isSouthKong = false;
+
+        //清空吃碰杠状态
+        clearHandStatus();
+
+        //更新摸牌玩家
+       mopaiWanjia = 0;
+        //摸牌
+
+        draw();//已经包含手牌展示
+
+        //预测牌
+        yucePai();
+
+        //变更打牌玩家
+         dapaiWanjia = 0;
+        //展示当前打牌位置
+        directionDisplay(dapaiWanjia);
+    }else if(isEastKong == true){
+        handEastIndex += 4;
+
+        //重置碰标志
+        isEastKong = false;
+
+        //清空吃碰杠状态
+        clearHandStatus();
+
+        //更新摸牌玩家
+        mopaiWanjia = 1;
+
+        //摸牌
+        draw();//已经包含手牌展示
+
+        //预测牌
+        yucePai();
+
+        //变更打牌玩家
+         dapaiWanjia = 1;
+        //展示当前打牌位置
+        directionDisplay(dapaiWanjia);
+
+    }else if(isNorthKong == true){
+        handNorthIndex += 4;
+
+        //重置碰标志
+        isNorthKong = false;
+
+        //清空吃碰杠状态
+        clearHandStatus();
+
+        //更新摸牌玩家
+        mopaiWanjia = 2;
+        //摸牌
+        draw();//已经包含手牌展示
+
+        //预测牌
+        yucePai();
+
+        //变更打牌玩家
+        dapaiWanjia = 2;
+        //展示当前打牌位置
+        directionDisplay(dapaiWanjia);
+    }else if(isWestKong == true){
+        handWestIndex += 4;
+
+        //重置碰标志
+        isWestKong = false;
+
+        //清空吃碰杠状态
+        clearHandStatus();
+
+        //更新摸牌玩家
+        mopaiWanjia = 3;
+        //摸牌
+        draw();//已经包含手牌展示
+
+        //预测牌
+        yucePai();
+
+        //变更打牌玩家
+       dapaiWanjia = 3;
+        //展示当前打牌位置
+        directionDisplay(dapaiWanjia);
+    }
+
+
+}
+//暗杠操作
+void UIMainWindows::kongOperating2(std::list<Mj> &handMjs)
+{
+    //重置抢杠胡数据
+    isQiangganghu = false;
+    qiangganghuType = -1;
+    qiangganghuPaiNum = 0;
+
+    int paiNum;
+    pair<int, int> kongPair;//撤回记录的暗杠牌以及类型
+qDebug()<<"暗杠测试1";
+    if(dapaiWanjia == 0){
+qDebug()<<"暗杠测试1.1";
+        concealedKongNum[0]--;
+        paiNum = *(concealedKongElement[0].begin());
+qDebug()<<"暗杠测试1.2";
+        kongPair.first = paiNum;
+        kongPair.second = *(concealedKongType[0].begin());
+ qDebug()<<"暗杠测试1.3";
+        southKongStack.push(kongPair);//把暗杠牌加入栈
+ qDebug()<<"暗杠测试1.4";
+        concealedKongElement[0].pop_back();
+ qDebug()<<"暗杠测试1.5";
+        concealedKongType[0].pop_back();
+ qDebug()<<"暗杠测试1.6";
+        if(qiangganghuElement[0].size() != 0){
+            if(paiNum == *(qiangganghuElement[0].begin())){
+                isQiangganghu = true;
+            }
+        }
+
+  qDebug()<<"暗杠测试1.7";
+    }else if(dapaiWanjia == 1){
+        concealedKongNum[1]--;
+        paiNum = *(concealedKongElement[1].begin());
+
+        kongPair.first = paiNum;
+        kongPair.second = *(concealedKongType[1].begin());
+        eastKongStack.push(kongPair);//把暗杠牌加入栈
+
+        concealedKongElement[1].pop_back();
+        concealedKongType[1].pop_back();
+
+        if(qiangganghuElement[1].size() != 0){
+            if(paiNum == *(qiangganghuElement[1].begin())){
+                isQiangganghu = true;
+            }
+        }
+
+    }else if(dapaiWanjia == 2){
+qDebug()<<"暗杠测试2";
+        concealedKongNum[2]--;
+        paiNum = *(concealedKongElement[2].begin());
+qDebug()<<"暗杠测试2.1";
+        kongPair.first = paiNum;
+        kongPair.second = *(concealedKongType[2].begin());
+        northKongStack.push(kongPair);//把暗杠牌加入栈
+qDebug()<<"暗杠测试2.2";
+        concealedKongElement[2].pop_back();
+        concealedKongType[2].pop_back();
+qDebug()<<"暗杠测试2.3";
+        if(qiangganghuElement[2].size() != 0){
+            if(paiNum == *(qiangganghuElement[2].begin())){
+                isQiangganghu = true;
+            }
+        }
+qDebug()<<"暗杠测试2.4";
+    }else if(dapaiWanjia == 3){
+        concealedKongNum[3]--;
+        paiNum = *(concealedKongElement[3].begin());
+
+        kongPair.first = paiNum;
+        kongPair.second = *(concealedKongType[2].begin());
+         westKongStack.push(kongPair);//把暗杠牌加入栈
+
+
+        concealedKongElement[3].pop_back();
+        concealedKongType[3].pop_back();
+
+        if(qiangganghuElement[3].size() != 0){
+            if(paiNum == *(qiangganghuElement[3].begin())){
+                isQiangganghu = true;
+            }
+        }
+    }
+qDebug()<<"暗杠测试2";
+    //检测抢杠胡
+   if(systemConfig.qiangganghu == 1 & isQiangganghu == true){
+        isWin3(paiNum);
+   }
+qDebug()<<"暗杠测试3";
+   if(systemConfig.qiangganghu == 1 & isQiangganghu == true && (isSouthWin == true || isEastWin == true || isNorthWin == true || isWestWin == true)){
+        qiangganghuType = 0;
+        qiangganghuPaiNum = paiNum;
+
+   }else{
+qDebug()<<"暗杠测试4";
+       //把牌中组成杠的牌放到牌首
+       Mj tempMj;
+       list<Mj>::iterator iter = handMjs.begin();
+       int cnt = 0;
+       while(iter != handMjs.end()){
+           if(iter->getResult() == paiNum){
+               tempMj = *iter;
+               tempMj.setPaizhuangtai(2);
+
+               iter =  handMjs.erase(iter);
+               handMjs.push_front(tempMj);
+
+               cnt++;
+           }else{
+               iter++;
+           }
+           if(cnt == 4){
+               break;
+           }
+       }
+qDebug()<<"暗杠测试5";
+
+       //清空吃碰杠状态
+       clearHandStatus();
+qDebug()<<"暗杠测6";
+       if(dapaiWanjia == 0){
+           //更新摸牌玩家
+           mopaiWanjia = 0;
+
+           //摸牌
+           draw();//包含手牌展示
+qDebug()<<"暗杠测试7";
+           //预测牌
+           yucePai();
+qDebug()<<"暗杠测试8";
+           //变更打牌玩家
+           dapaiWanjia = 0;
+           //展示当前打牌位置
+           directionDisplay(dapaiWanjia);
+           handSouthIndex += 4;
+qDebug()<<"暗杠测试9";
+       }else if(dapaiWanjia == 1){
+           //更新摸牌玩家
+          mopaiWanjia = 1;
+           //摸牌
+           draw();//包含手牌展示
+
+           //预测牌
+           yucePai();
+
+           //变更打牌玩家
+           dapaiWanjia = 1;
+           //展示当前打牌位置
+           directionDisplay(dapaiWanjia);
+           handEastIndex += 4;
+       }else if(dapaiWanjia == 2){
+           //更新摸牌玩家
+           mopaiWanjia = 2;
+           //摸牌
+           draw();//包含手牌展示
+
+           //预测牌
+           yucePai();
+
+           //变更打牌玩家
+           dapaiWanjia = 2;
+           //展示当前打牌位置
+           directionDisplay(dapaiWanjia);
+           handNorthIndex += 4;
+       }else if(dapaiWanjia == 3){
+           //更新摸牌玩家
+          mopaiWanjia = 3;
+           //摸牌
+           draw();//包含手牌展示
+
+           //预测牌
+           yucePai();
+
+           //变更打牌玩家
+           dapaiWanjia = 3;
+           //展示当前打牌位置
+           directionDisplay(dapaiWanjia);
+            handWestIndex += 4;
+       }
+
+   }
+}
+//多个暗杠操作时，进行单个暗杠操作
+void UIMainWindows::kongOperating3(std::list<Mj> &handMjs, int paiNum)
+{
+    //把牌中组成碰的牌放到牌首
+    Mj tempMj;
+    list<Mj>::iterator iter = handMjs.begin();
+    int cnt = 0;
+    pair<int, int> kongPair;//撤回记录的暗杠牌以及类型
+
+    while(iter != handMjs.end()){
+        if(iter->getResult() == paiNum){
+            tempMj = *iter;
+            tempMj.setPaizhuangtai(2);
+
+            iter =  handMjs.erase(iter);
+            handMjs.push_front(tempMj);
+
+            cnt++;
+        }else{
+            iter++;
+        }
+        if(cnt == 4){
+            break;
+        }
+    }
+
+    if(dapaiWanjia == 0){
+        isSouthConcealedKong = false;
+        concealedKongNum[0]--;
+
+        vector<int>::iterator kongIter = concealedKongType[0].begin();
+        for(vector<int>::iterator iter = concealedKongElement[0].begin(); iter != concealedKongElement[0].end(); iter++){
+            if(*iter == paiNum){
+                kongPair.first = *iter;
+                kongPair.second = *kongIter;
+                southKongStack.push(kongPair);//把暗杠牌加入栈
+
+                concealedKongElement[0].erase(iter);
+                concealedKongType[0].erase(kongIter);
+
+                break;
+            }
+            kongIter++;
+         }
+
+        //更新摸牌玩家
+        mopaiWanjia = 0;
+        //摸牌
+        draw();//包含手牌展示
+        directionDisplay(0);
+
+        handSouthIndex += 4;
+        //预测牌
+        yucePai();
+
+    }else if(dapaiWanjia == 1){
+        isEastConcealedKong = false;
+        concealedKongNum[1]--;
+
+        vector<int>::iterator kongIter = concealedKongType[0].begin();
+        for(vector<int>::iterator iter = concealedKongElement[1].begin(); iter != concealedKongElement[1].end(); iter++){
+            if(*iter == paiNum){
+                kongPair.first = *iter;
+                kongPair.second = *kongIter;
+                eastKongStack.push(kongPair);//把暗杠牌加入栈
+
+                concealedKongElement[1].erase(iter);
+                concealedKongType[1].erase(kongIter);
+                break;
+            }
+            kongIter++;
+         }
+
+        //更新摸牌玩家
+         mopaiWanjia = 1;
+        //摸牌
+        draw();//包含手牌展示
+        directionDisplay(1);
+
+         handEastIndex += 4;
+
+        //预测牌
+        yucePai();
+
+    }else if(dapaiWanjia == 2){
+        isNorthConcealedKong = false;
+        concealedKongNum[2]--;
+
+        vector<int>::iterator kongIter = concealedKongType[2].begin();
+        for(vector<int>::iterator iter = concealedKongElement[2].begin(); iter != concealedKongElement[2].end(); iter++){
+            if(*iter == paiNum){
+                kongPair.first = *iter;
+                kongPair.second = *kongIter;
+                northKongStack.push(kongPair);//把暗杠牌加入栈
+
+                concealedKongElement[2].erase(iter);
+                concealedKongType[2].erase(kongIter);
+                break;
+            }
+            kongIter++;
+         }
+
+        //更新摸牌玩家
+        mopaiWanjia = 2;
+        //摸牌
+        draw();//包含手牌展示
+        directionDisplay(2);
+         handNorthIndex += 4;
+        //预测牌
+        yucePai();
+
+    }else if(dapaiWanjia == 3){
+        isWestConcealedKong = false;
+        concealedKongNum[3]--;
+
+         vector<int>::iterator kongIter = concealedKongType[3].begin();
+        for(vector<int>::iterator iter = concealedKongElement[3].begin(); iter != concealedKongElement[3].end(); iter++){
+            if(*iter == paiNum){
+                kongPair.first = *iter;
+                kongPair.second = *kongIter;
+                westKongStack.push(kongPair);//把暗杠牌加入栈
+
+                concealedKongElement[3].erase(iter);
+                concealedKongType[3].erase(kongIter);
+                break;
+            }
+         }
+
+        //更新摸牌玩家
+         mopaiWanjia = 3;
+        //摸牌
+        draw();//包含手牌展示
+
+        directionDisplay(3);
+        handWestIndex += 4;
+        //预测牌
+        yucePai();
+    }
+}
+
+
+//自摸
+void UIMainWindows::isWin()
+{
+    if(mopaiWanjia == 0){//南
+        //检测胡牌
+        if(HuPaiPanDin(handSouthMjs, -1, systemConfig) == true){
+            isSouthWin = true;
+            isZimo = true;
+        }
+
+        winDisplay();
+    }else if(mopaiWanjia == 1){//东
+        //检测胡牌
+        if(HuPaiPanDin(handEastMjs, -1, systemConfig) == true){
+            isEastWin = true;
+            isZimo = true;
+        }
+
+        winDisplay();
+    }else if(mopaiWanjia == 2){//北
+        //检测胡牌
+        if(HuPaiPanDin(handNorthMjs, -1, systemConfig) == true){
+            isNorthWin = true;
+            isZimo = true;
+        }
+
+        winDisplay();
+    }else if(mopaiWanjia == 3){//西
+        //检测胡牌
+        if(HuPaiPanDin(handWestMjs, -1, systemConfig) == true){
+            isWestWin = true;
+            isZimo = true;
+        }
+
+        winDisplay();
+    }
+
+}
+//放炮
+void UIMainWindows::isWin2()
+{
+    list<Mj> handMjs;
+
+    if(dapaiWanjia == 0){//南
+        //东
+        if(systemConfig.queyimen == 1){
+            if(playedPai.begin()->getResult() > eastQue && playedPai.begin()->getResult() < eastQue + 10){
+
+            }else{
+                if(endWanjia.find(1) == endWanjia.end()){
+                    handMjs = handEastMjs;
+                    handMjs.push_back(*(playedPai.begin()));
+                    //检测胡牌
+                    if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                        isEastWin = true;
+                    }
+                }
+            }
+        }else{
+            handMjs = handEastMjs;
+            handMjs.push_back(*(playedPai.begin()));
+            //检测胡牌
+            if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                isEastWin = true;
+            }
+        }
+
+        //北
+        if(systemConfig.queyimen == 1){
+            if(playedPai.begin()->getResult() > northQue && playedPai.begin()->getResult() < northQue + 10){
+
+            }else{
+                if(endWanjia.find(2) == endWanjia.end()){
+                    handMjs = handNorthMjs;
+                    handMjs.push_back(*(playedPai.begin()));
+                    if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                        isNorthWin = true;
+                    }
+                }
+            }
+        }else{
+            handMjs = handNorthMjs;
+            handMjs.push_back(*(playedPai.begin()));
+            if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                isNorthWin = true;
+            }
+        }
+
+        //西
+        if(systemConfig.queyimen == 1){
+            if( playedPai.begin()->getResult() > westQue && playedPai.begin()->getResult() < westQue + 10){
+
+            }else{
+                if(endWanjia.find(3) == endWanjia.end()){
+                    handMjs = handWestMjs;
+                    handMjs.push_back(*(playedPai.begin()));
+                    if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                        isWestWin = true;
+                    }
+                }
+            }
+        }else{
+            handMjs = handWestMjs;
+            handMjs.push_back(*(playedPai.begin()));
+            if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                isWestWin = true;
+            }
+        }
+
+        //南
+        if(systemConfig.queyimen == 1){
+            if(playedPai.begin()->getResult() > southQue && playedPai.begin()->getResult() < southQue + 10){
+
+            }else{
+               if(endWanjia.find(0) == endWanjia.end()){
+                   handMjs = handSouthMjs;
+                   handMjs.push_back(*(playedPai.begin()));
+                   //检测胡牌
+                   if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                       isSouthWin = true;
+                   }
+               }
+            }
+        }else{
+            handMjs = handSouthMjs;
+            handMjs.push_back(*(playedPai.begin()));
+            //检测胡牌
+            if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                isSouthWin = true;
+            }
+        }
+
+
+        winDisplay();
+    }else if(dapaiWanjia == 1){//东
+        //检测胡牌
+        if(systemConfig.queyimen == 1){
+            if(playedPai.begin()->getResult() > northQue && playedPai.begin()->getResult() < northQue + 10){
+
+            }else{
+                if(endWanjia.find(2) == endWanjia.end()){
+                    handMjs = handNorthMjs;
+                    handMjs.push_back(*(playedPai.begin()));
+                    if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                        isNorthWin = true;
+                    }
+                }
+            }
+        }else{
+            handMjs = handNorthMjs;
+            handMjs.push_back(*(playedPai.begin()));
+            if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                isNorthWin = true;
+            }
+        }
+
+        if(systemConfig.queyimen == 1){
+            if( playedPai.begin()->getResult() > westQue && playedPai.begin()->getResult() < westQue + 10){
+
+            }else{
+                if(endWanjia.find(3) == endWanjia.end()){
+                    handMjs = handWestMjs;
+                    handMjs.push_back(*(playedPai.begin()));
+                    if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                        isWestWin = true;
+                    }
+                }
+            }
+        }else{
+            handMjs = handWestMjs;
+            handMjs.push_back(*(playedPai.begin()));
+            if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                isWestWin = true;
+            }
+        }
+
+        if(systemConfig.queyimen == 1){
+            if(playedPai.begin()->getResult() > southQue && playedPai.begin()->getResult() < southQue + 10){
+
+            }else{
+               if(endWanjia.find(0) == endWanjia.end()){
+                   handMjs = handSouthMjs;
+                   handMjs.push_back(*(playedPai.begin()));
+                   //检测胡牌
+                   if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                       isSouthWin = true;
+                   }
+               }
+            }
+        }else{
+            handMjs = handSouthMjs;
+            handMjs.push_back(*(playedPai.begin()));
+            //检测胡牌
+            if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                isSouthWin = true;
+            }
+        }
+
+        winDisplay();
+    }else if(dapaiWanjia == 2){//北
+        //检测胡牌
+        if(systemConfig.queyimen == 1){
+            if( playedPai.begin()->getResult() > westQue && playedPai.begin()->getResult() < westQue + 10){
+
+            }else{
+                if(endWanjia.find(3) == endWanjia.end()){
+                    handMjs = handWestMjs;
+                    handMjs.push_back(*(playedPai.begin()));
+                    if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                        isWestWin = true;
+                    }
+                }
+            }
+        }else{
+            handMjs = handWestMjs;
+            handMjs.push_back(*(playedPai.begin()));
+            if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                isWestWin = true;
+            }
+        }
+
+
+        if(systemConfig.queyimen == 1){
+            if(playedPai.begin()->getResult() > southQue && playedPai.begin()->getResult() < southQue + 10){
+
+            }else{
+               if(endWanjia.find(0) == endWanjia.end()){
+                   handMjs = handSouthMjs;
+                   handMjs.push_back(*(playedPai.begin()));
+                   //检测胡牌
+                   if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                       isSouthWin = true;
+                   }
+               }
+            }
+        }else{
+            handMjs = handSouthMjs;
+            handMjs.push_back(*(playedPai.begin()));
+            //检测胡牌
+            if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                isSouthWin = true;
+            }
+        }
+
+
+        if(systemConfig.queyimen == 1){
+            if(playedPai.begin()->getResult() > eastQue && playedPai.begin()->getResult() < eastQue + 10){
+
+            }else{
+                if(endWanjia.find(1) == endWanjia.end()){
+                    handMjs = handEastMjs;
+                    handMjs.push_back(*(playedPai.begin()));
+                    //检测胡牌
+                    if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                        isEastWin = true;
+                    }
+                }
+            }
+        }else{
+            handMjs = handEastMjs;
+            handMjs.push_back(*(playedPai.begin()));
+            //检测胡牌
+            if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                isEastWin = true;
+            }
+        }
+
+
+        winDisplay();
+    }else if(dapaiWanjia == 3){//西
+        if(systemConfig.queyimen == 1){
+            if(playedPai.begin()->getResult() > southQue && playedPai.begin()->getResult() < southQue + 10){
+
+            }else{
+               if(endWanjia.find(0) == endWanjia.end()){
+                   handMjs = handSouthMjs;
+                   handMjs.push_back(*(playedPai.begin()));
+                   //检测胡牌
+                   if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                       isSouthWin = true;
+                   }
+               }
+            }
+        }else{
+            handMjs = handSouthMjs;
+            handMjs.push_back(*(playedPai.begin()));
+            //检测胡牌
+            if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                isSouthWin = true;
+            }
+        }
+
+        if(systemConfig.queyimen == 1){
+            if(playedPai.begin()->getResult() > eastQue && playedPai.begin()->getResult() < eastQue + 10){
+
+            }else{
+                if(endWanjia.find(1) == endWanjia.end()){
+                    handMjs = handEastMjs;
+                    handMjs.push_back(*(playedPai.begin()));
+                    //检测胡牌
+                    if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                        isEastWin = true;
+                    }
+                }
+            }
+        }else{
+            handMjs = handEastMjs;
+            handMjs.push_back(*(playedPai.begin()));
+            //检测胡牌
+            if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                isEastWin = true;
+            }
+        }
+
+
+        if(systemConfig.queyimen == 1){
+            if(playedPai.begin()->getResult() > northQue && playedPai.begin()->getResult() < northQue + 10){
+
+            }else{
+                if(endWanjia.find(2) == endWanjia.end()){
+                    handMjs = handNorthMjs;
+                    handMjs.push_back(*(playedPai.begin()));
+                    if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                        isNorthWin = true;
+                    }
+                }
+            }
+        }else{
+            handMjs = handNorthMjs;
+            handMjs.push_back(*(playedPai.begin()));
+            if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                isNorthWin = true;
+            }
+        }
+
+        winDisplay();
+    }
+}
+//抢杠胡
+void UIMainWindows::isWin3(int paiNum)
+{
+    list<Mj> handMjs;
+    Mj mj;
+    mj.setResult(paiNum);
+
+
+    if(dapaiWanjia == 0){//南
+        handMjs = handEastMjs;
+        handMjs.push_back(mj);
+        //检测胡牌
+        if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+            isEastWin = true;
+        }
+
+        handMjs = handNorthMjs;
+        handMjs.push_back(mj);
+        if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+            isNorthWin = true;
+        }
+
+        handMjs = handWestMjs;
+        handMjs.push_back(mj);
+        if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+            isWestWin = true;
+        }
+
+        winDisplay();
+    }else if(dapaiWanjia == 1){//东
+        //检测胡牌
+        handMjs = handNorthMjs;
+        handMjs.push_back(mj);
+        if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+            isNorthWin = true;
+        }
+
+        handMjs = handWestMjs;
+        handMjs.push_back(mj);
+        if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+            isWestWin = true;
+        }
+
+        handMjs = handSouthMjs;
+        handMjs.push_back(mj);
+        //检测胡牌
+        if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+            isSouthWin = true;
+        }
+
+        winDisplay();
+    }else if(dapaiWanjia == 2){//北
+        //检测胡牌
+        handMjs = handWestMjs;
+        handMjs.push_back(mj);
+        if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+            isWestWin = true;
+        }
+
+        handMjs = handSouthMjs;
+        handMjs.push_back(mj);
+        //检测胡牌
+        if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+            isSouthWin = true;
+        }
+
+        handMjs = handEastMjs;
+        handMjs.push_back(mj);
+        //检测胡牌
+        if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+            isEastWin = true;
+        }
+
+        winDisplay();
+    }else if(dapaiWanjia == 3){//西
+        //检测胡牌
+        handMjs = handSouthMjs;
+        handMjs.push_back(mj);
+        //检测胡牌
+        if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+            isSouthWin = true;
+        }
+
+
+        handMjs = handEastMjs;
+        handMjs.push_back(mj);
+        //检测胡牌
+        if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+            isEastWin = true;
+        }
+
+        handMjs = handNorthMjs;
+        handMjs.push_back(mj);
+        if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+            isNorthWin = true;
+        }
+
+        winDisplay();
+    }
+}
+//开局判胡
+void UIMainWindows::isWin4()
+{
+    if(dapaiWanjia == 0){//南
+        //检测胡牌
+        if(HuPaiPanDin(handSouthMjs, -1, systemConfig) == true){
+            isSouthWin = true;
+            isZimo = true;
+        }
+        winDisplay();
+    }else if(dapaiWanjia == 1){//东
+        //检测胡牌
+        if(HuPaiPanDin(handEastMjs, -1, systemConfig) == true){
+            isEastWin = true;
+            isZimo = true;
+        }
+        winDisplay();
+    }else if(dapaiWanjia == 2){//北
+        //检测胡牌
+        if(HuPaiPanDin(handNorthMjs, -1, systemConfig) == true){
+            isNorthWin = true;
+            isZimo = true;
+        }
+        winDisplay();
+    }else if(dapaiWanjia == 3){//西
+        //检测胡牌
+        if(HuPaiPanDin(handWestMjs, -1, systemConfig) == true){
+            isWestWin = true;
+            isZimo = true;
+        }
+        winDisplay();
+    }
+
+}
+//听牌判断
+void UIMainWindows::isReady()
+{
+    //清空数据
+    isSouthReady = false;
+    isEastReady = false;
+    isNorthReady = false;
+    isWestReady = false;
+
+    readyElemnt[0].clear();
+    readyElemnt[1].clear();
+    readyElemnt[2].clear();
+    readyElemnt[3].clear();
+
+    southReadyHash.clear();
+    eastReadyHash.clear();
+    northReadyHash.clear();
+    westReadyHash.clear();
+
+    list<Mj> handMjs;
+    list<Mj> tempReadyMjs;//暂存其他方向的手牌
+
+    if(mopaiWanjia == 0){
+
+            if(endWanjia.find(1) == endWanjia.end()){
+
+                for(list<Mj>::iterator iter = majhongRemain.begin();iter != majhongRemain.end();iter++){
+                    handMjs = handEastMjs;
+                    handMjs.push_back(*iter);
+                    handMjs.sort(cmpHandMjs);
+                    if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                        isEastReady = true;
+
+                        readyElemnt[1].push_back(iter->getResult());
+                        eastReadyHash[iter->getResult()]++;
+                    }
+                }
+
+                tempReadyMjs.clear();
+                for(list<Mj>::iterator iter = handNorthMjs.begin();iter != handNorthMjs.end();iter++){
+                    if(iter->getPaizhuangtai() == 0){
+                        tempReadyMjs.push_back(*iter);
+                    }
+                }
+                for(list<Mj>::iterator iter = handWestMjs.begin();iter != handWestMjs.end();iter++){
+                    if(iter->getPaizhuangtai() == 0){
+                        tempReadyMjs.push_back(*iter);
+                    }
+                }
+                for(list<Mj>::iterator iter = handSouthMjs.begin();iter != handSouthMjs.end();iter++){
+                    if(iter->getPaizhuangtai() == 0){
+                        tempReadyMjs.push_back(*iter);
+                    }
+                }
+
+                for(list<Mj>::iterator iter = tempReadyMjs.begin(); iter != tempReadyMjs.end();iter++){
+                    handMjs = handEastMjs;
+                    handMjs.push_back(*iter);
+                    handMjs.sort(cmpHandMjs);
+                    if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                        isEastReady = true;
+
+                        readyElemnt[1].push_back(iter->getResult());
+                        eastReadyHash[iter->getResult()]++;
+                    }
+                }
+
+
+            }
+
+            if(endWanjia.find(2) == endWanjia.end()){
+
+                for(list<Mj>::iterator iter = majhongRemain.begin();iter != majhongRemain.end();iter++){
+                    handMjs = handNorthMjs;
+                    handMjs.push_back(*iter);
+                    handMjs.sort(cmpHandMjs);
+                    if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                        isNorthReady = true;
+
+                        readyElemnt[2].push_back(iter->getResult());
+                        northReadyHash[iter->getResult()]++;
+                    }
+                }
+
+               tempReadyMjs.clear();
+                for(list<Mj>::iterator iter = handEastMjs.begin();iter != handEastMjs.end();iter++){
+                    if(iter->getPaizhuangtai() == 0){
+                        tempReadyMjs.push_back(*iter);
+                    }
+                }
+                for(list<Mj>::iterator iter = handWestMjs.begin();iter != handWestMjs.end();iter++){
+                    if(iter->getPaizhuangtai() == 0){
+                        tempReadyMjs.push_back(*iter);
+                    }
+                }
+                for(list<Mj>::iterator iter = handSouthMjs.begin();iter != handSouthMjs.end();iter++){
+                    if(iter->getPaizhuangtai() == 0){
+                        tempReadyMjs.push_back(*iter);
+                    }
+                }
+
+                for(list<Mj>::iterator iter = tempReadyMjs.begin(); iter != tempReadyMjs.end();iter++){
+                    handMjs = handEastMjs;
+                    handMjs.push_back(*iter);
+                    handMjs.sort(cmpHandMjs);
+                    if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                        isEastReady = true;
+
+                        readyElemnt[1].push_back(iter->getResult());
+                        eastReadyHash[iter->getResult()]++;
+                    }
+                }
+
+            }
+
+            if(endWanjia.find(3) == endWanjia.end()){
+
+                for(list<Mj>::iterator iter = majhongRemain.begin();iter != majhongRemain.end();iter++){
+                    handMjs = handWestMjs;
+                    handMjs.push_back(*iter);
+                    handMjs.sort(cmpHandMjs);
+                    if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                        isWestReady = true;
+
+                        readyElemnt[3].push_back(iter->getResult());
+                        westReadyHash[iter->getResult()]++;
+                    }
+                }
+
+                tempReadyMjs.clear();
+                for(list<Mj>::iterator iter = handEastMjs.begin();iter != handEastMjs.end();iter++){
+                    if(iter->getPaizhuangtai() == 0){
+                        tempReadyMjs.push_back(*iter);
+                    }
+                }
+                for(list<Mj>::iterator iter = handNorthMjs.begin();iter != handNorthMjs.end();iter++){
+                    if(iter->getPaizhuangtai() == 0){
+                        tempReadyMjs.push_back(*iter);
+                    }
+                }
+                for(list<Mj>::iterator iter = handSouthMjs.begin();iter != handSouthMjs.end();iter++){
+                    if(iter->getPaizhuangtai() == 0){
+                        tempReadyMjs.push_back(*iter);
+                    }
+                }
+
+                for(list<Mj>::iterator iter = tempReadyMjs.begin(); iter != tempReadyMjs.end();iter++){
+                    handMjs = handEastMjs;
+                    handMjs.push_back(*iter);
+                    handMjs.sort(cmpHandMjs);
+                    if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                        isEastReady = true;
+
+                        readyElemnt[1].push_back(iter->getResult());
+                        eastReadyHash[iter->getResult()]++;
+                    }
+                }
+
+            }
+
+       readyDisplay();
+    }else if(mopaiWanjia == 1){
+
+            if(endWanjia.find(0) == endWanjia.end()){
+
+                for(list<Mj>::iterator iter = majhongRemain.begin();iter != majhongRemain.end();iter++){
+                    handMjs = handSouthMjs;
+                    handMjs.push_back(*iter);
+                    handMjs.sort(cmpHandMjs);
+                    if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                        isSouthReady = true;
+
+                        readyElemnt[0].push_back(iter->getResult());
+                        southReadyHash[iter->getResult()]++;
+                    }
+                }
+
+                tempReadyMjs.clear();
+                for(list<Mj>::iterator iter = handEastMjs.begin();iter != handEastMjs.end();iter++){
+                    if(iter->getPaizhuangtai() == 0){
+                        tempReadyMjs.push_back(*iter);
+                    }
+                }
+                for(list<Mj>::iterator iter = handNorthMjs.begin();iter != handNorthMjs.end();iter++){
+                    if(iter->getPaizhuangtai() == 0){
+                        tempReadyMjs.push_back(*iter);
+                    }
+                }
+                for(list<Mj>::iterator iter = handWestMjs.begin();iter != handWestMjs.end();iter++){
+                    if(iter->getPaizhuangtai() == 0){
+                        tempReadyMjs.push_back(*iter);
+                    }
+                }
+
+                for(list<Mj>::iterator iter = tempReadyMjs.begin(); iter != tempReadyMjs.end();iter++){
+                    handMjs = handEastMjs;
+                    handMjs.push_back(*iter);
+                    handMjs.sort(cmpHandMjs);
+                    if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                        isEastReady = true;
+
+                        readyElemnt[1].push_back(iter->getResult());
+                        eastReadyHash[iter->getResult()]++;
+                    }
+                }
+
+            }
+
+            if(endWanjia.find(2) == endWanjia.end()){
+
+                for(list<Mj>::iterator iter = majhongRemain.begin();iter != majhongRemain.end();iter++){
+                    handMjs = handNorthMjs;
+                    handMjs.push_back(*iter);
+                    handMjs.sort(cmpHandMjs);
+                    if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                        isNorthReady = true;
+
+                        readyElemnt[2].push_back(iter->getResult());
+                        northReadyHash[iter->getResult()]++;
+                    }
+                }
+
+               tempReadyMjs.clear();
+                for(list<Mj>::iterator iter = handEastMjs.begin();iter != handEastMjs.end();iter++){
+                    if(iter->getPaizhuangtai() == 0){
+                        tempReadyMjs.push_back(*iter);
+                    }
+                }
+                for(list<Mj>::iterator iter = handWestMjs.begin();iter != handWestMjs.end();iter++){
+                    if(iter->getPaizhuangtai() == 0){
+                        tempReadyMjs.push_back(*iter);
+                    }
+                }
+                for(list<Mj>::iterator iter = handSouthMjs.begin();iter != handSouthMjs.end();iter++){
+                    if(iter->getPaizhuangtai() == 0){
+                        tempReadyMjs.push_back(*iter);
+                    }
+                }
+
+                for(list<Mj>::iterator iter = tempReadyMjs.begin(); iter != tempReadyMjs.end();iter++){
+                    handMjs = handEastMjs;
+                    handMjs.push_back(*iter);
+                    handMjs.sort(cmpHandMjs);
+                    if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                        isEastReady = true;
+
+                        readyElemnt[1].push_back(iter->getResult());
+                        eastReadyHash[iter->getResult()]++;
+                    }
+                }
+
+            }
+
+
+            if(endWanjia.find(3) == endWanjia.end()){
+
+                for(list<Mj>::iterator iter = majhongRemain.begin();iter != majhongRemain.end();iter++){
+                    handMjs = handWestMjs;
+                    handMjs.push_back(*iter);
+                    handMjs.sort(cmpHandMjs);
+                    if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                        isWestReady = true;
+
+                        readyElemnt[3].push_back(iter->getResult());
+                        westReadyHash[iter->getResult()]++;
+                    }
+                }
+
+                tempReadyMjs.clear();
+                for(list<Mj>::iterator iter = handEastMjs.begin();iter != handEastMjs.end();iter++){
+                    if(iter->getPaizhuangtai() == 0){
+                        tempReadyMjs.push_back(*iter);
+                    }
+                }
+                for(list<Mj>::iterator iter = handNorthMjs.begin();iter != handNorthMjs.end();iter++){
+                    if(iter->getPaizhuangtai() == 0){
+                        tempReadyMjs.push_back(*iter);
+                    }
+                }
+                for(list<Mj>::iterator iter = handSouthMjs.begin();iter != handSouthMjs.end();iter++){
+                    if(iter->getPaizhuangtai() == 0){
+                        tempReadyMjs.push_back(*iter);
+                    }
+                }
+
+                for(list<Mj>::iterator iter = tempReadyMjs.begin(); iter != tempReadyMjs.end();iter++){
+                    handMjs = handEastMjs;
+                    handMjs.push_back(*iter);
+                    handMjs.sort(cmpHandMjs);
+                    if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                        isEastReady = true;
+
+                        readyElemnt[1].push_back(iter->getResult());
+                        eastReadyHash[iter->getResult()]++;
+                    }
+                }
+
+            }
+
+
+         readyDisplay();
+    }else if(mopaiWanjia == 2){
+           if(endWanjia.find(0) == endWanjia.end()){
+
+               for(list<Mj>::iterator iter = majhongRemain.begin();iter != majhongRemain.end();iter++){
+                   handMjs = handSouthMjs;
+                   handMjs.push_back(*iter);
+                   handMjs.sort(cmpHandMjs);
+                   if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                       isSouthReady = true;
+
+                       readyElemnt[0].push_back(iter->getResult());
+                       southReadyHash[iter->getResult()]++;
+                   }
+               }
+
+               tempReadyMjs.clear();
+               for(list<Mj>::iterator iter = handEastMjs.begin();iter != handEastMjs.end();iter++){
+                   if(iter->getPaizhuangtai() == 0){
+                       tempReadyMjs.push_back(*iter);
+                   }
+               }
+               for(list<Mj>::iterator iter = handNorthMjs.begin();iter != handNorthMjs.end();iter++){
+                   if(iter->getPaizhuangtai() == 0){
+                       tempReadyMjs.push_back(*iter);
+                   }
+               }
+               for(list<Mj>::iterator iter = handWestMjs.begin();iter != handWestMjs.end();iter++){
+                   if(iter->getPaizhuangtai() == 0){
+                       tempReadyMjs.push_back(*iter);
+                   }
+               }
+
+               for(list<Mj>::iterator iter = tempReadyMjs.begin(); iter != tempReadyMjs.end();iter++){
+                   handMjs = handEastMjs;
+                   handMjs.push_back(*iter);
+                   handMjs.sort(cmpHandMjs);
+                   if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                       isEastReady = true;
+
+                       readyElemnt[1].push_back(iter->getResult());
+                       eastReadyHash[iter->getResult()]++;
+                   }
+               }
+
+           }
+
+
+           if(endWanjia.find(1) == endWanjia.end()){
+
+               for(list<Mj>::iterator iter = majhongRemain.begin();iter != majhongRemain.end();iter++){
+                   handMjs = handEastMjs;
+                   handMjs.push_back(*iter);
+                   handMjs.sort(cmpHandMjs);
+                   if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                       isEastReady = true;
+
+                       readyElemnt[1].push_back(iter->getResult());
+                       eastReadyHash[iter->getResult()]++;
+                   }
+               }
+
+               tempReadyMjs.clear();
+               for(list<Mj>::iterator iter = handNorthMjs.begin();iter != handNorthMjs.end();iter++){
+                   if(iter->getPaizhuangtai() == 0){
+                       tempReadyMjs.push_back(*iter);
+                   }
+               }
+               for(list<Mj>::iterator iter = handWestMjs.begin();iter != handWestMjs.end();iter++){
+                   if(iter->getPaizhuangtai() == 0){
+                       tempReadyMjs.push_back(*iter);
+                   }
+               }
+               for(list<Mj>::iterator iter = handSouthMjs.begin();iter != handSouthMjs.end();iter++){
+                   if(iter->getPaizhuangtai() == 0){
+                       tempReadyMjs.push_back(*iter);
+                   }
+               }
+
+               for(list<Mj>::iterator iter = tempReadyMjs.begin(); iter != tempReadyMjs.end();iter++){
+                   handMjs = handEastMjs;
+                   handMjs.push_back(*iter);
+                   handMjs.sort(cmpHandMjs);
+                   if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                       isEastReady = true;
+
+                       readyElemnt[1].push_back(iter->getResult());
+                       eastReadyHash[iter->getResult()]++;
+                   }
+               }
+
+
+           }
+
+
+           if(endWanjia.find(3) == endWanjia.end()){
+
+               for(list<Mj>::iterator iter = majhongRemain.begin();iter != majhongRemain.end();iter++){
+                   handMjs = handWestMjs;
+                   handMjs.push_back(*iter);
+                   handMjs.sort(cmpHandMjs);
+                   if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                       isWestReady = true;
+
+                       readyElemnt[3].push_back(iter->getResult());
+                       westReadyHash[iter->getResult()]++;
+                   }
+               }
+
+               tempReadyMjs.clear();
+               for(list<Mj>::iterator iter = handEastMjs.begin();iter != handEastMjs.end();iter++){
+                   if(iter->getPaizhuangtai() == 0){
+                       tempReadyMjs.push_back(*iter);
+                   }
+               }
+               for(list<Mj>::iterator iter = handNorthMjs.begin();iter != handNorthMjs.end();iter++){
+                   if(iter->getPaizhuangtai() == 0){
+                       tempReadyMjs.push_back(*iter);
+                   }
+               }
+               for(list<Mj>::iterator iter = handSouthMjs.begin();iter != handSouthMjs.end();iter++){
+                   if(iter->getPaizhuangtai() == 0){
+                       tempReadyMjs.push_back(*iter);
+                   }
+               }
+
+               for(list<Mj>::iterator iter = tempReadyMjs.begin(); iter != tempReadyMjs.end();iter++){
+                   handMjs = handEastMjs;
+                   handMjs.push_back(*iter);
+                   handMjs.sort(cmpHandMjs);
+                   if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                       isEastReady = true;
+
+                       readyElemnt[1].push_back(iter->getResult());
+                       eastReadyHash[iter->getResult()]++;
+                   }
+               }
+
+           }
+
+         readyDisplay();
+    }else if(mopaiWanjia == 3){
+
+            if(endWanjia.find(0) == endWanjia.end()){
+
+                for(list<Mj>::iterator iter = majhongRemain.begin();iter != majhongRemain.end();iter++){
+                    handMjs = handSouthMjs;
+                    handMjs.push_back(*iter);
+                    handMjs.sort(cmpHandMjs);
+                    if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                        isSouthReady = true;
+
+                        readyElemnt[0].push_back(iter->getResult());
+                        southReadyHash[iter->getResult()]++;
+                    }
+                }
+
+                tempReadyMjs.clear();
+                for(list<Mj>::iterator iter = handEastMjs.begin();iter != handEastMjs.end();iter++){
+                    if(iter->getPaizhuangtai() == 0){
+                        tempReadyMjs.push_back(*iter);
+                    }
+                }
+                for(list<Mj>::iterator iter = handNorthMjs.begin();iter != handNorthMjs.end();iter++){
+                    if(iter->getPaizhuangtai() == 0){
+                        tempReadyMjs.push_back(*iter);
+                    }
+                }
+                for(list<Mj>::iterator iter = handWestMjs.begin();iter != handWestMjs.end();iter++){
+                    if(iter->getPaizhuangtai() == 0){
+                        tempReadyMjs.push_back(*iter);
+                    }
+                }
+
+                for(list<Mj>::iterator iter = tempReadyMjs.begin(); iter != tempReadyMjs.end();iter++){
+                    handMjs = handEastMjs;
+                    handMjs.push_back(*iter);
+                    handMjs.sort(cmpHandMjs);
+                    if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                        isEastReady = true;
+
+                        readyElemnt[1].push_back(iter->getResult());
+                        eastReadyHash[iter->getResult()]++;
+                    }
+                }
+
+            }
+
+            if(endWanjia.find(1) == endWanjia.end()){
+
+                for(list<Mj>::iterator iter = majhongRemain.begin();iter != majhongRemain.end();iter++){
+                    handMjs = handEastMjs;
+                    handMjs.push_back(*iter);
+                    handMjs.sort(cmpHandMjs);
+                    if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                        isEastReady = true;
+
+                        readyElemnt[1].push_back(iter->getResult());
+                        eastReadyHash[iter->getResult()]++;
+                    }
+                }
+
+                tempReadyMjs.clear();
+                for(list<Mj>::iterator iter = handNorthMjs.begin();iter != handNorthMjs.end();iter++){
+                    if(iter->getPaizhuangtai() == 0){
+                        tempReadyMjs.push_back(*iter);
+                    }
+                }
+                for(list<Mj>::iterator iter = handWestMjs.begin();iter != handWestMjs.end();iter++){
+                    if(iter->getPaizhuangtai() == 0){
+                        tempReadyMjs.push_back(*iter);
+                    }
+                }
+                for(list<Mj>::iterator iter = handSouthMjs.begin();iter != handSouthMjs.end();iter++){
+                    if(iter->getPaizhuangtai() == 0){
+                        tempReadyMjs.push_back(*iter);
+                    }
+                }
+
+                for(list<Mj>::iterator iter = tempReadyMjs.begin(); iter != tempReadyMjs.end();iter++){
+                    handMjs = handEastMjs;
+                    handMjs.push_back(*iter);
+                    handMjs.sort(cmpHandMjs);
+                    if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                        isEastReady = true;
+
+                        readyElemnt[1].push_back(iter->getResult());
+                        eastReadyHash[iter->getResult()]++;
+                    }
+                }
+
+
+            }
+
+
+            if(endWanjia.find(2) == endWanjia.end()){
+
+                for(list<Mj>::iterator iter = majhongRemain.begin();iter != majhongRemain.end();iter++){
+                    handMjs = handNorthMjs;
+                    handMjs.push_back(*iter);
+                    handMjs.sort(cmpHandMjs);
+                    if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                        isNorthReady = true;
+
+                        readyElemnt[2].push_back(iter->getResult());
+                        northReadyHash[iter->getResult()]++;
+                    }
+                }
+
+               tempReadyMjs.clear();
+                for(list<Mj>::iterator iter = handEastMjs.begin();iter != handEastMjs.end();iter++){
+                    if(iter->getPaizhuangtai() == 0){
+                        tempReadyMjs.push_back(*iter);
+                    }
+                }
+                for(list<Mj>::iterator iter = handWestMjs.begin();iter != handWestMjs.end();iter++){
+                    if(iter->getPaizhuangtai() == 0){
+                        tempReadyMjs.push_back(*iter);
+                    }
+                }
+                for(list<Mj>::iterator iter = handSouthMjs.begin();iter != handSouthMjs.end();iter++){
+                    if(iter->getPaizhuangtai() == 0){
+                        tempReadyMjs.push_back(*iter);
+                    }
+                }
+
+                for(list<Mj>::iterator iter = tempReadyMjs.begin(); iter != tempReadyMjs.end();iter++){
+                    handMjs = handEastMjs;
+                    handMjs.push_back(*iter);
+                    handMjs.sort(cmpHandMjs);
+                    if(HuPaiPanDin(handMjs, -1, systemConfig) == true){
+                        isEastReady = true;
+
+                        readyElemnt[1].push_back(iter->getResult());
+                        eastReadyHash[iter->getResult()]++;
+                    }
+                }
+
+            }
+
+         readyDisplay();
+    }
+
+}
+
+void UIMainWindows::updateMopaiWanjia()
+{
+    qDebug()<<"摸牌玩家前:"<<mopaiWanjia;
+
+    if(systemConfig.queyimen == 1){
+        mopaiWanjia = (mopaiWanjia + 1) % 4;
+        while(1){            
+            unordered_set<int>::iterator iter = endWanjia.find(mopaiWanjia);
+            if(iter != endWanjia.end()){
+                 mopaiWanjia = (mopaiWanjia + 1) % 4;
+            }else{
+                break;
+            }
+        }
+    }else{
+        mopaiWanjia = (mopaiWanjia + 1) % 4;
+    }
+    qDebug()<<"摸牌玩家后:"<<mopaiWanjia;
+
+}
+
+void UIMainWindows::updateDapaiWanjia()
+{
+    qDebug()<<"打牌玩家前:"<<dapaiWanjia;
+
+    if(systemConfig.queyimen == 1){
+        dapaiWanjia = (dapaiWanjia + 1) % 4;
+        while(1){
+            unordered_set<int>::iterator iter = endWanjia.find(dapaiWanjia);
+            if(iter != endWanjia.end()){
+                 dapaiWanjia = (dapaiWanjia + 1) % 4;
+            }else{
+                break;
+            }
+        }
+    }else{
+        dapaiWanjia = (dapaiWanjia + 1) % 4;
+    }
+    qDebug()<<"打牌玩家后:"<<dapaiWanjia;
+}
+
+void UIMainWindows::clearPanel()
+{
+    qDebug()<<"clearPanel";
+
+    //清理选庄
+    clearBanker();
+
+    //设置遮罩层(消失)
+    ui->justTakenLabel->setStyleSheet(QString("background-color:rgba(0, 0, 0, 0%);"));
+    ui->justTakenLabel->setGeometry(1130,20,10,10);
+
+    //清空手牌
+    ui->handSouth1->clear();
+    ui->handSouth2->clear();
+    ui->handSouth3->clear();
+    ui->handSouth4->clear();
+    ui->handSouth5->clear();
+    ui->handSouth6->clear();
+    ui->handSouth7->clear();
+    ui->handSouth8->clear();
+    ui->handSouth9->clear();
+    ui->handSouth10->clear();
+    ui->handSouth11->clear();
+    ui->handSouth12->clear();
+    ui->handSouth13->clear();
+    ui->handSouth14->clear();
+    ui->handSouth15->clear();
+    ui->handSouth16->clear();
+    ui->handSouth17->clear();
+    ui->handSouth18->clear();
+
+    ui->handEast1->clear();
+    ui->handEast2->clear();
+    ui->handEast3->clear();
+    ui->handEast4->clear();
+    ui->handEast5->clear();
+    ui->handEast6->clear();
+    ui->handEast7->clear();
+    ui->handEast8->clear();
+    ui->handEast9->clear();
+    ui->handEast10->clear();
+    ui->handEast11->clear();
+    ui->handEast12->clear();
+    ui->handEast13->clear();
+    ui->handEast14->clear();
+    ui->handEast15->clear();
+    ui->handEast16->clear();
+    ui->handEast17->clear();
+    ui->handEast18->clear();
+
+    ui->handNorth1->clear();
+    ui->handNorth2->clear();
+    ui->handNorth3->clear();
+    ui->handNorth4->clear();
+    ui->handNorth5->clear();
+    ui->handNorth6->clear();
+    ui->handNorth7->clear();
+    ui->handNorth8->clear();
+    ui->handNorth9->clear();
+    ui->handNorth10->clear();
+    ui->handNorth11->clear();
+    ui->handNorth12->clear();
+    ui->handNorth13->clear();
+    ui->handNorth14->clear();
+    ui->handNorth15->clear();
+    ui->handNorth16->clear();
+    ui->handNorth17->clear();
+    ui->handNorth18->clear();
+
+    ui->handWest1->clear();
+    ui->handWest2->clear();
+    ui->handWest3->clear();
+    ui->handWest4->clear();
+    ui->handWest5->clear();
+    ui->handWest6->clear();
+    ui->handWest7->clear();
+    ui->handWest8->clear();
+    ui->handWest9->clear();
+    ui->handWest10->clear();
+    ui->handWest11->clear();
+    ui->handWest12->clear();
+    ui->handWest13->clear();
+    ui->handWest14->clear();
+    ui->handWest15->clear();
+    ui->handWest16->clear();
+    ui->handWest17->clear();
+    ui->handWest18->clear();
+
+    //清空预测
+    ui->predictionSouth1->clear();
+    ui->predictionSouth2->clear();
+    ui->predictionSouth3->clear();
+    ui->predictionSouth4->clear();
+    ui->predictionSouth5->clear();
+    ui->predictionSouth6->clear();
+    ui->predictionSouth7->clear();
+    ui->predictionSouth8->clear();
+    ui->predictionSouth9->clear();
+    ui->predictionSouth10->clear();
+
+    ui->predictionEast1->clear();
+    ui->predictionEast2->clear();
+    ui->predictionEast3->clear();
+    ui->predictionEast4->clear();
+    ui->predictionEast5->clear();
+    ui->predictionEast6->clear();
+    ui->predictionEast7->clear();
+    ui->predictionEast8->clear();
+    ui->predictionEast9->clear();
+    ui->predictionEast10->clear();
+
+    ui->predictionNorth1->clear();
+    ui->predictionNorth2->clear();
+    ui->predictionNorth3->clear();
+    ui->predictionNorth4->clear();
+    ui->predictionNorth5->clear();
+    ui->predictionNorth6->clear();
+    ui->predictionNorth7->clear();
+    ui->predictionNorth8->clear();
+    ui->predictionNorth9->clear();
+    ui->predictionNorth10->clear();
+
+    ui->predictionWest1->clear();
+    ui->predictionWest2->clear();
+    ui->predictionWest3->clear();
+    ui->predictionWest4->clear();
+    ui->predictionWest5->clear();
+    ui->predictionWest6->clear();
+    ui->predictionWest7->clear();
+    ui->predictionWest8->clear();
+    ui->predictionWest9->clear();
+    ui->predictionWest10->clear();
+
+    //清空牌墙
+    //牌墙数字和牌墙
+    //西
+    ui->drawWestNumber1->clear();
+    ui->drawWestNumber2->clear();
+    ui->drawWestNumber3->clear();
+    ui->drawWestNumber4->clear();
+    ui->drawWestNumber5->clear();
+    ui->drawWestNumber6->clear();
+    ui->drawWestNumber7->clear();
+    ui->drawWestNumber8->clear();
+    ui->drawWestNumber9->clear();
+    ui->drawWestNumber10->clear();
+    ui->drawWestNumber11->clear();
+    ui->drawWestNumber12->clear();
+    ui->drawWestNumber13->clear();
+    ui->drawWestNumber14->clear();
+    ui->drawWestNumber15->clear();
+    ui->drawWestNumber16->clear();
+    ui->drawWestNumber17->clear();
+
+    ui->drawWest1_1->clear();
+    ui->drawWest2_1->clear();
+    ui->drawWest1_2->clear();
+    ui->drawWest2_2->clear();
+    ui->drawWest1_3->clear();
+    ui->drawWest2_3->clear();
+    ui->drawWest1_4->clear();
+    ui->drawWest2_4->clear();
+    ui->drawWest1_5->clear();
+    ui->drawWest2_5->clear();
+    ui->drawWest1_6->clear();
+    ui->drawWest2_6->clear();
+    ui->drawWest1_7->clear();
+    ui->drawWest2_7->clear();
+    ui->drawWest1_8->clear();
+    ui->drawWest2_8->clear();
+    ui->drawWest1_9->clear();
+    ui->drawWest2_9->clear();
+    ui->drawWest1_10->clear();
+    ui->drawWest2_10->clear();
+    ui->drawWest1_11->clear();
+    ui->drawWest2_11->clear();
+    ui->drawWest1_12->clear();
+    ui->drawWest2_12->clear();
+    ui->drawWest1_13->clear();
+    ui->drawWest2_13->clear();
+    ui->drawWest1_14->clear();
+    ui->drawWest2_14->clear();
+    ui->drawWest1_15->clear();
+    ui->drawWest2_15->clear();
+    ui->drawWest1_16->clear();
+    ui->drawWest2_16->clear();
+    ui->drawWest1_17->clear();
+    ui->drawWest2_17->clear();
+    //南
+    ui->drawSouthNumber1_1->clear();
+    ui->drawSouthNumber1_2->clear();
+    ui->drawSouthNumber1_3->clear();
+    ui->drawSouthNumber1_4->clear();
+    ui->drawSouthNumber1_5->clear();
+    ui->drawSouthNumber1_6->clear();
+    ui->drawSouthNumber1_7->clear();
+    ui->drawSouthNumber1_8->clear();
+    ui->drawSouthNumber1_9->clear();
+    ui->drawSouthNumber1_10->clear();
+    ui->drawSouthNumber1_11->clear();
+    ui->drawSouthNumber1_12->clear();
+    ui->drawSouthNumber1_13->clear();
+    ui->drawSouthNumber1_14->clear();
+    ui->drawSouthNumber1_15->clear();
+    ui->drawSouthNumber1_16->clear();
+    ui->drawSouthNumber1_17->clear();
+
+    ui->drawSouth1_1->clear();
+    ui->drawSouth2_1->clear();
+    ui->drawSouth1_2->clear();
+    ui->drawSouth2_2->clear();
+    ui->drawSouth1_3->clear();
+    ui->drawSouth2_3->clear();
+    ui->drawSouth1_4->clear();
+    ui->drawSouth2_4->clear();
+    ui->drawSouth1_5->clear();
+    ui->drawSouth2_5->clear();
+    ui->drawSouth1_6->clear();
+    ui->drawSouth2_6->clear();
+    ui->drawSouth1_7->clear();
+    ui->drawSouth2_7->clear();
+    ui->drawSouth1_8->clear();
+    ui->drawSouth2_8->clear();
+    ui->drawSouth1_9->clear();
+    ui->drawSouth2_9->clear();
+    ui->drawSouth1_10->clear();
+    ui->drawSouth2_10->clear();
+    ui->drawSouth1_11->clear();
+    ui->drawSouth2_11->clear();
+    ui->drawSouth1_12->clear();
+    ui->drawSouth2_12->clear();
+    ui->drawSouth1_13->clear();
+    ui->drawSouth2_13->clear();
+    ui->drawSouth1_14->clear();
+    ui->drawSouth2_14->clear();
+    ui->drawSouth1_15->clear();
+    ui->drawSouth2_15->clear();
+    ui->drawSouth1_16->clear();
+    ui->drawSouth2_16->clear();
+    ui->drawSouth1_17->clear();
+    ui->drawSouth2_17->clear();
+
+    //北
+    ui->drawNorthNumber1_1->clear();
+    ui->drawNorthNumber1_2->clear();
+    ui->drawNorthNumber1_3->clear();
+    ui->drawNorthNumber1_4->clear();
+    ui->drawNorthNumber1_5->clear();
+    ui->drawNorthNumber1_6->clear();
+    ui->drawNorthNumber1_7->clear();
+    ui->drawNorthNumber1_8->clear();
+    ui->drawNorthNumber1_9->clear();
+    ui->drawNorthNumber1_10->clear();
+    ui->drawNorthNumber1_11->clear();
+    ui->drawNorthNumber1_12->clear();
+    ui->drawNorthNumber1_13->clear();
+    ui->drawNorthNumber1_14->clear();
+    ui->drawNorthNumber1_15->clear();
+    ui->drawNorthNumber1_16->clear();
+    ui->drawNorthNumber1_17->clear();
+
+    ui->drawNorth1_1->clear();
+    ui->drawNorth2_1->clear();
+    ui->drawNorth1_2->clear();
+    ui->drawNorth2_2->clear();
+    ui->drawNorth1_3->clear();
+    ui->drawNorth2_3->clear();
+    ui->drawNorth1_4->clear();
+    ui->drawNorth2_4->clear();
+    ui->drawNorth1_5->clear();
+    ui->drawNorth2_5->clear();
+    ui->drawNorth1_6->clear();
+    ui->drawNorth2_6->clear();
+    ui->drawNorth1_7->clear();
+    ui->drawNorth2_7->clear();
+    ui->drawNorth1_8->clear();
+    ui->drawNorth2_8->clear();
+    ui->drawNorth1_9->clear();
+    ui->drawNorth2_9->clear();
+    ui->drawNorth1_10->clear();
+    ui->drawNorth2_10->clear();
+    ui->drawNorth1_11->clear();
+    ui->drawNorth2_11->clear();
+    ui->drawNorth1_12->clear();
+    ui->drawNorth2_12->clear();
+    ui->drawNorth1_13->clear();
+    ui->drawNorth2_13->clear();
+    ui->drawNorth1_14->clear();
+    ui->drawNorth2_14->clear();
+    ui->drawNorth1_15->clear();
+    ui->drawNorth2_15->clear();
+    ui->drawNorth1_16->clear();
+    ui->drawNorth2_16->clear();
+    ui->drawNorth1_17->clear();
+    ui->drawNorth2_17->clear();
+
+    //东
+    ui->drawEastNumber1_1->clear();
+    ui->drawEastNumber1_2->clear();
+    ui->drawEastNumber1_3->clear();
+    ui->drawEastNumber1_4->clear();
+    ui->drawEastNumber1_5->clear();
+    ui->drawEastNumber1_6->clear();
+    ui->drawEastNumber1_7->clear();
+    ui->drawEastNumber1_8->clear();
+    ui->drawEastNumber1_9->clear();
+    ui->drawEastNumber1_10->clear();
+    ui->drawEastNumber1_11->clear();
+    ui->drawEastNumber1_12->clear();
+    ui->drawEastNumber1_13->clear();
+    ui->drawEastNumber1_14->clear();
+    ui->drawEastNumber1_15->clear();
+    ui->drawEastNumber1_16->clear();
+    ui->drawEastNumber1_17->clear();
+
+    ui->drawEast1_1->clear();
+    ui->drawEast2_1->clear();
+    ui->drawEast1_2->clear();
+    ui->drawEast2_2->clear();
+    ui->drawEast1_3->clear();
+    ui->drawEast2_3->clear();
+    ui->drawEast1_4->clear();
+    ui->drawEast2_4->clear();
+    ui->drawEast1_5->clear();
+    ui->drawEast2_5->clear();
+    ui->drawEast1_6->clear();
+    ui->drawEast2_6->clear();
+    ui->drawEast1_7->clear();
+    ui->drawEast2_7->clear();
+    ui->drawEast1_8->clear();
+    ui->drawEast2_8->clear();
+    ui->drawEast1_9->clear();
+    ui->drawEast2_9->clear();
+    ui->drawEast1_10->clear();
+    ui->drawEast2_10->clear();
+    ui->drawEast1_11->clear();
+    ui->drawEast2_11->clear();
+    ui->drawEast1_12->clear();
+    ui->drawEast2_12->clear();
+    ui->drawEast1_13->clear();
+    ui->drawEast2_13->clear();
+    ui->drawEast1_14->clear();
+    ui->drawEast2_14->clear();
+    ui->drawEast1_15->clear();
+    ui->drawEast2_15->clear();
+    ui->drawEast1_16->clear();
+    ui->drawEast2_16->clear();
+    ui->drawEast1_17->clear();
+    ui->drawEast2_17->clear();
+
+    //庄家方向
+    ui->bankerPrompt->clear();
+
+    //打牌玩家箭头
+    ui->directionSouth->clear();
+    ui->directionEast->clear();
+    ui->directionNorth->clear();
+    ui->directionWest->clear();
+
+    //弃牌
+    ui->discard1_1->clear();
+    ui->discard1_2->clear();
+    ui->discard1_3->clear();
+    ui->discard1_4->clear();
+    ui->discard1_5->clear();
+    ui->discard1_6->clear();
+    ui->discard1_7->clear();
+    ui->discard1_8->clear();
+    ui->discard1_9->clear();
+    ui->discard1_10->clear();
+    ui->discard1_11->clear();
+    ui->discard1_12->clear();
+    ui->discard1_13->clear();
+    ui->discard1_14->clear();
+    ui->discard1_15->clear();
+    ui->discard1_16->clear();
+    ui->discard1_17->clear();
+    ui->discard1_18->clear();
+    ui->discard1_19->clear();
+    ui->discard1_20->clear();
+    ui->discard1_21->clear();
+    ui->discard1_22->clear();
+    ui->discard1_23->clear();
+    ui->discard1_24->clear();
+    ui->discard1_25->clear();
+    ui->discard1_26->clear();
+    ui->discard1_27->clear();
+    ui->discard1_28->clear();
+    ui->discard1_29->clear();
+    ui->discard1_30->clear();
+    ui->discard1_31->clear();
+    ui->discard1_32->clear();
+    ui->discard1_33->clear();
+    ui->discard1_34->clear();
+    ui->discard1_35->clear();
+    ui->discard1_36->clear();
+    ui->discard1_37->clear();
+    ui->discard1_38->clear();
+    ui->discard1_39->clear();
+    ui->discard1_40->clear();
+    ui->discard1_41->clear();
+    ui->discard1_42->clear();
+    ui->discard1_43->clear();
+    ui->discard1_44->clear();
+    ui->discard1_45->clear();
+    ui->discard1_46->clear();
+    ui->discard1_47->clear();
+    ui->discard1_48->clear();
+    ui->discard1_49->clear();
+    ui->discard1_50->clear();
+    ui->discard1_51->clear();
+    ui->discard1_52->clear();
+    ui->discard1_53->clear();
+    ui->discard1_54->clear();
+    ui->discard1_55->clear();
+    ui->discard1_56->clear();
+    ui->discard1_57->clear();
+    ui->discard1_58->clear();
+    ui->discard1_59->clear();
+    ui->discard1_60->clear();
+    ui->discard1_61->clear();
+    ui->discard1_62->clear();
+    ui->discard1_63->clear();
+    ui->discard1_64->clear();
+    ui->discard1_65->clear();
+    ui->discard1_66->clear();
+    ui->discard1_67->clear();
+    ui->discard1_68->clear();
+    ui->discard1_69->clear();
+    ui->discard1_70->clear();
+    ui->discard1_71->clear();
+    ui->discard1_72->clear();
+    ui->discard1_73->clear();
+    ui->discard1_74->clear();
+    ui->discard1_75->clear();
+    ui->discard1_76->clear();
+    ui->discard1_77->clear();
+    ui->discard1_78->clear();
+    ui->discard1_78->clear();
+    ui->discard1_78->clear();
+    ui->discard1_78->clear();
+    ui->discard1_78->clear();
+    ui->discard1_78->clear();
+    ui->discard1_79->clear();
+    ui->discard1_80->clear();
+    ui->discard1_81->clear();
+    ui->discard1_82->clear();
+    ui->discard1_83->clear();
+    ui->discard1_84->clear();
+    ui->discard1_85->clear();
+    ui->discard1_86->clear();
+    ui->discard1_87->clear();
+    ui->discard1_88->clear();
+    ui->discard1_89->clear();
+    ui->discard1_90->clear();
+    ui->discard1_91->clear();
+    ui->discard1_92->clear();
+    ui->discard1_93->clear();
+    ui->discard1_94->clear();
+    ui->discard1_95->clear();
+    ui->discard1_96->clear();
+    ui->discard1_97->clear();
+    ui->discard1_98->clear();
+    ui->discard1_99->clear();
+    ui->discard1_100->clear();
+
+    //清空吃、碰、杠、胡、听、过
+    ui->statusSouthWin->clear();
+    ui->statusEastWin->clear();
+    ui->statusNorthWin->clear();
+    ui->statusWestWin->clear();
+
+    ui->statusSouthCheck->clear();
+    ui->statusEastCheck->clear();
+    ui->statusNorthCheck->clear();
+    ui->statusWestCheck->clear();
+
+    ui->statusSouthChow->clear();
+    ui->statusEastChow->clear();
+    ui->statusNorthChow->clear();
+    ui->statusWestChow->clear();
+
+    ui->statusSouthPong->clear();
+    ui->statusEastPong->clear();
+    ui->statusNorthPong->clear();
+    ui->statusWestPong->clear();
+
+    ui->statusSouthKong->clear();
+    ui->statusEastKong->clear();
+    ui->statusNorthKong->clear();
+    ui->statusWestKong->clear();
+
+    ui->statusSouthReady->clear();
+    ui->statusEastReady->clear();
+    ui->statusNorthReady->clear();
+    ui->statusWestReady->clear();
+
+    //清空胡牌标示
+    ui->huSouth->clear();
+    ui->huEast->clear();
+    ui->huNorth->clear();
+    ui->huWest->clear();
+
+    //清空听牌
+    ui->statusSouthReadyNum1->clear();
+    ui->statusSouthReadyNum2->clear();
+    ui->statusSouthReadyNum3->clear();
+    ui->statusSouthReadyNum4->clear();
+    ui->statusSouthReadyNum5->clear();
+    ui->statusSouthReadyNum6->clear();
+    ui->statusSouthReadyNum7->clear();
+    ui->statusSouthReadyNum8->clear();
+    ui->statusSouthReadyNum9->clear();
+    ui->statusSouthReadyNum10->clear();
+
+    ui->statusSouthReadyPai1->clear();
+    ui->statusSouthReadyPai2->clear();
+    ui->statusSouthReadyPai3->clear();
+    ui->statusSouthReadyPai4->clear();
+    ui->statusSouthReadyPai5->clear();
+    ui->statusSouthReadyPai6->clear();
+    ui->statusSouthReadyPai7->clear();
+    ui->statusSouthReadyPai8->clear();
+    ui->statusSouthReadyPai9->clear();
+    ui->statusSouthReadyPai10->clear();
+
+    ui->statusEastReadyNum1->clear();
+    ui->statusEastReadyNum2->clear();
+    ui->statusEastReadyNum3->clear();
+    ui->statusEastReadyNum4->clear();
+    ui->statusEastReadyNum5->clear();
+    ui->statusEastReadyNum6->clear();
+    ui->statusEastReadyNum7->clear();
+    ui->statusEastReadyNum8->clear();
+    ui->statusEastReadyNum9->clear();
+    ui->statusEastReadyNum10->clear();
+
+    ui->statusEastReadyPai1->clear();
+    ui->statusEastReadyPai2->clear();
+    ui->statusEastReadyPai3->clear();
+    ui->statusEastReadyPai4->clear();
+    ui->statusEastReadyPai5->clear();
+    ui->statusEastReadyPai6->clear();
+    ui->statusEastReadyPai7->clear();
+    ui->statusEastReadyPai8->clear();
+    ui->statusEastReadyPai9->clear();
+    ui->statusEastReadyPai10->clear();
+
+    ui->statusNorthReadyNum1->clear();
+    ui->statusNorthReadyNum2->clear();
+    ui->statusNorthReadyNum3->clear();
+    ui->statusNorthReadyNum4->clear();
+    ui->statusNorthReadyNum5->clear();
+    ui->statusNorthReadyNum6->clear();
+    ui->statusNorthReadyNum7->clear();
+    ui->statusNorthReadyNum8->clear();
+    ui->statusNorthReadyNum9->clear();
+    ui->statusNorthReadyNum10->clear();
+
+    ui->statusNorthReadyPai1->clear();
+    ui->statusNorthReadyPai2->clear();
+    ui->statusNorthReadyPai3->clear();
+    ui->statusNorthReadyPai4->clear();
+    ui->statusNorthReadyPai5->clear();
+    ui->statusNorthReadyPai6->clear();
+    ui->statusNorthReadyPai7->clear();
+    ui->statusNorthReadyPai8->clear();
+    ui->statusNorthReadyPai9->clear();
+    ui->statusNorthReadyPai10->clear();
+
+    ui->statusWestReadyNum1->clear();
+    ui->statusWestReadyNum2->clear();
+    ui->statusWestReadyNum3->clear();
+    ui->statusWestReadyNum4->clear();
+    ui->statusWestReadyNum5->clear();
+    ui->statusWestReadyNum6->clear();
+    ui->statusWestReadyNum7->clear();
+    ui->statusWestReadyNum8->clear();
+    ui->statusWestReadyNum9->clear();
+    ui->statusWestReadyNum10->clear();
+
+    ui->statusWestReadyPai1->clear();
+    ui->statusWestReadyPai2->clear();
+    ui->statusWestReadyPai3->clear();
+    ui->statusWestReadyPai4->clear();
+    ui->statusWestReadyPai5->clear();
+    ui->statusWestReadyPai6->clear();
+    ui->statusWestReadyPai7->clear();
+    ui->statusWestReadyPai8->clear();
+    ui->statusWestReadyPai9->clear();
+    ui->statusWestReadyPai10->clear();
+
+}
+
+void UIMainWindows::clearVariable()
+{
+    //庄家
+    zhuangjia = -1;
+
+    //摸牌
+    mopaiDirection = -1;
+    mopaiPos = -1;
+    mopaiCeng = 1;
+
+    //预测
+    yuceDirection = -1;
+    yucePos = -1;
+    yuceCeng = 1;
+
+    //摸牌打牌玩家
+    mopaiWanjia = -1;
+    dapaiWanjia = -1;
+
+    //清空数据
+    majhongTaken.clear();
+    majhongTotal.clear();
+    majhongRemain.clear();
+
+    //手牌
+    handNorthMjs.clear();
+    handSouthMjs.clear();
+    handEastMjs.clear();
+    handWestMjs.clear();
+
+    //牌墙
+    drawNorthMjs.clear();
+    drawEastMjs.clear();
+    drawSouthMjs.clear();
+    drawWestMjs.clear();
+
+    //预测
+    predictionNorthMjs.clear();
+    predictionSouthMjs.clear();
+    predictionWestMjs.clear();
+    predictionEastMjs.clear();
+
+    //弃牌
+    discardMjs.clear();
+
+   //预测的数目
+   predictionNumber = 10;
+
+   //吃
+   isSouthChow = false;
+   isNorthChow = false;
+   isEastChow = false;
+   isWestChow = false;
+   chowType.clear();//吃牌的类型0（-1，+1），1（+1，+2），2（-1，-2）
+   chowVec.clear();//吃牌的队列组合中 原始牌中的第一个元素
+
+   //碰
+   isSouthPong = false;
+   isNorthPong = false;
+   isEastPong = false;
+   isWestPong = false;
+
+   //杠(明杠)
+   isSouthKong = false;
+   isWestKong = false;
+   isNorthKong = false;
+   isEastKong = false;
+
+   //记录暗杠个数
+   memset(concealedKongNum, 0, sizeof(concealedKongNum));
+   concealedKongElement[0].clear();
+   concealedKongElement[1].clear();
+   concealedKongElement[2].clear();
+   concealedKongElement[3].clear();
+
+   //能否暗杠
+   isSouthConcealedKong = false;
+   isWestConcealedKong = false;
+   isNorthConcealedKong = false;
+   isEastConcealedKong = false;
+
+   //抢杠胡
+   isQiangganghu = false;
+   qiangganghuElement[0].clear();
+   qiangganghuElement[1].clear();
+   qiangganghuElement[2].clear();
+   qiangganghuElement[3].clear();
+   qiangganghuPaiNum = 0;//抢杠的牌
+   qiangganghuType = -1;//0-——-一个碰杠，1————多个碰杠
+
+   //手牌有效位置
+   handSouthIndex = 0;
+   handWestIndex = 0;
+   handEastIndex = 0;
+   handNorthIndex = 0;
+
+   //胡
+   isSouthWin = false;
+   isEastWin = false;
+   isNorthWin = false;
+   isWestWin = false;
+
+   //听
+   isSouthReady = false;
+   isEastReady = false;
+   isNorthReady = false;
+   isWestReady = false;
+
+   southReadyHash.clear();
+   eastReadyHash.clear();
+   northReadyHash.clear();
+   westReadyHash.clear();
+
+   readyElemnt[0].clear();
+   readyElemnt[1].clear();
+   readyElemnt[2].clear();
+   readyElemnt[3].clear();
+
+
+
+   //每个方向的牌数
+   zhangshuSouth  = 0;
+   zhangshuWest = 0;
+   zhangshuNorth = 0;
+   zhangshuEast = 0;
+
+   //缺门
+   southQue = -10;//0---万、10---条、20---筒
+   eastQue = -10;
+   northQue = -10;
+   westQue = -10;
+
+   isSouthQue = true;
+   isEastQue = true;
+   isNorthQue = true;
+   isWestQue = true;
+
+   //开始游戏
+   isBeginGame = false;
+
+   isZimo = false;//自摸
+
+   //撤回
+   while(!dapaiWanjiaStack.empty()){
+       dapaiWanjiaStack.pop();
+   }
+   while(!playedPaiStack.empty()){
+       playedPaiStack.pop();
+   }
+
+   //记录暗杠
+   while(!southKongStack.empty()){
+       southKongStack.pop();
+   }
+   while(!eastKongStack.empty()){
+       eastKongStack.pop();
+   }
+   while(!northKongStack.empty()){
+       northKongStack.pop();
+   }
+   while(!westKongStack.empty()){
+       westKongStack.pop();
+   }
+
+   //改牌
+   changeSouthPai = false;
+   changeEastPai = false;
+   changeNorthPai = false;
+   changeWestPai = false;
+
+   endWanjia.clear();
+
+}
+
+bool UIMainWindows::eventFilter(QObject *obj, QEvent *event)
+{
+//    qDebug()<<"majhongTotal:"<<majhongTotal.size();
+//    qDebug()<<"majhongTaken:"<<majhongTaken.size();
+//    qDebug()<<"dapaiWanjia"<<dapaiWanjia;
+//    qDebug()<<"mopaiWanjia"<<mopaiWanjia;
+//    qDebug()<<"handSouth:"<<handSouthMjs.size();
+//    qDebug()<<"handEast:"<<handEastMjs.size();
+//    qDebug()<<"handNorth:"<<handNorthMjs.size();
+//    qDebug()<<"handWest:"<<handWestMjs.size();
+//    qDebug()<<"yuceDirection"<<yuceDirection;
+//    qDebug()<<"yucePos"<<yucePos;
+//    qDebug()<<"yuceCeng"<<yuceCeng;    
+
+    //开始游戏
+    if(isBeginGame == true){        
+        if(obj == ui->bankerDong){
+                    if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+                       QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+                       if(mouseEvent->button() == Qt::LeftButton){
+                           if(isBanker == true){
+                                isBanker = false;
+                                zhuangjia = 0;
+                                //获得摸牌玩家的编号
+                                mopaiWanjia = zhuangjia;
+                                dapaiWanjia = zhuangjia;
+
+                                bankerDirectionDisplay();
+                                qDebug()<<"zhuangjia东:"<<zhuangjia;
+                                clearBanker();
+                           }
+                           return true;
+                        }else{//button
+                           return false;
+                        }
+                    }else{//button
+                        return false;
+                     }
+         }else if(obj == ui->bankerNan){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isBanker == true){
+                        isBanker = false;
+                        zhuangjia = 1;
+                        //获得摸牌玩家的编号
+                        mopaiWanjia = zhuangjia;
+                        dapaiWanjia = zhuangjia;
+                        bankerDirectionDisplay();
+                        qDebug()<<"zhuangjia南:"<<zhuangjia;
+                        clearBanker();
+                   }
+                   return true;
+                }else{//button
+                   return false;
+                }
+            }else{//button
+                return false;
+             }
+         }else if(obj == ui->bankerXi){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isBanker == true){
+                        isBanker = false;
+                        zhuangjia = 2;
+                        //获得摸牌玩家的编号
+                        mopaiWanjia = zhuangjia;
+                        dapaiWanjia = zhuangjia;
+                        bankerDirectionDisplay();
+                        qDebug()<<"zhuangjia西:"<<zhuangjia;
+                        clearBanker();
+                   }
+                   return true;
+                }else{//button
+                   return false;
+                }
+            }else{//button
+                return false;
+             }
+         }else if(obj == ui->bankerBei){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isBanker == true){
+                        isBanker = false;
+                        zhuangjia = 3;
+                        //获得摸牌玩家的编号
+                        mopaiWanjia = zhuangjia;
+                        dapaiWanjia = zhuangjia;
+                        bankerDirectionDisplay();
+                        qDebug()<<"zhuangjia北:"<<zhuangjia;
+                        clearBanker();
+                   }
+                   return true;
+                }else{//button
+                   return false;
+                }
+            }else{//button
+                return false;
+             }
+         }
+
+        else if(obj == ui->drawSouth1_2){
+                    if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+                       QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+                       if(mouseEvent->button() == Qt::LeftButton){
+                           if(isMopai == false){
+                               isMopai = true;
+                               list<Mj> handOne;
+                               list<Mj> handTwo;
+                               list<Mj> handThree;
+                               list<Mj> handFour;
+
+                               mopaiDirection = 0;
+                               mopaiCeng = 0;
+                               mopaiPos = 1;
+
+                               beginDraw(handOne, handTwo, handThree, handFour);
+
+                               beginGameDisplay(handOne, handTwo, handThree, handFour);
+                           }
+
+                           return true;
+                        }else{//button
+                           return false;
+                        }
+                    }else{//button
+                        return false;
+                     }
+         }else if(obj == ui->drawSouth2_2){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isMopai == false){
+                       isMopai = true;
+                   list<Mj> handOne;
+                   list<Mj> handTwo;
+                   list<Mj> handThree;
+                   list<Mj> handFour;
+
+                   mopaiDirection = 0;
+                   mopaiCeng = 0;
+                   mopaiPos = 1;
+
+                   beginDraw(handOne, handTwo, handThree, handFour);
+
+                   beginGameDisplay(handOne, handTwo, handThree, handFour);
+                   }
+                   return true;
+                }else{//button
+                   return false;
+                }
+            }else{//button
+                return false;
+             }
+         }else if(obj == ui->drawSouth1_3){
+                    if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+                       QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+                       if(mouseEvent->button() == Qt::LeftButton){
+                           if(isMopai == false){
+                               isMopai = true;
+                           list<Mj> handOne;
+                           list<Mj> handTwo;
+                           list<Mj> handThree;
+                           list<Mj> handFour;
+
+                           mopaiDirection = 0;
+                           mopaiCeng = 0;
+                           mopaiPos = 2;
+
+                           beginDraw(handOne, handTwo, handThree, handFour);
+
+                           beginGameDisplay(handOne, handTwo, handThree, handFour);
+                           }
+                           return true;
+                        }
+                    }else{//button
+                        return false;
+                     }
+         }else if(obj == ui->drawSouth2_3){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isMopai == false){
+                       isMopai = true;
+                   list<Mj> handOne;
+                   list<Mj> handTwo;
+                   list<Mj> handThree;
+                   list<Mj> handFour;
+
+                   mopaiDirection = 0;
+                   mopaiCeng = 0;
+                   mopaiPos = 2;
+
+                   beginDraw(handOne, handTwo, handThree, handFour);
+
+                   beginGameDisplay(handOne, handTwo, handThree, handFour);
+                   }
+                   return true;
+                }
+            }else{//button
+                return false;
+             }
+         }else if(obj == ui->drawSouth1_4){
+                    if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+                       QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+                       if(mouseEvent->button() == Qt::LeftButton){
+                           if(isMopai == false){
+                               isMopai = true;
+                           list<Mj> handOne;
+                           list<Mj> handTwo;
+                           list<Mj> handThree;
+                           list<Mj> handFour;
+
+                           mopaiDirection = 0;
+                           mopaiCeng = 0;
+                           mopaiPos = 3;
+
+                           beginDraw(handOne, handTwo, handThree, handFour);
+
+                           beginGameDisplay(handOne, handTwo, handThree, handFour);
+                           }
+                           return true;
+                        }else{//button
+                           return false;
+                        }
+                    }else{//button
+                        return false;
+                     }
+         }else if(obj == ui->drawSouth2_4){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isMopai == false){
+                       isMopai = true;
+                   list<Mj> handOne;
+                   list<Mj> handTwo;
+                   list<Mj> handThree;
+                   list<Mj> handFour;
+
+                   mopaiDirection = 0;
+                   mopaiCeng = 0;
+                   mopaiPos = 3;
+
+                   beginDraw(handOne, handTwo, handThree, handFour);
+
+                   beginGameDisplay(handOne, handTwo, handThree, handFour);
+                   }
+                   return true;
+                }else{//button
+                   return false;
+                }
+            }else{//button
+                return false;
+             }
+         }else if(obj == ui->drawSouth1_5){
+                    if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+                       QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+                       if(mouseEvent->button() == Qt::LeftButton){
+                           if(isMopai == false){
+                               isMopai = true;
+                           list<Mj> handOne;
+                           list<Mj> handTwo;
+                           list<Mj> handThree;
+                           list<Mj> handFour;
+
+                           mopaiDirection = 0;
+                           mopaiCeng = 0;
+                           mopaiPos = 4;
+
+                           beginDraw(handOne, handTwo, handThree, handFour);
+
+                           beginGameDisplay(handOne, handTwo, handThree, handFour);
+                           }
+                           return true;
+                        }else{//button
+                           return false;
+                        }
+                    }else{//button
+                        return false;
+                     }
+         }else if(obj == ui->drawSouth2_5){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isMopai == false){
+                       isMopai = true;
+                   list<Mj> handOne;
+                   list<Mj> handTwo;
+                   list<Mj> handThree;
+                   list<Mj> handFour;
+
+                   mopaiDirection = 0;
+                   mopaiCeng = 0;
+                   mopaiPos = 4;
+
+                   beginDraw(handOne, handTwo, handThree, handFour);
+
+                   beginGameDisplay(handOne, handTwo, handThree, handFour);
+                   }
+                   return true;
+                }else{//button
+                   return false;
+                }
+            }else{//button
+                return false;
+             }
+         }else if(obj == ui->drawSouth1_6){
+                    if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+                       QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+                       if(mouseEvent->button() == Qt::LeftButton){
+                           if(isMopai == false){
+                               isMopai = true;
+                           list<Mj> handOne;
+                           list<Mj> handTwo;
+                           list<Mj> handThree;
+                           list<Mj> handFour;
+
+                           mopaiDirection = 0;
+                           mopaiCeng = 0;
+                           mopaiPos = 6;
+
+                           beginDraw(handOne, handTwo, handThree, handFour);
+
+                           beginGameDisplay(handOne, handTwo, handThree, handFour);
+                           }
+                           return true;
+                        }else{//button
+                           return false;
+                        }
+                    }else{//button
+                        return false;
+                     }
+         }else if(obj == ui->drawSouth2_6){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isMopai == false){
+                       isMopai = true;
+                   list<Mj> handOne;
+                   list<Mj> handTwo;
+                   list<Mj> handThree;
+                   list<Mj> handFour;
+
+                   mopaiDirection = 0;
+                   mopaiCeng = 0;
+                   mopaiPos = 6;
+
+                   beginDraw(handOne, handTwo, handThree, handFour);
+
+                   beginGameDisplay(handOne, handTwo, handThree, handFour);
+                   }
+                   return true;
+                }else{//button
+                   return false;
+                }
+            }else{//button
+                return false;
+             }
+         }else if(obj == ui->drawSouth1_7){
+                    if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+                       QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+                       if(mouseEvent->button() == Qt::LeftButton){
+                           if(isMopai == false){
+                               isMopai = true;
+                           list<Mj> handOne;
+                           list<Mj> handTwo;
+                           list<Mj> handThree;
+                           list<Mj> handFour;
+
+                           mopaiDirection = 0;
+                           mopaiCeng = 0;
+                           mopaiPos = 6;
+
+                           beginDraw(handOne, handTwo, handThree, handFour);
+
+                           beginGameDisplay(handOne, handTwo, handThree, handFour);
+                           }
+                           return true;
+                        }else{//button
+                           return false;
+                        }
+                    }else{//button
+                        return false;
+                     }
+         }else if(obj == ui->drawSouth2_7){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isMopai == false){
+                       isMopai = true;
+                   list<Mj> handOne;
+                   list<Mj> handTwo;
+                   list<Mj> handThree;
+                   list<Mj> handFour;
+
+                   mopaiDirection = 0;
+                   mopaiCeng = 0;
+                   mopaiPos = 6;
+
+                   beginDraw(handOne, handTwo, handThree, handFour);
+
+                   beginGameDisplay(handOne, handTwo, handThree, handFour);
+                   }
+                   return true;
+                }else{//button
+                   return false;
+                }
+            }else{//button
+                return false;
+             }
+         }else if(obj == ui->drawSouth1_8){
+                    if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+                       QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+                       if(mouseEvent->button() == Qt::LeftButton){
+                           if(isMopai == false){
+                               isMopai = true;
+                           list<Mj> handOne;
+                           list<Mj> handTwo;
+                           list<Mj> handThree;
+                           list<Mj> handFour;
+
+                           mopaiDirection = 0;
+                           mopaiCeng = 0;
+                           mopaiPos = 7;
+
+                           beginDraw(handOne, handTwo, handThree, handFour);
+
+                           beginGameDisplay(handOne, handTwo, handThree, handFour);
+                           }
+                           return true;
+                        }else{//button
+                           return false;
+                        }
+                    }else{//button
+                        return false;
+                     }
+         }else if(obj == ui->drawSouth2_8){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isMopai == false){
+                       isMopai = true;
+                   list<Mj> handOne;
+                   list<Mj> handTwo;
+                   list<Mj> handThree;
+                   list<Mj> handFour;
+
+                   mopaiDirection = 0;
+                   mopaiCeng = 0;
+                   mopaiPos = 7;
+
+                   beginDraw(handOne, handTwo, handThree, handFour);
+
+                   beginGameDisplay(handOne, handTwo, handThree, handFour);
+                   }
+                   return true;
+                }else{//button
+                   return false;
+                }
+            }else{//button
+                return false;
+             }
+         }else if(obj == ui->drawSouth1_9){
+                    if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+                       QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+                       if(mouseEvent->button() == Qt::LeftButton){
+                           if(isMopai == false){
+                               isMopai = true;
+                           list<Mj> handOne;
+                           list<Mj> handTwo;
+                           list<Mj> handThree;
+                           list<Mj> handFour;
+
+                           mopaiDirection = 0;
+                           mopaiCeng = 0;
+                           mopaiPos = 8;
+
+                           beginDraw(handOne, handTwo, handThree, handFour);
+
+                           beginGameDisplay(handOne, handTwo, handThree, handFour);
+                           }
+                           return true;
+                        }else{//button
+                           return false;
+                        }
+                    }else{//button
+                        return false;
+                     }
+         }else if(obj == ui->drawSouth2_9){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isMopai == false){
+                       isMopai = true;
+                   list<Mj> handOne;
+                   list<Mj> handTwo;
+                   list<Mj> handThree;
+                   list<Mj> handFour;
+
+                   mopaiDirection = 0;
+                   mopaiCeng = 0;
+                   mopaiPos = 8;
+
+                   beginDraw(handOne, handTwo, handThree, handFour);
+
+                   beginGameDisplay(handOne, handTwo, handThree, handFour);
+                   }
+                   return true;
+                }else{//button
+                   return false;
+                }
+            }else{//button
+                return false;
+             }
+         }else if(obj == ui->drawSouth1_10){
+                    if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+                       QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+                       if(mouseEvent->button() == Qt::LeftButton){
+                           if(isMopai == false){
+                               isMopai = true;
+                           list<Mj> handOne;
+                           list<Mj> handTwo;
+                           list<Mj> handThree;
+                           list<Mj> handFour;
+
+                           mopaiDirection = 0;
+                           mopaiCeng = 0;
+                           mopaiPos = 9;
+
+                           beginDraw(handOne, handTwo, handThree, handFour);
+
+                           beginGameDisplay(handOne, handTwo, handThree, handFour);
+                           }
+                           return true;
+                        }else{//button
+                           return false;
+                        }
+                    }else{//button
+                        return false;
+                     }
+         }else if(obj == ui->drawSouth2_10){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isMopai == false){
+                       isMopai = true;
+                   list<Mj> handOne;
+                   list<Mj> handTwo;
+                   list<Mj> handThree;
+                   list<Mj> handFour;
+
+                   mopaiDirection = 0;
+                   mopaiCeng = 0;
+                   mopaiPos = 9;
+
+                   beginDraw(handOne, handTwo, handThree, handFour);
+
+                   beginGameDisplay(handOne, handTwo, handThree, handFour);
+                   }
+                   return true;
+                }else{//button
+                   return false;
+                }
+            }else{//button
+                return false;
+             }
+         }else if(obj == ui->drawSouth1_11){
+                    if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+                       QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+                       if(mouseEvent->button() == Qt::LeftButton){
+                           if(isMopai == false){
+                               isMopai = true;
+                           list<Mj> handOne;
+                           list<Mj> handTwo;
+                           list<Mj> handThree;
+                           list<Mj> handFour;
+
+                           mopaiDirection = 0;
+                           mopaiCeng = 0;
+                           mopaiPos = 10;
+
+                           beginDraw(handOne, handTwo, handThree, handFour);
+
+                           beginGameDisplay(handOne, handTwo, handThree, handFour);
+                           }
+                           return true;
+                        }else{//button
+                           return false;
+                        }
+                    }else{//button
+                        return false;
+                     }
+         }else if(obj == ui->drawSouth2_11){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isMopai == false){
+                       isMopai = true;
+                   list<Mj> handOne;
+                   list<Mj> handTwo;
+                   list<Mj> handThree;
+                   list<Mj> handFour;
+
+                   mopaiDirection = 0;
+                   mopaiCeng = 0;
+                   mopaiPos = 10;
+
+                   beginDraw(handOne, handTwo, handThree, handFour);
+
+                   beginGameDisplay(handOne, handTwo, handThree, handFour);
+                   }
+                   return true;
+                }else{//button
+                   return false;
+                }
+            }else{//button
+                return false;
+             }
+         }else if(obj == ui->drawSouth1_12){
+                    if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+                       QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+                       if(mouseEvent->button() == Qt::LeftButton){
+                           if(isMopai == false){
+                               isMopai = true;
+                           list<Mj> handOne;
+                           list<Mj> handTwo;
+                           list<Mj> handThree;
+                           list<Mj> handFour;
+
+                           mopaiDirection = 0;
+                           mopaiCeng = 0;
+                           mopaiPos =11;
+
+                           beginDraw(handOne, handTwo, handThree, handFour);
+
+                           beginGameDisplay(handOne, handTwo, handThree, handFour);
+                           }
+                           return true;
+                        }else{//button
+                           return false;
+                        }
+                    }else{//button
+                        return false;
+                     }
+         }else if(obj == ui->drawSouth2_12){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isMopai == false){
+                       isMopai = true;
+                   list<Mj> handOne;
+                   list<Mj> handTwo;
+                   list<Mj> handThree;
+                   list<Mj> handFour;
+
+                   mopaiDirection = 0;
+                   mopaiCeng = 0;
+                   mopaiPos =11;
 
                    beginDraw(handOne, handTwo, handThree, handFour);
 
@@ -11121,6 +20381,909 @@ void UIMainWindows::KongDisplay()
                            mopaiCeng = 0;
                            mopaiPos = 2;
 
+                           beginDraw(handOne, handTwo, handThree, handFour);
+
+                           beginGameDisplay(handOne, handTwo, handThree, handFour);
+                           }
+                           return true;
+                        }else{//button
+                           return false;
+                        }
+                    }else{//button
+                        return false;
+                     }
+         }else if(obj == ui->drawEast2_3){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isMopai == false){
+                       isMopai = true;
+                   list<Mj> handOne;
+                   list<Mj> handTwo;
+                   list<Mj> handThree;
+                   list<Mj> handFour;
+
+                   mopaiDirection = 1;
+                   mopaiCeng = 0;
+                   mopaiPos = 2;
+
+                   beginDraw(handOne, handTwo, handThree, handFour);
+
+                   beginGameDisplay(handOne, handTwo, handThree, handFour);
+                   }
+                   return true;
+                }else{//button
+                   return false;
+                }
+            }else{//button
+                return false;
+             }
+         }else if(obj == ui->drawEast1_4){
+                    if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+                       QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+                       if(mouseEvent->button() == Qt::LeftButton){
+                           if(isMopai == false){
+                               isMopai = true;
+                           list<Mj> handOne;
+                           list<Mj> handTwo;
+                           list<Mj> handThree;
+                           list<Mj> handFour;
+
+                           mopaiDirection = 1;
+                           mopaiCeng = 0;
+                           mopaiPos = 3;
+
+                           beginDraw(handOne, handTwo, handThree, handFour);
+
+                           beginGameDisplay(handOne, handTwo, handThree, handFour);
+                           }
+                           return true;
+                        }else{//button
+                           return false;
+                        }
+                    }else{//button
+                        return false;
+                     }
+         }else if(obj == ui->drawEast2_4){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isMopai == false){
+                       isMopai = true;
+                   list<Mj> handOne;
+                   list<Mj> handTwo;
+                   list<Mj> handThree;
+                   list<Mj> handFour;
+
+                   mopaiDirection = 1;
+                   mopaiCeng = 0;
+                   mopaiPos = 3;
+
+                   beginDraw(handOne, handTwo, handThree, handFour);
+
+                   beginGameDisplay(handOne, handTwo, handThree, handFour);
+                   }
+                   return true;
+                }else{//button
+                   return false;
+                }
+            }else{//button
+                return false;
+             }
+         }else if(obj == ui->drawEast1_5){
+                    if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+                       QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+                       if(mouseEvent->button() == Qt::LeftButton){
+                           if(isMopai == false){
+                               isMopai = true;
+                           list<Mj> handOne;
+                           list<Mj> handTwo;
+                           list<Mj> handThree;
+                           list<Mj> handFour;
+
+                           mopaiDirection = 1;
+                           mopaiCeng = 0;
+                           mopaiPos = 4;
+
+                           beginDraw(handOne, handTwo, handThree, handFour);
+
+                           beginGameDisplay(handOne, handTwo, handThree, handFour);
+                           }
+                           return true;
+                        }else{//button
+                           return false;
+                        }
+                    }else{//button
+                        return false;
+                     }
+         }else if(obj == ui->drawEast1_5){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isMopai == false){
+                       isMopai = true;
+                   list<Mj> handOne;
+                   list<Mj> handTwo;
+                   list<Mj> handThree;
+                   list<Mj> handFour;
+
+                   mopaiDirection = 1;
+                   mopaiCeng = 0;
+                   mopaiPos = 4;
+
+                   beginDraw(handOne, handTwo, handThree, handFour);
+
+                   beginGameDisplay(handOne, handTwo, handThree, handFour);
+                   }
+                   return true;
+                }else{//button
+                   return false;
+                }
+            }else{//button
+                return false;
+             }
+         }else if(obj == ui->drawEast1_6){
+                    if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+                       QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+                       if(mouseEvent->button() == Qt::LeftButton){
+                           if(isMopai == false){
+                               isMopai = true;
+                           list<Mj> handOne;
+                           list<Mj> handTwo;
+                           list<Mj> handThree;
+                           list<Mj> handFour;
+
+                           mopaiDirection = 1;
+                           mopaiCeng = 0;
+                           mopaiPos = 5;
+
+                           beginDraw(handOne, handTwo, handThree, handFour);
+
+                           beginGameDisplay(handOne, handTwo, handThree, handFour);
+                           }
+                           return true;
+                        }else{//button
+                           return false;
+                        }
+                    }else{//button
+                        return false;
+                     }
+         }else if(obj == ui->drawEast2_6){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isMopai == false){
+                       isMopai = true;
+                   list<Mj> handOne;
+                   list<Mj> handTwo;
+                   list<Mj> handThree;
+                   list<Mj> handFour;
+
+                   mopaiDirection = 1;
+                   mopaiCeng = 0;
+                   mopaiPos = 5;
+
+                   beginDraw(handOne, handTwo, handThree, handFour);
+
+                   beginGameDisplay(handOne, handTwo, handThree, handFour);
+                   }
+                   return true;
+                }else{//button
+                   return false;
+                }
+            }else{//button
+                return false;
+             }
+         }else if(obj == ui->drawEast1_7){
+                    if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+                       QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+                       if(mouseEvent->button() == Qt::LeftButton){
+                           if(isMopai == false){
+                               isMopai = true;
+                           list<Mj> handOne;
+                           list<Mj> handTwo;
+                           list<Mj> handThree;
+                           list<Mj> handFour;
+
+                           mopaiDirection = 1;
+                           mopaiCeng = 0;
+                           mopaiPos = 6;
+
+                           beginDraw(handOne, handTwo, handThree, handFour);
+
+                           beginGameDisplay(handOne, handTwo, handThree, handFour);
+                           }
+                           return true;
+                        }else{//button
+                           return false;
+                        }
+                    }else{//button
+                        return false;
+                     }
+         }else if(obj == ui->drawEast1_7){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isMopai == false){
+                       isMopai = true;
+                   list<Mj> handOne;
+                   list<Mj> handTwo;
+                   list<Mj> handThree;
+                   list<Mj> handFour;
+
+                   mopaiDirection = 1;
+                   mopaiCeng = 0;
+                   mopaiPos = 6;
+
+                   beginDraw(handOne, handTwo, handThree, handFour);
+
+                   beginGameDisplay(handOne, handTwo, handThree, handFour);
+                   }
+                   return true;
+                }else{//button
+                   return false;
+                }
+            }else{//button
+                return false;
+             }
+         }else if(obj == ui->drawEast1_8){
+                    if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+                       QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+                       if(mouseEvent->button() == Qt::LeftButton){
+                           if(isMopai == false){
+                               isMopai = true;
+                           list<Mj> handOne;
+                           list<Mj> handTwo;
+                           list<Mj> handThree;
+                           list<Mj> handFour;
+
+                           mopaiDirection = 1;
+                           mopaiCeng = 0;
+                           mopaiPos = 7;
+
+                           beginDraw(handOne, handTwo, handThree, handFour);
+
+                           beginGameDisplay(handOne, handTwo, handThree, handFour);
+                           }
+                           return true;
+                        }else{//button
+                           return false;
+                        }
+                    }else{//button
+                        return false;
+                     }
+         }else if(obj == ui->drawEast2_8){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isMopai == false){
+                       isMopai = true;
+                   list<Mj> handOne;
+                   list<Mj> handTwo;
+                   list<Mj> handThree;
+                   list<Mj> handFour;
+
+                   mopaiDirection = 1;
+                   mopaiCeng = 0;
+                   mopaiPos = 7;
+
+                   beginDraw(handOne, handTwo, handThree, handFour);
+
+                   beginGameDisplay(handOne, handTwo, handThree, handFour);
+                   }
+                   return true;
+                }else{//button
+                   return false;
+                }
+            }else{//button
+                return false;
+             }
+         }else if(obj == ui->drawEast1_9){
+                    if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+                       QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+                       if(mouseEvent->button() == Qt::LeftButton){
+                           if(isMopai == false){
+                               isMopai = true;
+                           list<Mj> handOne;
+                           list<Mj> handTwo;
+                           list<Mj> handThree;
+                           list<Mj> handFour;
+
+                           mopaiDirection = 1;
+                           mopaiCeng = 0;
+                           mopaiPos = 8;
+
+                           beginDraw(handOne, handTwo, handThree, handFour);
+
+                           beginGameDisplay(handOne, handTwo, handThree, handFour);
+                           }
+                           return true;
+                        }else{//button
+                           return false;
+                        }
+                    }else{//button
+                        return false;
+                     }
+         }else if(obj == ui->drawEast2_9){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isMopai == false){
+                       isMopai = true;
+                   list<Mj> handOne;
+                   list<Mj> handTwo;
+                   list<Mj> handThree;
+                   list<Mj> handFour;
+
+                   mopaiDirection = 1;
+                   mopaiCeng = 0;
+                   mopaiPos = 8;
+
+                   beginDraw(handOne, handTwo, handThree, handFour);
+
+                   beginGameDisplay(handOne, handTwo, handThree, handFour);
+                   }
+                   return true;
+                }else{//button
+                   return false;
+                }
+            }else{//button
+                return false;
+             }
+         }else if(obj == ui->drawEast1_10){
+                    if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+                       QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+                       if(mouseEvent->button() == Qt::LeftButton){
+                           if(isMopai == false){
+                               isMopai = true;
+                           list<Mj> handOne;
+                           list<Mj> handTwo;
+                           list<Mj> handThree;
+                           list<Mj> handFour;
+
+                           mopaiDirection = 1;
+                           mopaiCeng = 0;
+                           mopaiPos = 9;
+
+                           beginDraw(handOne, handTwo, handThree, handFour);
+
+                           beginGameDisplay(handOne, handTwo, handThree, handFour);
+                           }
+                           return true;
+                        }else{//button
+                           return false;
+                        }
+                    }else{//button
+                        return false;
+                     }
+         }else if(obj == ui->drawEast2_10){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isMopai == false){
+                       isMopai = true;
+                   list<Mj> handOne;
+                   list<Mj> handTwo;
+                   list<Mj> handThree;
+                   list<Mj> handFour;
+
+                   mopaiDirection = 1;
+                   mopaiCeng = 0;
+                   mopaiPos = 9;
+
+                   beginDraw(handOne, handTwo, handThree, handFour);
+
+                   beginGameDisplay(handOne, handTwo, handThree, handFour);
+                   }
+                   return true;
+                }else{//button
+                   return false;
+                }
+            }else{//button
+                return false;
+             }
+         }else if(obj == ui->drawEast1_11){
+                    if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+                       QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+                       if(mouseEvent->button() == Qt::LeftButton){
+                           if(isMopai == false){
+                               isMopai = true;
+                           list<Mj> handOne;
+                           list<Mj> handTwo;
+                           list<Mj> handThree;
+                           list<Mj> handFour;
+
+                           mopaiDirection = 1;
+                           mopaiCeng = 0;
+                           mopaiPos = 10;
+
+                           beginDraw(handOne, handTwo, handThree, handFour);
+
+                           beginGameDisplay(handOne, handTwo, handThree, handFour);
+                           }
+                           return true;
+                        }else{//button
+                           return false;
+                        }
+                    }else{//button
+                        return false;
+                     }
+         }else if(obj == ui->drawEast2_11){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isMopai == false){
+                       isMopai = true;
+                   list<Mj> handOne;
+                   list<Mj> handTwo;
+                   list<Mj> handThree;
+                   list<Mj> handFour;
+
+                   mopaiDirection = 1;
+                   mopaiCeng = 0;
+                   mopaiPos = 10;
+
+                   beginDraw(handOne, handTwo, handThree, handFour);
+
+                   beginGameDisplay(handOne, handTwo, handThree, handFour);
+                   }
+                   return true;
+                }else{//button
+                   return false;
+                }
+            }else{//button
+                return false;
+             }
+         }else if(obj == ui->drawEast1_12){
+                    if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+                       QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+                       if(mouseEvent->button() == Qt::LeftButton){
+                           if(isMopai == false){
+                               isMopai = true;
+                           list<Mj> handOne;
+                           list<Mj> handTwo;
+                           list<Mj> handThree;
+                           list<Mj> handFour;
+
+                           mopaiDirection = 1;
+                           mopaiCeng = 0;
+                           mopaiPos = 11;
+
+                           beginDraw(handOne, handTwo, handThree, handFour);
+
+                           beginGameDisplay(handOne, handTwo, handThree, handFour);
+                           }
+                           return true;
+                        }else{//button
+                           return false;
+                        }
+                    }else{//button
+                        return false;
+                     }
+         }else if(obj == ui->drawEast2_12){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isMopai == false){
+                       isMopai = true;
+                   list<Mj> handOne;
+                   list<Mj> handTwo;
+                   list<Mj> handThree;
+                   list<Mj> handFour;
+
+                   mopaiDirection = 1;
+                   mopaiCeng = 0;
+                   mopaiPos = 11;
+
+                   beginDraw(handOne, handTwo, handThree, handFour);
+
+                   beginGameDisplay(handOne, handTwo, handThree, handFour);
+                   }
+                   return true;
+                }else{//button
+                   return false;
+                }
+            }else{//button
+                return false;
+             }
+         }else if(obj == ui->drawEast1_13){
+                    if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+                       QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+                       if(mouseEvent->button() == Qt::LeftButton){
+                           if(isMopai == false){
+                               isMopai = true;
+                           list<Mj> handOne;
+                           list<Mj> handTwo;
+                           list<Mj> handThree;
+                           list<Mj> handFour;
+
+                           mopaiDirection = 1;
+                           mopaiCeng = 0;
+                           mopaiPos = 12;
+
+                           beginDraw(handOne, handTwo, handThree, handFour);
+
+                           beginGameDisplay(handOne, handTwo, handThree, handFour);
+                           }
+                           return true;
+                        }else{//button
+                           return false;
+                        }
+                    }else{//button
+                        return false;
+                     }
+         }else if(obj == ui->drawEast2_13){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isMopai == false){
+                       isMopai = true;
+                   list<Mj> handOne;
+                   list<Mj> handTwo;
+                   list<Mj> handThree;
+                   list<Mj> handFour;
+
+                   mopaiDirection = 1;
+                   mopaiCeng = 0;
+                   mopaiPos = 12;
+
+                   beginDraw(handOne, handTwo, handThree, handFour);
+
+                   beginGameDisplay(handOne, handTwo, handThree, handFour);
+                   }
+                   return true;
+                }else{//button
+                   return false;
+                }
+            }else{//button
+                return false;
+             }
+         }else if(obj == ui->drawNorth1_2){
+                    if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+                       QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+                       if(mouseEvent->button() == Qt::LeftButton){
+                           if(isMopai == false){
+                               isMopai = true;
+                           list<Mj> handOne;
+                           list<Mj> handTwo;
+                           list<Mj> handThree;
+                           list<Mj> handFour;
+
+                           mopaiDirection = 2;
+                           mopaiCeng = 0;
+                           mopaiPos = 1;
+
+                           beginDraw(handOne, handTwo, handThree, handFour);
+
+                           beginGameDisplay(handOne, handTwo, handThree, handFour);
+                           }
+                           return true;
+                        }else{//button
+                           return false;
+                        }
+                    }else{//button
+                        return false;
+                     }
+         }else if(obj == ui->drawNorth2_2){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isMopai == false){
+                       isMopai = true;
+                   list<Mj> handOne;
+                   list<Mj> handTwo;
+                   list<Mj> handThree;
+                   list<Mj> handFour;
+
+                   mopaiDirection = 2;
+                   mopaiCeng = 0;
+                   mopaiPos = 1;
+
+                   beginDraw(handOne, handTwo, handThree, handFour);
+
+                   beginGameDisplay(handOne, handTwo, handThree, handFour);
+                   }
+                   return true;
+                }else{//button
+                   return false;
+                }
+            }else{//button
+                return false;
+             }
+         }else if(obj == ui->drawNorth1_3){
+                    if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+                       QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+                       if(mouseEvent->button() == Qt::LeftButton){
+                           if(isMopai == false){
+                               isMopai = true;
+                           list<Mj> handOne;
+                           list<Mj> handTwo;
+                           list<Mj> handThree;
+                           list<Mj> handFour;
+
+                           mopaiDirection = 2;
+                           mopaiCeng = 0;
+                           mopaiPos = 2;
+
+                           beginDraw(handOne, handTwo, handThree, handFour);
+
+                           beginGameDisplay(handOne, handTwo, handThree, handFour);
+                           }
+                           return true;
+                        }else{//button
+                           return false;
+                        }
+                    }else{//button
+                        return false;
+                     }
+         }else if(obj == ui->drawNorth2_3){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isMopai == false){
+                       isMopai = true;
+                   list<Mj> handOne;
+                   list<Mj> handTwo;
+                   list<Mj> handThree;
+                   list<Mj> handFour;
+
+                   mopaiDirection = 2;
+                   mopaiCeng = 0;
+                   mopaiPos = 2;
+
+                   beginDraw(handOne, handTwo, handThree, handFour);
+
+                   beginGameDisplay(handOne, handTwo, handThree, handFour);
+                   }
+                   return true;
+                }else{//button
+                   return false;
+                }
+            }else{//button
+                return false;
+             }
+         }else if(obj == ui->drawNorth1_4){
+                    if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+                       QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+                       if(mouseEvent->button() == Qt::LeftButton){
+                           if(isMopai == false){
+                               isMopai = true;
+                           list<Mj> handOne;
+                           list<Mj> handTwo;
+                           list<Mj> handThree;
+                           list<Mj> handFour;
+
+                           mopaiDirection = 2;
+                           mopaiCeng = 0;
+                           mopaiPos = 3;
+
+                           beginDraw(handOne, handTwo, handThree, handFour);
+
+                           beginGameDisplay(handOne, handTwo, handThree, handFour);
+                           }
+                           return true;
+                        }else{//button
+                           return false;
+                        }
+                    }else{//button
+                        return false;
+                     }
+         }else if(obj == ui->drawNorth2_4){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isMopai == false){
+                       isMopai = true;
+                   list<Mj> handOne;
+                   list<Mj> handTwo;
+                   list<Mj> handThree;
+                   list<Mj> handFour;
+
+                   mopaiDirection = 2;
+                   mopaiCeng = 0;
+                   mopaiPos = 3;
+
+                   beginDraw(handOne, handTwo, handThree, handFour);
+
+                   beginGameDisplay(handOne, handTwo, handThree, handFour);
+                   }
+                   return true;
+                }else{//button
+                   return false;
+                }
+            }else{//button
+                return false;
+             }
+         }else if(obj == ui->drawNorth1_5){
+                    if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+                       QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+                       if(mouseEvent->button() == Qt::LeftButton){
+                           if(isMopai == false){
+                               isMopai = true;
+                           list<Mj> handOne;
+                           list<Mj> handTwo;
+                           list<Mj> handThree;
+                           list<Mj> handFour;
+
+                           mopaiDirection = 2;
+                           mopaiCeng = 0;
+                           mopaiPos = 4;
+
+                           beginDraw(handOne, handTwo, handThree, handFour);
+
+                           beginGameDisplay(handOne, handTwo, handThree, handFour);
+                           }
+                           return true;
+                        }else{//button
+                           return false;
+                        }
+                    }else{//button
+                        return false;
+                     }
+         }else if(obj == ui->drawNorth2_5){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isMopai == false){
+                       isMopai = true;
+                   list<Mj> handOne;
+                   list<Mj> handTwo;
+                   list<Mj> handThree;
+                   list<Mj> handFour;
+
+                   mopaiDirection = 2;
+                   mopaiCeng = 0;
+                   mopaiPos = 4;
+
+                   beginDraw(handOne, handTwo, handThree, handFour);
+
+                   beginGameDisplay(handOne, handTwo, handThree, handFour);
+                   }
+                   return true;
+                }else{//button
+                   return false;
+                }
+            }else{//button
+                return false;
+             }
+         }else if(obj == ui->drawNorth1_6){
+                    if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+                       QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+                       if(mouseEvent->button() == Qt::LeftButton){
+                           if(isMopai == false){
+                               isMopai = true;
+                           list<Mj> handOne;
+                           list<Mj> handTwo;
+                           list<Mj> handThree;
+                           list<Mj> handFour;
+
+                           mopaiDirection = 2;
+                           mopaiCeng = 0;
+                           mopaiPos = 5;
+
+                           beginDraw(handOne, handTwo, handThree, handFour);
+
+                           beginGameDisplay(handOne, handTwo, handThree, handFour);
+                           }
+                           return true;
+                        }else{//button
+                           return false;
+                        }
+                    }else{//button
+                        return false;
+                     }
+         }else if(obj == ui->drawNorth2_6){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isMopai == false){
+                       isMopai = true;
+                   list<Mj> handOne;
+                   list<Mj> handTwo;
+                   list<Mj> handThree;
+                   list<Mj> handFour;
+
+                   mopaiDirection = 2;
+                   mopaiCeng = 0;
+                   mopaiPos = 5;
+
+                   beginDraw(handOne, handTwo, handThree, handFour);
+
+                   beginGameDisplay(handOne, handTwo, handThree, handFour);
+                   }
+                   return true;
+                }else{//button
+                   return false;
+                }
+            }else{//button
+                return false;
+             }
+         }else if(obj == ui->drawNorth1_7){
+                    if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+                       QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+                       if(mouseEvent->button() == Qt::LeftButton){
+                           if(isMopai == false){
+                               isMopai = true;
+                           list<Mj> handOne;
+                           list<Mj> handTwo;
+                           list<Mj> handThree;
+                           list<Mj> handFour;
+
+                           mopaiDirection = 2;
+                           mopaiCeng = 0;
+                           mopaiPos = 6;
+
+                           beginDraw(handOne, handTwo, handThree, handFour);
+
+                           beginGameDisplay(handOne, handTwo, handThree, handFour);
+                           }
+                           return true;
+                        }else{//button
+                           return false;
+                        }
+                    }else{//button
+                        return false;
+                     }
+         }else if(obj == ui->drawNorth2_7){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isMopai == false){
+                       isMopai = true;
+                   list<Mj> handOne;
+                   list<Mj> handTwo;
+                   list<Mj> handThree;
+                   list<Mj> handFour;
+
+                   mopaiDirection = 2;
+                   mopaiCeng = 0;
+                   mopaiPos = 6;
+
+                   beginDraw(handOne, handTwo, handThree, handFour);
+
+                   beginGameDisplay(handOne, handTwo, handThree, handFour);
+                   }
+                   return true;
+                }else{//button
+                   return false;
+                }
+            }else{//button
+                return false;
+             }
+         }else if(obj == ui->drawNorth1_8){
+                    if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+                       QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+                       if(mouseEvent->button() == Qt::LeftButton){
+                           if(isMopai == false){
+                               isMopai = true;
+                           list<Mj> handOne;
+                           list<Mj> handTwo;
+                           list<Mj> handThree;
+                           list<Mj> handFour;
+
+                           mopaiDirection = 2;
+                           mopaiCeng = 0;
+                           mopaiPos = 7;
+
+                           beginDraw(handOne, handTwo, handThree, handFour);
+
+                           beginGameDisplay(handOne, handTwo, handThree, handFour);
+                           }
+                           return true;
+                        }else{//button
+                           return false;
+                        }
+                    }else{//button
+                        return false;
+                     }
+         }else if(obj == ui->drawNorth2_8){
+            if(event->type() == QEvent::MouseButtonPress){//鼠标按压
+               QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+               if(mouseEvent->button() == Qt::LeftButton){
+                   if(isMopai == false){
+                       isMopai = true;
+                   list<Mj> handOne;
+                   list<Mj> handTwo;
                    list<Mj> handThree;
                    list<Mj> handFour;
 
