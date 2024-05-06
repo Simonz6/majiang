@@ -3,7 +3,7 @@
 #ifndef MAINWIDGET_H
 #define MAINWIDGET_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 
 #include<QSystemTrayIcon>
 #include <QMenu>
