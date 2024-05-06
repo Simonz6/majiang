@@ -133,7 +133,7 @@ void UIMainWindows::initForm()
     //ui->widgetMenu->setVisible(false);
     ui->widgetTitle->setProperty("form", "title");
     ui->widgetTop->setProperty("nav", "top");
-    ui->labTitle->setText("战略家麻将平台");
+    ui->labTitle->setText("战略麻将平台");
    // ui->labTitle->setFont(QFont("Microsoft Yahei", 20));
     this->setWindowTitle(ui->labTitle->text());
 
